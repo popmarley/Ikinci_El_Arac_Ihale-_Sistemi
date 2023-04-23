@@ -11,7 +11,7 @@
     <title>İkinci El Araç Satış Platformu</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
- 
+
     <link rel="icon" type="image/png" href="/Content/Login_v9/images/icons/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/Content/Login_v9/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/Content/Login_v9/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -30,7 +30,7 @@
 <body>
     <div class="container-login100" style="background-image: url('/Content/Login_v9/images/bg-01.jpg');">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
-            <form class="login100-form validate-form">
+            <form class="login100-form validate-form" method="post" action="@Url.Action("Login", "Account")">
                 <span class="login100-form-title p-b-37">
                     Yönetim Paneli Giriş Ekranı
                 </span>
@@ -57,33 +57,39 @@
         </div>
     </div>
     <div id="dropDownSelect1"></div>
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    }
 
-    <script src="/Content/Login_v9/vendor/jquery/jquery-3.2.1.min.js"></script>
-
-    <script src="/Content/Login_v9/vendor/animsition/js/animsition.min.js"></script>
-
-    <script src="/Content/Login_v9/vendor/bootstrap/js/popper.js"></script>
-    <script src="/Content/Login_v9/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <script src="/Content/Login_v9/vendor/select2/select2.min.js"></script>
-
-    <script src="/Content/Login_v9/vendor/daterangepicker/moment.min.js"></script>
-    <script src="/Content/Login_v9/vendor/daterangepicker/daterangepicker.js"></script>
-
-    <script src="/Content/Login_v9/vendor/countdowntime/countdowntime.js"></script>
-
-    <script src="/Content/Login_v9/js/main.js"></script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-23581568-13');
-    </script>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816" integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw==" data-cf-beacon='{"rayId":"7bbfab6c28b50534","version":"2023.3.0","b":1,"token":"cd0b4b3a733644fc843ef0b185f98241","si":100}' crossorigin="anonymous"></script>
 </body>
 
 </html>
 
+<script src="/Content/Login_v9/vendor/jquery/jquery-3.2.1.min.js"></script>
+
+<script src="/Content/Login_v9/vendor/animsition/js/animsition.min.js"></script>
+
+<script src="/Content/Login_v9/vendor/bootstrap/js/popper.js"></script>
+<script src="/Content/Login_v9/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="/Content/Login_v9/vendor/select2/select2.min.js"></script>
+
+<script src="/Content/Login_v9/vendor/daterangepicker/moment.min.js"></script>
+<script src="/Content/Login_v9/vendor/daterangepicker/daterangepicker.js"></script>
+
+<script src="/Content/Login_v9/vendor/countdowntime/countdowntime.js"></script>
+
+<script src="/Content/Login_v9/js/main.js"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816" integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw==" data-cf-beacon='{"rayId":"7bbfab6c28b50534","version":"2023.3.0","b":1,"token":"cd0b4b3a733644fc843ef0b185f98241","si":100}' crossorigin="anonymous"></script>
