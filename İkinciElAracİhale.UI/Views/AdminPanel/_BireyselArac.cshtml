@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "_BireyselArac";
+    Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+}
+
+<form class="bg-white rounded p-3">
+    <div class="row">
+        <h4 style="color:black;">Kriterler</h4>
+        <div class="col-md-3 mb-3">
+            <label for="aracMarka" class="form-label">Araç Markası</label>
+            <input type="text" class="form-control" id="aracMarka" placeholder="Marka">
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="aracModel" class="form-label">Modeli</label>
+            <input type="text" class="form-control" id="aracModel" placeholder="Model">
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="aracDurumu" class="form-label">Statüsü</label>
+            <select class="form-control" id="aracDurumu">
+                <option>Yeni</option>
+                <option>Kullanılmış</option>
+            </select>
+        </div>
+    </div>
+    <div class="text-end">
+        <button type="submit" class="btn btn-primary">Listele</button>
+    </div>
+</form>
+<br />
+<table class="table">
+    <h4 style="color:dimgrey;">Araç Listesi</h4>
+    <thead>
+        <tr>
+            <th>Araç ID</th>
+            <th>Araç Markası</th>
+            <th>Modeli</th>
+            <th>Statüsü</th>
+            <th>Kaydeden Kullanıcı</th>
+            <th>Kaydetme Zamanı</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- buraya araç listesi dinamik olarak gelecek -->
+    </tbody>
+</table>
+<br />
+<div class="row mt-12">
+    <div class="col-md-12 d-flex justify-content-end">
+        <a href="@Url.Action("_BireyselAracGuncelle")" class="btn btn-success me-2">
+            Güncelle</a>
+            <button class="btn btn-danger">Sil</button>
+</div>
+</div>
+

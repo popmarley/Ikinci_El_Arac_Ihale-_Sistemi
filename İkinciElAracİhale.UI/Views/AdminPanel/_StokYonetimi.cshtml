@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "_StokYonetimi";
+    Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+}
+
+<div class="container">
+    <h4 class="my-4">Stok Listeleme</h4>
+    <form>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="filtre">Filtre Kriteri</label>
+                <input type="text" class="form-control" id="filtre" placeholder="Filtreleme kriteri girin" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <button class="btn btn-primary mt-4" type="submit">Filtrele</button>
+            </div>
+        </div>
+    </form>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Şirket Adı</th>
+                <th scope="col">Stok Miktarı</th>
+                <th scope="col">Aksiyon</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Örnek satır -->
+            <tr>
+                <td>Şirket 1</td>
+                <td>10</td>
+                <td><a href="@Url.Action("_StokYonetimiDetay")" class="btn btn-primary">Detay</a></td>
+            </tr>
+            <!-- Diğer satırlar burada listelenecek -->
+        </tbody>
+    </table>
+</div>

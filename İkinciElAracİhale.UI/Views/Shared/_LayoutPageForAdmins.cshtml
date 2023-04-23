@@ -36,23 +36,18 @@
 
     <!-- Template Stylesheet -->
     <link href="/Content/Admin_Panel/darkpan-1.0.0/css/style.css" rel="stylesheet">
-
-
-
 </head>
+
 <body>
     <div class="container-fluid position-relative d-flex p-0">
-        <!-- Spinner Start -->
         <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Yükleniyor...</span>
             </div>
         </div>
-        <!-- Spinner End -->
-        <!-- Sidebar Start -->
         <div class="sidebar pe-3 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
-                <a href="@Url.Action("_AracListeleme")"" class="navbar-brand mx-4 mb-3">
+                <a href="@Url.Action("_AracListeleme")" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Araç İhale</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -75,9 +70,9 @@
                     <a href="/AdminPanel/_PaketTanimlama" class="nav-item nav-link"><i class="fa fa-box me-2"></i>Paket Tanımla</a>
                     <a href="#" class="nav-item nav-link"><i class="fa fa-building me-2"></i>Kurumsal Üye</a>
                     <a href="/AdminPanel/_İhaleListeleme" class="nav-item nav-link"><i class="fa fa-list me-2"></i>İhale Listeleme</a>
-                    <a href="#" class="nav-item nav-link"><i class="fa fa-car me-2"></i>Bireysel Araç</a>
-                    <a href="#" class="nav-item nav-link"><i class="fa fa-calculator me-2"></i>Komisyon & Noter</a>
-                    <a href="/Content/Admin_Panel/darkpan-1.0.0/chart.html" class="nav-item nav-link"><i class="fa fa-clipboard me-2"></i>Stok Yönetimi</a>
+                    <a href="/AdminPanel/_BireyselArac" class="nav-item nav-link"><i class="fa fa-car me-2"></i>Bireysel Araç</a>
+                    <a href="/AdminPanel/_KomisyonVeNoterUcretleri" class="nav-item nav-link"><i class="fa fa-calculator me-2"></i>Komisyon & Noter</a>
+                    <a href="/AdminPanel/_StokYonetimi" class="nav-item nav-link"><i class="fa fa-clipboard me-2"></i>Stok Yönetimi</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Raporlar</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -90,76 +85,21 @@
                 </div>
             </nav>
         </div>
-        <!-- Sidebar End -->
-        <!-- Content Start -->
         <div class="content">
-            <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-                <a href="/Content/Admin_Panel/darkpan-1.0.0/index.html" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
-                </a>
-                <a href="#" class="sidebar-toggler flex-shrink-0">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control bg-dark border-0" type="search" placeholder="Ara">
-                </form>
-                <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                    </div>
-                    <div class="nav-item dropdown">
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="/Content/Admin_Panel/darkpan-1.0.0/img/user 2.png" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">Hüseyin ÖZGÜVEN</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">Çıkış Yap</a>
-                        </div>
-                    </div>
-                </div>
+                @Html.Partial("_Header")
             </nav>
-            <!-- Navbar End -->
-            <!-- Sale & Revenue Start -->
             <div class="container">
                 @RenderBody()
             </div>
-            <!-- Sales Chart End -->
-            <!-- Recent Sales Start -->
-            <!-- Recent Sales End -->
-            <!-- Widgets Start -->
-            <!-- Widgets End -->
-            <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary rounded-top p-4">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">İkinci El Araç İhale Sistemi</a>, Tüm Hakları Saklıdır.
-                        </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
-                            Tasarım: <a href="#">Hüseyin ÖZGÜVEN</a>
-                        </div>
-                    </div>
-                </div>
+                @Html.Partial("_Footer")
             </div>
-            <!-- Footer End -->
         </div>
-        <!-- Content End -->
-        <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
-
-
 </body>
-
-
-
-
 </html>
-<div>
-
-</div>
 
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

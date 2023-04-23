@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "_StokYonetimiDetay";
+    Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+}
+
+<h4 class="my-4">Stok Detay</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Araç Adı</th>
+            <th scope="col">Araç Modeli</th>
+            <th scope="col">Araç Tipi</th>
+            <th scope="col">Ön Değerleme Tutarı</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Örnek satır -->
+        <tr>
+            <td>Araç 1</td>
+            <td>Model 1</td>
+            <td>Tip 1</td>
+            <td>15.000 TL</td>
+        </tr>
+        <!-- Diğer satırlar burada listelenecek -->
+    </tbody>
+</table>
+<br />
+<div class="d-flex justify-content-end">
+    <a href="@Url.Action("_StokYonetimi")" class="btn btn-primary">Geri Dön</a>
+</div>

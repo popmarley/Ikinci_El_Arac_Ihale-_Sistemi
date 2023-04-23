@@ -52,5 +52,39 @@ namespace İkinciElAracİhale.UI.Controllers
         {
             return View();
         }
+
+        public ActionResult _Footer()
+        {
+            return View();
+        }
+
+        public ActionResult _Header()
+        {
+            return View();
+        }
+
+        public ActionResult _BireyselArac()
+        {
+            return View();
+        }
+        public ActionResult _BireyselAracGuncelle()
+        {
+            return View();
+        }
+
+        public ActionResult _KomisyonVeNoterUcretleri()
+        {
+            return View();
+        }
+
+        public ActionResult _StokYonetimi()
+        {
+            return View();
+        }
+
+        public ActionResult _StokYonetimiDetay()
+        {
+            return View();
+        }
     }
 }

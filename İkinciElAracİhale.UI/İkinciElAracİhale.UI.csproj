@@ -277,6 +277,13 @@
     <Content Include="Views\AdminPanel\_İhaleListeleme.cshtml" />
     <Content Include="Views\AdminPanel\_YeniİhaleOlustur.cshtml" />
     <Content Include="Views\AdminPanel\_İhaleFiyat.cshtml" />
+    <Content Include="Views\AdminPanel\_Footer.cshtml" />
+    <Content Include="Views\AdminPanel\_Header.cshtml" />
+    <Content Include="Views\AdminPanel\_BireyselArac.cshtml" />
+    <Content Include="Views\AdminPanel\_BireyselAracGuncelle.cshtml" />
+    <Content Include="Views\AdminPanel\_KomisyonVeNoterUcretleri.cshtml" />
+    <Content Include="Views\AdminPanel\_StokYonetimi.cshtml" />
+    <Content Include="Views\AdminPanel\_StokYonetimiDetay.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

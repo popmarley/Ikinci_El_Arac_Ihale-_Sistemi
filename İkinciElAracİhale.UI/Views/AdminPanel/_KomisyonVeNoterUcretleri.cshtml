@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "_KomisyonVeNoterUcretleri";
+    Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+}
+
+<div class="container">
+    <h4 class="my-4">Noter Ücreti</h4>
+
+    <form>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="noter_ucreti">Noter Ücreti</label>
+                <input type="number" class="form-control" id="noter_ucreti" placeholder="1.500" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="noter_tarih_araligi">Tarih Aralığı</label>
+                <input type="text" class="form-control" id="noter_tarih_araligi" placeholder="01/01/2020-31/12/2020" required>
+            </div>
+        </div>
+
+        <hr class="my-4">
+
+        <h4>Komisyon Ücreti</h4>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="komisyon_aralik_1">0 TL - 100.000 TL</label>
+                <input type="number" class="form-control" id="komisyon_aralik_1" placeholder="3000" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="komisyon_aralik_2">100.000 TL - 300.000 TL</label>
+                <input type="number" class="form-control" id="komisyon_aralik_2" placeholder="4000" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="komisyon_aralik_3">300.000 TL - 500.000 TL</label>
+                <input type="number" class="form-control" id="komisyon_aralik_3" placeholder="5000" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="komisyon_tarih_araligi">Tarih Aralığı</label>
+                <input type="text" class="form-control" id="komisyon_tarih_araligi" placeholder="01/01/2020-31/12/2020" required>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Ücretleri Kaydet</button>
+    </form>
+</div>
+
