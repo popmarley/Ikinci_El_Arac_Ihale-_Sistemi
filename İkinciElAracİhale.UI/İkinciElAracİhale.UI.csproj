@@ -284,6 +284,12 @@
     <Content Include="Views\AdminPanel\_KomisyonVeNoterUcretleri.cshtml" />
     <Content Include="Views\AdminPanel\_StokYonetimi.cshtml" />
     <Content Include="Views\AdminPanel\_StokYonetimiDetay.cshtml" />
+    <Content Include="Views\AdminPanel\_Rapor1.cshtml" />
+    <Content Include="Views\AdminPanel\_OrtaZorlukRapor.cshtml" />
+    <Content Include="Views\AdminPanel\_KompleksRapor.cshtml" />
+    <Content Include="Views\AdminPanel\_İhaleyeCikanAraclar.cshtml" />
+    <Content Include="Views\AdminPanel\_KurumsalUyeOnay.cshtml" />
+    <Content Include="Views\AdminPanel\_KurumsalUyeOnayDetay.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

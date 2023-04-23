@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "_KurumsalUyeOnayDetay";
+    Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+}
+
+<h4 class="mt-4">Üye Detay Onay</h4>
+<!-- Üye detayları burada yer alacak -->
+<form>
+    <div class="row mb-3">
+        <div class="col">
+            <label for="companyName" class="form-label">Şirket Adı</label>
+            <input type="text" class="form-control" id="companyName" readonly>
+        </div>
+        <div class="col">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" readonly>
+        </div>
+        <div class="col">
+            <label for="package" class="form-label">Paket Atama</label>
+            <select class="form-select" id="package">
+                <option value="">Paket Seçiniz</option>
+                <option value="1">Altın</option>
+                <option value="2">Bronz</option>
+                <option value="3">Gümüş</option>
+                <!-- Diğer paketler burada listelenecek -->
+            </select>
+        </div>
+    </div>
+    <br />
+    <div class="text-center">
+        <a href="@Url.Action("_KurumsalUyeOnay")" type="submit" class="btn btn-primary">Üyeliği Onayla</a>
+    </div>
+</form>
+

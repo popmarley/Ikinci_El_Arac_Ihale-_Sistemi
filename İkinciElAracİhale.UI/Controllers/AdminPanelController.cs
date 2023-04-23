@@ -33,6 +33,16 @@ namespace İkinciElAracİhale.UI.Controllers
             return View();
         }
 
+        public ActionResult _KurumsalUyeOnay()
+        {
+            return View();
+        }
+
+        public ActionResult _KurumsalUyeOnayDetay()
+        {
+            return View();
+        }
+
         public ActionResult _KullaniciTanimlama()
         {
            return View();
@@ -86,5 +96,26 @@ namespace İkinciElAracİhale.UI.Controllers
         {
             return View();
         }
+
+        public ActionResult _İhaleyeCikanAraclar()
+        {
+            return View();
+        }
+
+        public ActionResult _Rapor1()
+        {
+            return View();
+        }
+
+        public ActionResult _OrtaZorlukRapor()
+        {
+            return View();
+        }
+
+        public ActionResult _KompleksRapor()
+        {
+            return View();
+        }
+
     }
 }

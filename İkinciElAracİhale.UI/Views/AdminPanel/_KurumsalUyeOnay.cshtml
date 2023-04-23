@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "_KurumsalUyeOnay";
+    Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+}
+
+<div class="container">
+    <h4>Üye Listeleme</h4>
+    <!-- Filtreleme seçenekleri burada yer alacak -->
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Şirket Adı</th>
+                <th scope="col">Üyelik Tarihi</th>
+                <th scope="col">Durum</th>
+                <th scope="col">İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Örnek satır -->
+            <tr>
+                <td>Şirket 1</td>
+                <td>01/04/2023</td>
+                <td>Beklemede</td>
+                <td><a href="@Url.Action("_KurumsalUyeOnayDetay")">Detay</a></td>
+            </tr>
+            <!-- Diğer satırlar burada listelenecek -->
+        </tbody>
+    </table>
+</div>
+
