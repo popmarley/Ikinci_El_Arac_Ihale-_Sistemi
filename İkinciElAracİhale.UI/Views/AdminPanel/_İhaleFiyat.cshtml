@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "_İhaleFiyat";
+    Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+}
+
+<div class="container mt-5">
+    <h4 class="mb-4">İhale Fiyat</h4>
+    <form>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label for="aracID" class="form-label">Araç ID</label>
+                <input type="text" class="form-control" id="aracID" placeholder="Araç ID">
+            </div>
+            <div class="col-md-4">
+                <label for="ihaleBaslangicFiyati" class="form-label">İhale Başlangıç Fiyatı</label>
+                <input type="text" class="form-control" id="ihaleBaslangicFiyati" placeholder="İhale Başlangıç Fiyatı">
+            </div>
+            <div class="col-md-4">
+                <label for="minimumAlimFiyati" class="form-label">Minimum Alım Fiyatı</label>
+                <input type="text" class="form-control" id="minimumAlimFiyati" placeholder="Minimum Alım Fiyatı">
+            </div>
+        </div>
+        <div class="col-md-12 d-flex justify-content-end">
+            <a href="@Url.Action("_YeniİhaleOlustur")" class="btn btn-success me-2">Kaydet</a>
+        </div>
+    </form>
+</div>
+

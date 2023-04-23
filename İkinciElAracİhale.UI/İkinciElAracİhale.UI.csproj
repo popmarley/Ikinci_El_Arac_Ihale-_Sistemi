@@ -276,6 +276,7 @@
     <Content Include="Views\AdminPanel\_KullaniciTanimlama.cshtml" />
     <Content Include="Views\AdminPanel\_İhaleListeleme.cshtml" />
     <Content Include="Views\AdminPanel\_YeniİhaleOlustur.cshtml" />
+    <Content Include="Views\AdminPanel\_İhaleFiyat.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

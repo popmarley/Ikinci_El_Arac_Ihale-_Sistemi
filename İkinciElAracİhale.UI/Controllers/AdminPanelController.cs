@@ -47,5 +47,10 @@ namespace İkinciElAracİhale.UI.Controllers
         {
             return View();
         }
+
+        public ActionResult _İhaleFiyat()
+        {
+            return View();
+        }
     }
 }
