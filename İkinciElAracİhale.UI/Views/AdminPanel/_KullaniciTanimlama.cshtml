@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "_KullaniciTanimlama";
+    Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+
+<div class="container mt-5">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Kullanıcı Adı</th>
+                <th scope="col">Ad Soyad</th>
+                <th scope="col">Telefon</th>
+                <th scope="col">E-posta</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Durum</th>
+                <th scope="col">Aksiyon</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Listeleme verileri burada yer alacaktır. -->
+        </tbody>
+    </table>
+    <br />
+    <div class="d-grid gap-2 mt-4">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kullaniciEkleModal">Yeni Kullanıcı Ekle</button>
+    </div>
+</div>
+
+<div class="modal fade" id="kullaniciEkleModal" tabindex="-1" aria-labelledby="kullaniciEkleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="color:black;" id="kullaniciEkleModalLabel">Kullanıcı Tanımlama</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="kullaniciAdi" class="form-label">Kullanıcı Adı</label>
+                        <input type="text" class="form-control" id="kullaniciAdi" placeholder="Kullanıcı Adı">
+                    </div>
+                    <div class="mb-3">
+                        <label for="adSoyad" class="form-label">Ad Soyad</label>
+                        <input type="text" class="form-control" id="adSoyad" placeholder="Ad Soyad">
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefon" class="form-label">Telefon Bilgisi</label>
+                        <input type="text" class="form-control" id="telefon" placeholder="Telefon Numarası">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mail" class="form-label">Mail Bilgisi</label>
+                        <input type="email" class="form-control" id="mail" placeholder="E-posta Adresi">
+                    </div>
+                    <div class="mb-3">
+                        <label for="sifre" class="form-label">Şifre</label>
+                        <input type="password" class="form-control" id="sifre" placeholder="Şifre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="rol" class="form-label">Rolü</label>
+                        <select class="form-select" id="rol">
+                            <option value="" disabled selected>Rol Seçiniz</option>
+                            <!-- Rol seçenekleri burada yer alacaktır. -->
+                        </select>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="aktifPasif">
+                        <label class="form-check-label" for="aktifPasif">Kullanıcının Aktif/Pasiflik Bilgisi</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                <button type="button" class="btn btn-primary" onclick="kaydetVeYonlendir()">Kullanıcıyı Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function kaydetVeYonlendir() {
+        var toastEl = document.querySelector('.toast');
+        console.log('toastEl:', toastEl);
+        var toast = new bootstrap.Toast(toastEl);
+        console.log('toast:', toast);
+        toast.show();
+    setTimeout(function() {
+        window.location.href = "@Url.Action("_KullaniciTanimlama")"
+    }, 3000); // 1 saniye sonra yönlendirme yapar
+}
+</script>
+
+<div class="toast toast-front" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        <strong class="me-auto">Bilgi</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Kapat"></button>
+    </div>
+    <div class="toast-body">
+        Kullanıcı başarıyla kaydedilmiştir.
+    </div>
+</div>

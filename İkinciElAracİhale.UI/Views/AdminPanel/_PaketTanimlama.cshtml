@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "_PaketTanimlama";
+    Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+}
+
+<div class="container mt-5">
+    <h4 class="text-left mb-4">Paket Tanımlama Ekranı</h4>
+    <form>
+        <div class="row">
+            <div class="col-md-4">
+                <h3 class="text-center mb-3">Altın</h3>
+                <div class="mb-3">
+                    <label for="altinIhaleAdet" class="form-label">Aylık İhaleye Çıkabilecek Araç Sayısı:</label>
+                    <input type="number" class="form-control" id="altinIhaleAdet" placeholder="Adet Giriniz">
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="altinKomisyonCheck">
+                    <label class="form-check-label" for="altinKomisyonCheck">Dursun işe yarayabilir</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h3 class="text-center mb-3">Bronz</h3>
+                <div class="mb-3">
+                    <label for="bronzIhaleAdet" class="form-label">Aylık İhaleye Çıkabilecek Araç Sayısı:</label>
+                    <input type="number" class="form-control" id="bronzIhaleAdet" placeholder="Adet Giriniz">
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="bronzKomisyonCheck">
+                    <label class="form-check-label" for="bronzKomisyonCheck">Dursun işe yarayabilir</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h3 class="text-center mb-3">Gümüş</h3>
+                <div class="mb-3">
+                    <label for="gumusIhaleAdet" class="form-label">Aylık İhaleye Çıkabilecek Araç Sayısı:</label>
+                    <input type="number" class="form-control" id="gumusIhaleAdet" placeholder="Adet Giriniz">
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gumusKomisyonCheck">
+                    <label class="form-check-label" for="gumusKomisyonCheck">Dursun işe yarayabilir</label>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="col-md-12 d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Paket Tanımlamalarını Kaydet</button>
+        </div>
+    </form>
+</div>
+

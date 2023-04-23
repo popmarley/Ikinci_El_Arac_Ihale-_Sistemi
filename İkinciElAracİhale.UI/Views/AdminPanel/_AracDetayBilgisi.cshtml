@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "Admin Paneli";
+    Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+}
+
+<div class="container">
+    <form>
+        <h4>Araç Detay Bilgileri</h4>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="bireysel-kurumsal" class="form-label">Bireysel/Kurumsal</label>
+                <select class="form-select" id="bireysel-kurumsal">
+                    <option selected>Seçiniz...</option>
+                    <option value="bireysel">Bireysel</option>
+                    <option value="kurumsal">Kurumsal</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="sirket-adi" class="form-label">Kurumsal Şirket Adı</label>
+                <select class="form-select" id="kurumsalsirket">
+                    <option selected>Seçiniz...</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="status" class="form-label">Statü</label>
+                <select class="form-select" id="statu">
+                    <option selected>Seçiniz...</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="arac-fiyati" class="form-label">Araç Fiyatı</label>
+                <select class="form-select" id="aracfiyati">
+                    <option selected>Seçiniz...</option>
+                </select>
+            </div>
+        </div>
+    </form>
+    <br />
+    <form>
+        <h4>Araç Detay Bilgileri</h4>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="arac-markasi" class="form-label">Araç Markası</label>
+                <select class="form-select" id="aracmarkasi">
+                    <option selected>Seçiniz...</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="arac-modeli" class="form-label">Araç Modeli</label>
+                <select class="form-select" id="aracmodeli">
+                    <option selected>Seçiniz...</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="govde-tipi" class="form-label">Gövde Tipi</label>
+                <select class="form-select" id="govdetipi">
+                    <option selected>Seçiniz...</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="yil" class="form-label">Yıl</label>
+                <select class="form-select" id="yil">
+                    <option selected>Seçiniz...</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="yakit-tipi" class="form-label">Yakıt Tipi</label>
+                <select class="form-select" id="yakittipi">
+                    <option selected>Seçiniz...</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="vites-tipi" class="form-label">Vites Tipi</label>
+                <select class="form-select" id="vitestipi">
+                    <option selected>Seçiniz...</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="versiyon" class="form-label">Versiyon</label>
+                <select class="form-select" id="versiyon">
+                    <option selected>Seçiniz...</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="km-bilgisi" class="form-label">KM Bilgisi</label>
+                <input type="text" class="form-control" id="kmbilgisi">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="renk" class="form-label">Renk</label>
+                <select class="form-select" id="renk">
+                    <option selected>Seçiniz...</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="donanim" class="form-label">Donanım</label>
+                <select class="form-select" id="donanim">
+                    <option selected>Seçiniz...</option>
+                </select>
+            </div>
+        </div>
+    </form>
+    <br />
+    <form>
+        <h4>Foto Ekle</h4>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="gorseller" class="form-label">Görseller</label>
+                <input type="file" class="form-control" id="gorseller" multiple>
+            </div>
+        </div>
+
+    </form>
+    <div class="mb-3">
+        <label for="aciklama" class="form-label">Açıklama</label>
+        <textarea class="form-control" id="aciklama" rows="3"></textarea>
+    </div>
+    <br />
+    <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-outline-primary me-2">Hemen Al Satış</button>
+        <button type="button" class="btn btn-outline-warning me-2">Komisyon</button>
+        <button type="button" class="btn btn-outline-info me-2">Alıcı Bilgileri</button>
+        <button type="button" class="btn btn-outline-warning me-2">Araç Tarihçe</button>
+        <a href="@Url.Action("_TramerBilgileri")" type="button" class="btn btn-outline-success me-2">
+            Hasar Tramer Bilgileri</a>
+            <a href="@Url.Action("_İlanBilgileri")" type="button" class="btn btn-outline-info me-2">
+                İlan Bilgileri
+            </a>
+            <button type="button" class="btn btn-outline-primary">Kaydet</button>
+</div>
+</div>

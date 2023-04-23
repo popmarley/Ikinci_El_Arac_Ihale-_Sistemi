@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "_İhaleListeleme";
+    Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+}
+
+<form class="bg-white rounded p-3">
+    <div class="row">
+        <h4 style="color:black;">Kriterler</h4>
+        <div class="col-md-6 mb-6">
+            <label for="ihaleAdi" class="form-label">İhale Adı</label>
+            <input type="text" class="form-control" id="ihaleAdi" placeholder="İhale Adı">
+        </div>
+        
+        <div class="col-md-3 mb-3">
+            <label for="aracTuru" class="form-label">Bireysel/Kurumsal</label>
+            <select class="form-control" id="aracTuru">
+                <option>Bireysel</option>
+                <option>Kurumsal</option>
+            </select>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="aracDurumu" class="form-label">Statüsü</label>
+            <select class="form-control" id="aracDurumu">
+                <option>Yeni</option>
+                <option>Kullanılmış</option>
+            </select>
+        </div>
+    </div>
+    <div class="text-end">
+        <button type="submit" class="btn btn-primary">Listele</button>
+    </div>
+</form>
+<br />
+<table class="table">
+    <h4 style="color:dimgrey;">İhale Listesi</h4>
+    <thead>
+        <tr>
+            <th>İhale ID</th>
+            <th>İhale Adı</th>
+            <th>Bireysel/Kurumsal</th>
+            <th>İhale Başlangıç</th>
+            <th>İhale Bitiş</th>
+            <th>Statü</th>
+            <th>Kaydeden Kullanıcı</th>
+            <th>Kaydetme Zamanı</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- buraya araç listesi dinamik olarak gelecek -->
+    </tbody>
+</table>
+<br />
+<div class="row mt-12">
+    <div class="col-md-12 d-flex justify-content-end">
+        <a href="@Url.Action("_YeniİhaleOlustur")" class="btn btn-success me-2">Yeni</a>
+        <button class="btn btn-primary me-2">Güncelle</button>
+        <button class="btn btn-danger">Sil</button>
+    </div>
+</div>
+
+
+

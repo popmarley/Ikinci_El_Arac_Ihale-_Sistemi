@@ -1,0 +1,89 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>İkinci El Araç Satış Platformu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+    <link rel="icon" type="image/png" href="/Content/Login_v9/images/icons/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/Content/Login_v9/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/Login_v9/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/Login_v9/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/Login_v9/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/Content/Login_v9/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/Login_v9/vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/Login_v9/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/Login_v9/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="/Content/Login_v9/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/Content/Login_v9/css/main.css">
+
+    <meta name="robots" content="noindex, follow">
+    <script nonce="0b636e7a-2dd3-4ece-8a89-8b5e80f5015c">(function (w, d) { !function (f, g, h, i) { f[h] = f[h] || {}; f[h].executed = []; f.zaraz = { deferred: [], listeners: [] }; f.zaraz.q = []; f.zaraz._f = function (j) { return function () { var k = Array.prototype.slice.call(arguments); f.zaraz.q.push({ m: j, a: k }) } }; for (const l of ["track", "set", "debug"]) f.zaraz[l] = f.zaraz._f(l); f.zaraz.init = () => { var m = g.getElementsByTagName(i)[0], n = g.createElement(i), o = g.getElementsByTagName("title")[0]; o && (f[h].t = g.getElementsByTagName("title")[0].text); f[h].x = Math.random(); f[h].w = f.screen.width; f[h].h = f.screen.height; f[h].j = f.innerHeight; f[h].e = f.innerWidth; f[h].l = f.location.href; f[h].r = g.referrer; f[h].k = f.screen.colorDepth; f[h].n = g.characterSet; f[h].o = (new Date).getTimezoneOffset(); if (f.dataLayer) for (const s of Object.entries(Object.entries(dataLayer).reduce(((t, u) => ({ ...t[1], ...u[1] }))))) zaraz.set(s[0], s[1], { scope: "page" }); f[h].q = []; for (; f.zaraz.q.length;) { const v = f.zaraz.q.shift(); f[h].q.push(v) } n.defer = !0; for (const w of [localStorage, sessionStorage]) Object.keys(w || {}).filter((y => y.startsWith("_zaraz_"))).forEach((x => { try { f[h]["z_" + x.slice(7)] = JSON.parse(w.getItem(x)) } catch { f[h]["z_" + x.slice(7)] = w.getItem(x) } })); n.referrerPolicy = "origin"; n.src = "../../../cdn-cgi/zaraz/sd0d9.js?z=" + btoa(encodeURIComponent(JSON.stringify(f[h]))); m.parentNode.insertBefore(n, m) };["complete", "interactive"].includes(g.readyState) ? zaraz.init() : f.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document);</script>
+</head>
+<body>
+    <div class="container-login100" style="background-image: url('/Content/Login_v9/images/bg-01.jpg');">
+        <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+            <form class="login100-form validate-form">
+                <span class="login100-form-title p-b-37">
+                    Yönetim Paneli Giriş Ekranı
+                </span>
+                <div class="wrap-input100 validate-input m-b-20" data-validate="Kullanıcı Adınızı Giriniz">
+                    <input class="input100" type="text" name="username" placeholder="Kullanıcı Adı">
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="wrap-input100 validate-input m-b-25" data-validate="Şifrenizi Giriniz">
+                    <input class="input100" type="password" name="pass" placeholder="Şifre">
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn">
+                        GİRİŞ YAP
+                    </button>
+                </div>
+                <br />
+                <div class="text-center">
+                    <a href="#" class="txt2 hov1">
+                        Şifremi Unuttum
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="dropDownSelect1"></div>
+
+    <script src="/Content/Login_v9/vendor/jquery/jquery-3.2.1.min.js"></script>
+
+    <script src="/Content/Login_v9/vendor/animsition/js/animsition.min.js"></script>
+
+    <script src="/Content/Login_v9/vendor/bootstrap/js/popper.js"></script>
+    <script src="/Content/Login_v9/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/Content/Login_v9/vendor/select2/select2.min.js"></script>
+
+    <script src="/Content/Login_v9/vendor/daterangepicker/moment.min.js"></script>
+    <script src="/Content/Login_v9/vendor/daterangepicker/daterangepicker.js"></script>
+
+    <script src="/Content/Login_v9/vendor/countdowntime/countdowntime.js"></script>
+
+    <script src="/Content/Login_v9/js/main.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+    </script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816" integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw==" data-cf-beacon='{"rayId":"7bbfab6c28b50534","version":"2023.3.0","b":1,"token":"cd0b4b3a733644fc843ef0b185f98241","si":100}' crossorigin="anonymous"></script>
+</body>
+
+</html>
+

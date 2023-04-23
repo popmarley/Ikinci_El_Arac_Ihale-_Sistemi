@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "_TramerBilgileri";
+    Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Tramer Bilgileri</h2>
+    <div class="mb-3">
+        <label for="toplamTramerTutari" class="form-label">Toplam Tramer Tutarı:</label>
+        <input type="number" class="form-control" id="toplamTramerTutari" placeholder="Toplam Tramer Tutarını Giriniz">
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Parça</th>
+                <th scope="col">Orijinal</th>
+                <th scope="col">Boyalı</th>
+                <th scope="col">Değişmiş</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Sağ Arka Çamurluk</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Arka Kaput</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Sol Arka Çamurluk</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Sağ Arka Kapı</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Sağ Ön Kapı</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Tavan</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Sol Arka Kapı</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Sol Ön Kapı</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Sağ Ön Çamurluk</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Motor Kaputu</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Sol Ön Çamurluk</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Ön Tampon</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Arka Tampon</td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+            </tr>
+
+            <!-- Diğer satırları benzer şekilde oluşturun -->
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-end">
+        <a href="@Url.Action("_AracDetayBilgisi")" class="btn btn-primary">Kaydet</a>
+</div>
+</div>
+
