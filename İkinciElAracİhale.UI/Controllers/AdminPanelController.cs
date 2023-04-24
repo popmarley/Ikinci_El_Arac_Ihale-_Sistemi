@@ -1,5 +1,7 @@
-﻿using System;
+﻿using İkinciElAracİhale.UI.Models;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,12 +11,34 @@ namespace İkinciElAracİhale.UI.Controllers
     public class AdminPanelController : Controller
     {
         // GET: AdminPanel
+        AracIhale db= new AracIhale();
         public ActionResult _AracListeleme()
         {
             return View();
         }
         public ActionResult _AracDetayBilgisi()
         {
+            var bireyselkurumsal = db.BireyselKurumsals.ToList();
+            var status = db.Status.ToList();
+            var aracmarkasi=db.AracMarkas.ToList();
+            var aracmodeli=db.AracModels.ToList();
+            var govdetipi=db.GovdeTipis.ToList();
+            var yil=db.Yils.ToList();
+            var yakittipi=db.YakitTipis.ToList();
+            var vitestipi=db.VitesTipis.ToList();
+            var renk = db.Renks.ToList();
+
+
+            ViewBag.BireyselKurumsalList = new SelectList(bireyselkurumsal, "BireselKurumsalID", "Durum");
+            ViewBag.StatuList = new SelectList(status, "StatuID", "StatuAdi");
+            ViewBag.AracMarkaList = new SelectList(aracmarkasi, "MarkaID", "MarkaAdi");
+            ViewBag.AracModelList = new SelectList(aracmodeli, "AracModelID", "ModelAdi");
+            ViewBag.GovdeTipiList = new SelectList(govdetipi, "GovdeTipiID", "GovdeTipiAdi");
+            ViewBag.YilList = new SelectList(yil, "YilID", "Yil1");
+            ViewBag.YakitTipiList = new SelectList(yakittipi, "YakitTipiID", "YakitTipiAdi");
+            ViewBag.VitesTipiList = new SelectList(vitestipi, "VitesTipiID", "VitesTipiAdi");
+            ViewBag.RenkList = new SelectList(renk, "RenkID", "RenkAdi");
+
             return View();
         }
 
@@ -45,7 +69,8 @@ namespace İkinciElAracİhale.UI.Controllers
 
         public ActionResult _KullaniciTanimlama()
         {
-           return View();
+            List<Kullanici> kullaniciList = db.Kullanicis.ToList();
+            return View(kullaniciList);
         }
 
         public ActionResult _İhaleListeleme()

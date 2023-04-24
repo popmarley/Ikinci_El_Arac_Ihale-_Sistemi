@@ -5,16 +5,18 @@ using System.Linq;
 
 namespace İkinciElAracİhale.UI.Models
 {
-    public partial class Aracİhale : DbContext
+    public partial class AracIhale : DbContext
     {
-        public Aracİhale()
-            : base("name=Aracİhale")
+        public AracIhale()
+            : base("name=AracIhale")
         {
         }
 
         public virtual DbSet<AktifPasif> AktifPasifs { get; set; }
         public virtual DbSet<AracAliciBilgi> AracAliciBilgis { get; set; }
         public virtual DbSet<Araclar> Araclars { get; set; }
+        public virtual DbSet<AracMarka> AracMarkas { get; set; }
+        public virtual DbSet<AracModel> AracModels { get; set; }
         public virtual DbSet<AracOzellik> AracOzelliks { get; set; }
         public virtual DbSet<AracParcaBilgi> AracParcaBilgis { get; set; }
         public virtual DbSet<AracParcaDurumu> AracParcaDurumus { get; set; }
@@ -38,9 +40,20 @@ namespace İkinciElAracİhale.UI.Models
         public virtual DbSet<VitesTipi> VitesTipis { get; set; }
         public virtual DbSet<YakitTipi> YakitTipis { get; set; }
         public virtual DbSet<Yetki> Yetkis { get; set; }
+        public virtual DbSet<Yil> Yils { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AracMarka>()
+                .HasMany(e => e.AracModels)
+                .WithOptional(e => e.AracMarka)
+                .HasForeignKey(e => e.AracMarkaID);
+
+            modelBuilder.Entity<AracMarka>()
+                .HasMany(e => e.AracOzelliks)
+                .WithOptional(e => e.AracMarka)
+                .HasForeignKey(e => e.AracMarkaID);
+
             modelBuilder.Entity<BireyselKurumsal>()
                 .HasMany(e => e.Araclars)
                 .WithOptional(e => e.BireyselKurumsal)

@@ -9,7 +9,7 @@ namespace İkinciElAracİhale.UI.Models.DAL
     {
         public Kullanici KullaniciGetir(string kullaniciAdi, string sifre)
         {
-            using (var db = new Aracİhale())
+            using (var db = new AracIhale())
             {
                 return db.Kullanicis.FirstOrDefault(u => u.KullaniciAdi == kullaniciAdi && u.Sifre == sifre);
             }
@@ -17,7 +17,7 @@ namespace İkinciElAracİhale.UI.Models.DAL
 
         public List<string> RoluneGoreKullanicilariGetir(int? rolId)
         {
-            using (var db = new Aracİhale())
+            using (var db = new AracIhale())
             {
                 var kullanicilar = (from r in db.Rols
                                     join k in db.Kullanicis on r.RolID equals k.RolID

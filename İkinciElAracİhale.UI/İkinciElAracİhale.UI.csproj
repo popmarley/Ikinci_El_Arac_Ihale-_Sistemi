@@ -176,12 +176,14 @@
     </Compile>
     <Compile Include="Models\AktifPasif.cs" />
     <Compile Include="Models\AracAliciBilgi.cs" />
+    <Compile Include="Models\AracIhale.cs" />
     <Compile Include="Models\Araclar.cs" />
+    <Compile Include="Models\AracMarka.cs" />
+    <Compile Include="Models\AracModel.cs" />
     <Compile Include="Models\AracOzellik.cs" />
     <Compile Include="Models\AracParcaBilgi.cs" />
     <Compile Include="Models\AracParcaDurumu.cs" />
     <Compile Include="Models\AracTarihce.cs" />
-    <Compile Include="Models\Aracİhale.cs" />
     <Compile Include="Models\BireyselAracTeklif.cs" />
     <Compile Include="Models\BireyselKurumsal.cs" />
     <Compile Include="Models\DAL\UserDAL.cs" />
@@ -202,6 +204,7 @@
     <Compile Include="Models\VitesTipi.cs" />
     <Compile Include="Models\YakitTipi.cs" />
     <Compile Include="Models\Yetki.cs" />
+    <Compile Include="Models\Yil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
