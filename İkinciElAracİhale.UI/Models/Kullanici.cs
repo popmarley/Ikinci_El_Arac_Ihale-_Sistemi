@@ -27,9 +27,6 @@ namespace İkinciElAracİhale.UI.Models
         public string Ad { get; set; }
 
         [StringLength(50)]
-        public string Soyad { get; set; }
-
-        [StringLength(50)]
         public string Telefon { get; set; }
 
         [StringLength(50)]

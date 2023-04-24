@@ -142,5 +142,7 @@ namespace İkinciElAracİhale.UI.Controllers
             return View();
         }
 
+        
+
     }
 }

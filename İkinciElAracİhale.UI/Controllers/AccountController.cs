@@ -23,11 +23,18 @@ namespace İkinciElAracİhale.UI.Controllers
 
             if (user != null)
             {
-                FormsAuthentication.SetAuthCookie(username, false);
-                
-                Session["Ad"] = user.Ad; // Kullanıcının adını ve soyadını Session'a atama
-                Session["Soyad"] = user.Soyad;
-                return RedirectToAction("_AracListeleme", "AdminPanel");
+                if (user.RolID == 1) // Sadece yönetici rolüne sahip kullanıcılar yönetici paneline erişebilir
+                {
+                    FormsAuthentication.SetAuthCookie(username, false);
+
+                    Session["Ad"] = user.Ad; // Kullanıcının adını ve soyadını Session'a atama
+                    return RedirectToAction("_AracListeleme", "AdminPanel");
+                }
+                else
+                {
+                    ViewBag.Error = "Bu sayfaya sadece yönetici girişi yapabilir!";
+                    return View();
+                }
             }
             else
             {
