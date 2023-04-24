@@ -32,9 +32,14 @@
                     <td>@(kullanici.AktifPasifID == 1 ? "Aktif" : "Pasif")</td>
                     <td>@(kullanici.RolID == 1 ? "Admin" : "Kullanıcı")</td>
                     <td>
-                        <button type="button" class="btn btn-primary">Düzenle</button>
-                        <button type="button" class="btn btn-danger">Sil</button>
-                    </td>
+                        @using (Html.BeginForm("DeleteKullanici", "AdminPanel", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("KullaniciID", kullanici.KullaniciID)
+                            <button type="button" class="btn btn-primary">Düzenle</button>
+                            <button type="submit" class="btn btn-danger">Sil</button>
+                        }
+                        </td>
                 </tr>
                 index++;
             }
@@ -46,58 +51,61 @@
     </div>
 </div>
 
-<div class="modal fade" id="kullaniciEkleModal" tabindex="-1" aria-labelledby="kullaniciEkleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" style="color:black;" id="kullaniciEkleModalLabel">Kullanıcı Tanımlama</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+@using (Html.BeginForm("KullaniciEkle", "AdminPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal fade" id="kullaniciEkleModal" tabindex="-1" aria-labelledby="kullaniciEkleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="color:black;" id="kullaniciEkleModalLabel">Kullanıcı Tanımlama</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="kullaniciAdi" class="form-label">Kullanıcı Adı</label>
+                            <input type="text" class="form-control" id="kullaniciAdi" name="KullaniciAdi" placeholder="Kullanıcı Adı">
+                        </div>
+                        <div class="mb-3">
+                            <label for="adSoyad" class="form-label">Ad Soyad</label>
+                            <input type="text" class="form-control" id="adSoyad" name="Ad" placeholder="Ad Soyad">
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefon" class="form-label">Telefon Bilgisi</label>
+                            <input type="text" class="form-control" id="telefon" name="Telefon" placeholder="Telefon Numarası">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mail" class="form-label">Mail Bilgisi</label>
+                            <input type="email" class="form-control" id="mail" name="Mail" placeholder="E-posta Adresi">
+                        </div>
+                        <div class="mb-3">
+                            <label for="aktifpasif" class="form-label">Aktiflik Durumu</label>
+                            <select class="form-select" name="AktifPasifID" id="aktifpasif">
+                                <option value="" disabled selected>Aktiflik Durumu</option>
+                                <option value="1">Aktif</option>
+                                <option value="2">Pasif</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sifre" class="form-label">Şifre</label>
+                            <input type="password" class="form-control" id="sifre" name="Sifre" placeholder="Şifre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="rol" class="form-label">Rolü</label>
+                            <select class="form-select" name="RolID" id="rol">
+                                <option value="" disabled selected>Rol Seçiniz</option>
+                                <option value="1">Admin</option>
+                                <option value="2">Kullanıcı</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                    <button type="submit" class="btn btn-primary">Kullanıcıyı Kaydet</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="kullaniciAdi" class="form-label">Kullanıcı Adı</label>
-                        <input type="text" class="form-control" id="kullaniciAdi" placeholder="Kullanıcı Adı">
-                    </div>
-                    <div class="mb-3">
-                        <label for="adSoyad" class="form-label">Ad Soyad</label>
-                        <input type="text" class="form-control" id="adSoyad" placeholder="Ad Soyad">
-                    </div>
-                    <div class="mb-3">
-                        <label for="telefon" class="form-label">Telefon Bilgisi</label>
-                        <input type="text" class="form-control" id="telefon" placeholder="Telefon Numarası">
-                    </div>
-                    <div class="mb-3">
-                        <label for="mail" class="form-label">Mail Bilgisi</label>
-                        <input type="email" class="form-control" id="mail" placeholder="E-posta Adresi">
-                    </div>
-                    <div class="mb-3">
-                        <label for="aktifpasif" class="form-label">Aktiflik Durumu</label>
-                        <select class="form-select" id="aktifpasif">
-                            <option value="" disabled selected>Aktiflik Durumu</option>
-                            <option value="1">Aktif</option>
-                            <option value="0">Pasif</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="sifre" class="form-label">Şifre</label>
-                        <input type="password" class="form-control" id="sifre" placeholder="Şifre">
-                    </div>
-                    <div class="mb-3">
-                        <label for="rol" class="form-label">Rolü</label>
-                        <select class="form-select" id="rol">
-                            <option value="" disabled selected>Rol Seçiniz</option>
-                            <option value="1">Admin</option>
-                            <option value="0">Kullanıcı</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-                <a href="@Url.Action("_KullaniciTanimlama")" class="btn btn-primary">Kullanıcıyı Kaydet</a>
-</div>
         </div>
     </div>
-</div>
-
+}

@@ -142,7 +142,29 @@ namespace İkinciElAracİhale.UI.Controllers
             return View();
         }
 
-        
+        [HttpPost]
+        public ActionResult KullaniciEkle(Kullanici yeniKullanici)
+        {
+            if (ModelState.IsValid)
+            {
 
+                db.Kullanicis.Add(yeniKullanici);
+                db.SaveChanges();
+                return RedirectToAction("_KullaniciTanimlama");
+            }
+            return View("_KullaniciTanimlama");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteKullanici(int KullaniciID)
+        {
+            var kullanici = db.Kullanicis.Find(KullaniciID);
+            if (kullanici != null)
+            {
+                db.Kullanicis.Remove(kullanici);
+                db.SaveChanges();
+            }
+            return RedirectToAction("_KullaniciTanimlama");
+        }
     }
 }
