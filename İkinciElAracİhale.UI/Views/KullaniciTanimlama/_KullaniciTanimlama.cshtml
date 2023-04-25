@@ -30,16 +30,16 @@
                     <td>@kullanici.Telefon</td>
                     <td>@kullanici.Mail</td>
                     <td>@(kullanici.AktifPasifID == 1 ? "Aktif" : "Pasif")</td>
-                    <td>@(kullanici.RolID == 1 ? "Admin" : "Kullanıcı")</td>
+                    <td>@(kullanici.RolID == 1 ? "Admin" : (kullanici.RolID == 2 ? "Kullanıcı" : "Plus Admin"))</td>
                     <td>
-                        @using (Html.BeginForm("DeleteKullanici", "AdminPanel", FormMethod.Post))
+                        @using (Html.BeginForm("DeleteKullanici", "KullaniciTanimlama", FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
                             @Html.Hidden("KullaniciID", kullanici.KullaniciID)
-                            <button type="button" class="btn btn-primary">Düzenle</button>
+                            <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("KullaniciDuzenle", "KullaniciTanimlama", new { KullaniciID = kullanici.KullaniciID })'">Düzenle</button>
                             <button type="submit" class="btn btn-danger">Sil</button>
                         }
-                        </td>
+                    </td>
                 </tr>
                 index++;
             }
@@ -51,7 +51,7 @@
     </div>
 </div>
 
-@using (Html.BeginForm("KullaniciEkle", "AdminPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("KullaniciEkle", "KullaniciTanimlama", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="modal fade" id="kullaniciEkleModal" tabindex="-1" aria-labelledby="kullaniciEkleModalLabel" aria-hidden="true">
@@ -97,6 +97,7 @@
                                 <option value="" disabled selected>Rol Seçiniz</option>
                                 <option value="1">Admin</option>
                                 <option value="2">Kullanıcı</option>
+                                <option value="3">PlusAdmin</option>
                             </select>
                         </div>
                     </form>

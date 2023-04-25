@@ -6,29 +6,23 @@ namespace İkinciElAracİhale.UI.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Rol")]
-    public partial class Rol
+    [Table("Menu")]
+    public partial class Menu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Rol()
+        public Menu()
         {
-            Kullanicis = new HashSet<Kullanici>();
             RolMenus = new HashSet<RolMenu>();
-            Yetkis = new HashSet<Yetki>();
         }
 
-        public int RolID { get; set; }
+        public int MenuID { get; set; }
 
         [StringLength(50)]
-        public string RolAdi { get; set; }
+        public string MenuAd { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kullanici> Kullanicis { get; set; }
+        public bool? AktifMi { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RolMenu> RolMenus { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Yetki> Yetkis { get; set; }
     }
 }

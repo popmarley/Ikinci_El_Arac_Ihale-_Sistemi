@@ -1,0 +1,55 @@
+﻿@model İkinciElAracİhale.UI.Models.Kullanici
+@{
+    ViewBag.Title = "Admin Paneli";
+    Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+}
+
+<div class="container mt-5">
+    <h4>Kullanıcı Düzenle</h4>
+    @using (Html.BeginForm("KullaniciGuncelle", "KullaniciTanimlama", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.KullaniciID)
+
+        <div class="form-group">
+            <label for="KullaniciAdi">Kullanıcı Adı</label>
+            @Html.TextBoxFor(model => model.KullaniciAdi, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label for="AdSoyad">Ad Soyad</label>
+            @Html.TextBoxFor(model => model.Ad, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label for="Telefon">Telefon</label>
+            @Html.TextBoxFor(model => model.Telefon, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label for="Eposta">E-posta</label>
+            @Html.TextBoxFor(model => model.Mail, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label for="Durum">Durum</label>
+            @Html.DropDownListFor(model => model.AktifPasifID, new SelectList(new[] { "Aktif", "Pasif" }), new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label for="Sifre">Şifre</label>
+            @Html.PasswordFor(model => model.Sifre, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label for="Rol">Rol</label>
+            @Html.DropDownListFor(model => model.RolID, new SelectList(new[] { "Admin", "Kullanici"}), new { @class = "form-control" })
+        </div>
+
+        <div class="d-grid gap-2 mt-4 d-flex justify-content-end">
+            <input type="submit" name="name" class="btn btn-success" value="Kullanıcıyı Güncelle" />
+            <a href="@Url.Action("_KullaniciTanimlama")" class="btn btn-primary">Vazgeç</a>
+        </div>
+    }
+</div>
+

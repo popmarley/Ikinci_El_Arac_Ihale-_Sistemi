@@ -1,4 +1,5 @@
-﻿using İkinciElAracİhale.UI.Models.DAL;
+﻿using İkinciElAracİhale.UI.Models;
+using İkinciElAracİhale.UI.Models.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,23 +17,36 @@ namespace İkinciElAracİhale.UI.Controllers
             return View();
         }
 
-        public ActionResult Login(string username, string pass)
+        public ActionResult Login(string username, string pass, Kullanici kullanici)
         {
             UserDAL userDal = new UserDAL();
             var user = userDal.KullaniciGetir(username, pass);
 
             if (user != null)
             {
-                if (user.RolID == 1) // Sadece yönetici rolüne sahip kullanıcılar yönetici paneline erişebilir
+                if (user.RolID == 1 || user.RolID == 3) // Kullanıcının rolü 1 veya 3 ise giriş yapabilir
                 {
                     FormsAuthentication.SetAuthCookie(username, false);
 
+                    var menuName = userDal.RoleGoreMenuGetir(user.RolID);
+                    Session["RolID"] = user.RolID; // Kullanıcının RolID'sini Session'a atama
+                    Session["MenuNames"] = menuName;
                     Session["Ad"] = user.Ad; // Kullanıcının adını ve soyadını Session'a atama
+
+                    if (user.RolID == 1)
+                    {
+                        Session["RoleName"] = "Admin";
+                    }
+                    else if (user.RolID == 3)
+                    {
+                        Session["RoleName"] = "PlusAdmin";
+                    }
+
                     return RedirectToAction("_AracListeleme", "AdminPanel");
                 }
                 else
                 {
-                    ViewBag.Error = "Bu sayfaya sadece yönetici girişi yapabilir!";
+                    ViewBag.Error = "Bu sayfaya sadece yönetici ve yetkili kullanıcılar giriş yapabilir!";
                     return View();
                 }
             }

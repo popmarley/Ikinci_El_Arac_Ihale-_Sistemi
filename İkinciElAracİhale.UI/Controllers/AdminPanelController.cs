@@ -1,8 +1,10 @@
 ﻿using İkinciElAracİhale.UI.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -52,52 +54,6 @@ namespace İkinciElAracİhale.UI.Controllers
             return View();
         }
 
-        public ActionResult _PaketTanimlama()
-        {
-            return View();
-        }
-
-        public ActionResult _KurumsalUyeOnay()
-        {
-            return View();
-        }
-
-        public ActionResult _KurumsalUyeOnayDetay()
-        {
-            return View();
-        }
-
-        public ActionResult _KullaniciTanimlama()
-        {
-            List<Kullanici> kullaniciList = db.Kullanicis.ToList();
-            return View(kullaniciList);
-        }
-
-        public ActionResult _İhaleListeleme()
-        {
-            return View();
-        }
-
-        public ActionResult _YeniİhaleOlustur()
-        {
-            return View();
-        }
-
-        public ActionResult _İhaleFiyat()
-        {
-            return View();
-        }
-
-        public ActionResult _Footer()
-        {
-            return View();
-        }
-
-        public ActionResult _Header()
-        {
-            return View();
-        }
-
         public ActionResult _BireyselArac()
         {
             return View();
@@ -107,64 +63,15 @@ namespace İkinciElAracİhale.UI.Controllers
             return View();
         }
 
-        public ActionResult _KomisyonVeNoterUcretleri()
-        {
-            return View();
-        }
-
-        public ActionResult _StokYonetimi()
-        {
-            return View();
-        }
-
-        public ActionResult _StokYonetimiDetay()
-        {
-            return View();
-        }
-
-        public ActionResult _İhaleyeCikanAraclar()
-        {
-            return View();
-        }
-
-        public ActionResult _Rapor1()
-        {
-            return View();
-        }
-
-        public ActionResult _OrtaZorlukRapor()
-        {
-            return View();
-        }
-
-        public ActionResult _KompleksRapor()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public ActionResult KullaniciEkle(Kullanici yeniKullanici)
+        public ActionResult AracDetayKaydet(Araclar arac, AracOzellik aracOzellik)
         {
-            if (ModelState.IsValid)
-            {
-
-                db.Kullanicis.Add(yeniKullanici);
-                db.SaveChanges();
-                return RedirectToAction("_KullaniciTanimlama");
-            }
-            return View("_KullaniciTanimlama");
+            // Araç ve AracOzellik nesnelerini veritabanına kaydedin
+            db.Araclars.Add(arac);
+            db.AracOzelliks.Add(aracOzellik);
+            db.SaveChanges();
+            return RedirectToAction("_AracDetayBilgisi");
         }
 
-        [HttpPost]
-        public ActionResult DeleteKullanici(int KullaniciID)
-        {
-            var kullanici = db.Kullanicis.Find(KullaniciID);
-            if (kullanici != null)
-            {
-                db.Kullanicis.Remove(kullanici);
-                db.SaveChanges();
-            }
-            return RedirectToAction("_KullaniciTanimlama");
-        }
     }
 }

@@ -171,6 +171,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminPanelController.cs" />
+    <Compile Include="Controllers\IhaleListelemeController.cs" />
+    <Compile Include="Controllers\IhaleyeCikanAracController.cs" />
+    <Compile Include="Controllers\KomisyonVeNoterController.cs" />
+    <Compile Include="Controllers\KullaniciTanimlamaController.cs" />
+    <Compile Include="Controllers\KurumsalUyeOnayController.cs" />
+    <Compile Include="Controllers\PaketTanimlamaController.cs" />
+    <Compile Include="Controllers\RaporController.cs" />
+    <Compile Include="Controllers\StokYonetimiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -194,11 +202,13 @@
     <Compile Include="Models\IlanBilgi.cs" />
     <Compile Include="Models\Kullanici.cs" />
     <Compile Include="Models\KurumsalUyeOnay.cs" />
+    <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\OdemeBilgisi.cs" />
     <Compile Include="Models\PaketParametre.cs" />
     <Compile Include="Models\PaketTanimlama.cs" />
     <Compile Include="Models\Renk.cs" />
     <Compile Include="Models\Rol.cs" />
+    <Compile Include="Models\RolMenu.cs" />
     <Compile Include="Models\Statu.cs" />
     <Compile Include="Models\TramerTutari.cs" />
     <Compile Include="Models\VitesTipi.cs" />
@@ -312,24 +322,25 @@
     <Content Include="Views\AdminPanel\_AracDetayBilgisi.cshtml" />
     <Content Include="Views\AdminPanel\_İlanBilgileri.cshtml" />
     <Content Include="Views\AdminPanel\_TramerBilgileri.cshtml" />
-    <Content Include="Views\AdminPanel\_PaketTanimlama.cshtml" />
-    <Content Include="Views\AdminPanel\_KullaniciTanimlama.cshtml" />
-    <Content Include="Views\AdminPanel\_İhaleListeleme.cshtml" />
-    <Content Include="Views\AdminPanel\_YeniİhaleOlustur.cshtml" />
-    <Content Include="Views\AdminPanel\_İhaleFiyat.cshtml" />
-    <Content Include="Views\AdminPanel\_Footer.cshtml" />
-    <Content Include="Views\AdminPanel\_Header.cshtml" />
     <Content Include="Views\AdminPanel\_BireyselArac.cshtml" />
     <Content Include="Views\AdminPanel\_BireyselAracGuncelle.cshtml" />
-    <Content Include="Views\AdminPanel\_KomisyonVeNoterUcretleri.cshtml" />
-    <Content Include="Views\AdminPanel\_StokYonetimi.cshtml" />
-    <Content Include="Views\AdminPanel\_StokYonetimiDetay.cshtml" />
-    <Content Include="Views\AdminPanel\_Rapor1.cshtml" />
-    <Content Include="Views\AdminPanel\_OrtaZorlukRapor.cshtml" />
-    <Content Include="Views\AdminPanel\_KompleksRapor.cshtml" />
-    <Content Include="Views\AdminPanel\_İhaleyeCikanAraclar.cshtml" />
-    <Content Include="Views\AdminPanel\_KurumsalUyeOnay.cshtml" />
-    <Content Include="Views\AdminPanel\_KurumsalUyeOnayDetay.cshtml" />
+    <Content Include="Views\KullaniciTanimlama\_KullaniciTanimlama.cshtml" />
+    <Content Include="Views\KullaniciTanimlama\KullaniciDuzenle.cshtml" />
+    <Content Include="Views\PaketTanimlama\_PaketTanimlama.cshtml" />
+    <Content Include="Views\KurumsalUyeOnay\_KurumsalUyeOnay.cshtml" />
+    <Content Include="Views\KurumsalUyeOnay\_KurumsalUyeOnayDetay.cshtml" />
+    <Content Include="Views\IhaleListeleme\_IhaleListeleme.cshtml" />
+    <Content Include="Views\IhaleListeleme\_YeniİhaleOlustur.cshtml" />
+    <Content Include="Views\IhaleListeleme\_IhaleFiyat.cshtml" />
+    <Content Include="Views\KomisyonVeNoter\_KomisyonVeNoterUcretleri.cshtml" />
+    <Content Include="Views\StokYonetimi\_StokYonetimi.cshtml" />
+    <Content Include="Views\StokYonetimi\_StokYonetimiDetay.cshtml" />
+    <Content Include="Views\IhaleyeCikanArac\_IhaleyeCikanAraclar.cshtml" />
+    <Content Include="Views\Rapor\_BasitRapor.cshtml" />
+    <Content Include="Views\Rapor\_OrtaZorlukRapor.cshtml" />
+    <Content Include="Views\Rapor\_KompleksRapor.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

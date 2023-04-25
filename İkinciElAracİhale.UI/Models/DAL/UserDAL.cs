@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 
 namespace İkinciElAracİhale.UI.Models.DAL
@@ -26,5 +27,18 @@ namespace İkinciElAracİhale.UI.Models.DAL
                 return kullanicilar;
             }
         }
+        public List<string> RoleGoreMenuGetir(int? roleId)
+        {
+            using (var db = new AracIhale())
+            {
+                var menuNames = (from rm in db.RolMenus
+                                 join mm in db.Menus on rm.MenuID equals mm.MenuID
+                                 where rm.RolID == roleId
+                                 select mm.MenuAd).ToList();
+                return menuNames;
+            }
+        }
+
+
     }
 }

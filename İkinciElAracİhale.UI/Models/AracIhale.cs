@@ -30,11 +30,13 @@ namespace İkinciElAracİhale.UI.Models
         public virtual DbSet<IlanBilgi> IlanBilgis { get; set; }
         public virtual DbSet<Kullanici> Kullanicis { get; set; }
         public virtual DbSet<KurumsalUyeOnay> KurumsalUyeOnays { get; set; }
+        public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<OdemeBilgisi> OdemeBilgisis { get; set; }
         public virtual DbSet<PaketParametre> PaketParametres { get; set; }
         public virtual DbSet<PaketTanimlama> PaketTanimlamas { get; set; }
         public virtual DbSet<Renk> Renks { get; set; }
         public virtual DbSet<Rol> Rols { get; set; }
+        public virtual DbSet<RolMenu> RolMenus { get; set; }
         public virtual DbSet<Statu> Status { get; set; }
         public virtual DbSet<TramerTutari> TramerTutaris { get; set; }
         public virtual DbSet<VitesTipi> VitesTipis { get; set; }

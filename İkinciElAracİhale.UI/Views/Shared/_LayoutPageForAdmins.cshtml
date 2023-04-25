@@ -2,6 +2,10 @@
     Layout = null;
 }
 
+@{
+    int? currentRoleId = (Session["RoleID"] as int?); // Oturumdan RolID'yi al
+}
+
 <!DOCTYPE html>
 
 <html>
@@ -9,7 +13,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Admin Panel</title>
     <meta charset="utf-8">
-    
+
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -56,33 +60,56 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">@Session["Ad"] @Session["Soyad"]</h6>
-                        <span>Admin</span>
+                        <h6 class="mb-0">@Session["Ad"]</h6>
+                        <span>@Session["RoleName"]</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="/AdminPanel/_AracListeleme" class="nav-item nav-link "><i class="fa fa-list me-2"></i>Araç Listeleme</a>
-                    <div class="nav-item dropdown">
-                        <a href="/AdminPanel/_AracDetayBilgisi" class="nav-item nav-link"><i class="fa fa-car me-2"></i>Araç Detay Bilgisi</a>
-
-                    </div>
-                    <a href="/AdminPanel/_KullaniciTanimlama" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Kullanıcı Tanımla</a>
-                    <a href="/AdminPanel/_PaketTanimlama" class="nav-item nav-link"><i class="fa fa-box me-2"></i>Paket Tanımla</a>
-                    <a href="/AdminPanel/_KurumsalUyeOnay" class="nav-item nav-link"><i class="fa fa-building me-2"></i>Kurumsal Üye</a>
-                    <a href="/AdminPanel/_İhaleListeleme" class="nav-item nav-link"><i class="fa fa-list me-2"></i>İhale Listeleme</a>
-                    <a href="/AdminPanel/_BireyselArac" class="nav-item nav-link"><i class="fa fa-car me-2"></i>Bireysel Araç</a>
-                    <a href="/AdminPanel/_KomisyonVeNoterUcretleri" class="nav-item nav-link"><i class="fa fa-calculator me-2"></i>Komisyon&Noter</a>
-                    <a href="/AdminPanel/_StokYonetimi" class="nav-item nav-link"><i class="fa fa-clipboard me-2"></i>Stok Yönetimi</a>
-                    <a href="/AdminPanel/_İhaleyeCikanAraclar" class="nav-item nav-link"><i class="fa fa-car me-2"></i>İhaledeki Araçlar</a>
-                    <div class="nav-item dropdown">
-                        <a href="/AdminPanel/_Rapor1" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Raporlar</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-
-                            <a href="/AdminPanel/_Rapor1" class="dropdown-item">Basit Rapor</a>
-                            <a href="/AdminPanel/_OrtaZorlukRapor" class="dropdown-item">Orta Zorluk Rapor</a>
-                            <a href="/AdminPanel/_KompleksRapor" class="dropdown-item">Kompleks Rapor</a>
+                    @{
+                        int rolID = (int)Session["RolID"];
+                    }
+                    @if (rolID == 3)
+                    {
+                        <a href="/AdminPanel/_AracListeleme" class="nav-item nav-link "><i class="fa fa-list me-2"></i>Araç Listeleme</a>
+                        <div class="nav-item dropdown">
+                            <a href="/AdminPanel/_AracDetayBilgisi" class="nav-item nav-link"><i class="fa fa-car me-2"></i>Araç Detay Bilgisi</a>
                         </div>
-                    </div>
+                        <a href="/KullaniciTanimlama/_KullaniciTanimlama" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Kullanıcı Tanımla</a>
+                        <a href="/PaketTanimlama/_PaketTanimlama" class="nav-item nav-link"><i class="fa fa-box me-2"></i>Paket Tanımla</a>
+                        <a href="/KurumsalUyeOnay/_KurumsalUyeOnay" class="nav-item nav-link"><i class="fa fa-building me-2"></i>Kurumsal Üye</a>
+                        <a href="/IhaleListeleme/_IhaleListeleme" class="nav-item nav-link"><i class="fa fa-list me-2"></i>İhale Listeleme</a>
+                        <a href="/AdminPanel/_BireyselArac" class="nav-item nav-link"><i class="fa fa-car me-2"></i>Bireysel Araç</a>
+                        <a href="/KomisyonVeNoter/_KomisyonVeNoterUcretleri" class="nav-item nav-link"><i class="fa fa-calculator me-2"></i>Komisyon&Noter</a>
+                        <a href="/StokYonetimi/_StokYonetimi" class="nav-item nav-link"><i class="fa fa-clipboard me-2"></i>Stok Yönetimi</a>
+                        <a href="/IhaleyeCikanArac/_IhaleyeCikanAraclar" class="nav-item nav-link"><i class="fa fa-car me-2"></i>İhaledeki Araçlar</a>
+                        <div class="nav-item dropdown">
+                            <a href="/Rapor/_Rapor1" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Raporlar</a>
+                            <div class="dropdown-menu bg-transparent border-0">
+
+                                <a href="/Rapor/_BasitRapor" class="dropdown-item">Basit Rapor</a>
+                                <a href="/Rapor/_OrtaZorlukRapor" class="dropdown-item">Orta Zorluk Rapor</a>
+                                <a href="/Rapor/_KompleksRapor" class="dropdown-item">Kompleks Rapor</a>
+                            </div>
+                        </div>
+                    }
+
+                    @if (rolID == 1)
+                    {
+                        <a href="/AdminPanel/_AracListeleme" class="nav-item nav-link "><i class="fa fa-list me-2"></i>Araç Listeleme</a>
+                        <div class="nav-item dropdown">
+                            <a href="/AdminPanel/_AracDetayBilgisi" class="nav-item nav-link"><i class="fa fa-car me-2"></i>Araç Detay Bilgisi</a>
+                        </div>
+                        <a href="/KullaniciTanimlama/_KullaniciTanimlama" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Kullanıcı Tanımla</a>
+                        <a href="/PaketTanimlama/_PaketTanimlama" class="nav-item nav-link"><i class="fa fa-box me-2"></i>Paket Tanımla</a>
+                        <a href="/KurumsalUyeOnay/_KurumsalUyeOnay" class="nav-item nav-link"><i class="fa fa-building me-2"></i>Kurumsal Üye</a>
+                        <a href="/IhaleListeleme/_IhaleListeleme" class="nav-item nav-link"><i class="fa fa-list me-2"></i>İhale Listeleme</a>
+                        <a href="/AdminPanel/_BireyselArac" class="nav-item nav-link"><i class="fa fa-car me-2"></i>Bireysel Araç</a>
+                        <a href="/KomisyonVeNoter/_KomisyonVeNoterUcretleri" class="nav-item nav-link"><i class="fa fa-calculator me-2"></i>Komisyon&Noter</a>
+                        
+                    }
+
+
+
                 </div>
             </nav>
         </div>

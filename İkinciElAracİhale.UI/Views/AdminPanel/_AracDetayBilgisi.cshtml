@@ -1,31 +1,31 @@
 ﻿
 @{
-    ViewBag.Title = "Admin Paneli";
+    ViewBag.Title = "Admin Panel";
     Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
 }
 
-
-<div class="container">
-    
-    
+@using (Html.BeginForm("AracDetayKaydet", "AdminPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
         <form>
             <h4>Araç Detay Bilgileri</h4>
             <div class="row mb-3">
                 <div class="col">
                     <label for="bireysel-kurumsal" class="form-label">Bireysel/Kurumsal</label>
-                    @Html.DropDownList("BireyselKurumsalList", null, "Seçiniz...", new { @class = "form-select", id = "bireysel-kurumsal" })
+                    @Html.DropDownList("BireyselKurumsalList", null, "Seçiniz...", new { @class = "form-select", id = "bireysel-kurumsal", name = "arac.BireyselKurumsalID" })
                 </div>
                 <div class="col">
                     <label for="sirket-adi" class="form-label">Kurumsal Şirket Adı</label>
-                    <input type="text" class="form-control" id="kurumsalsirke">
+                    <input type="text" class="form-control" id="kurumsalsirke" name="arac.KurumsalSirketAdi">
                 </div>
                 <div class="col">
                     <label for="status" class="form-label">Statü</label>
-                    @Html.DropDownList("StatuList", null, "Seçiniz...", new { @class = "form-select", id = "statu" })
+                    @Html.DropDownList("StatuList", null, "Seçiniz...", new { @class = "form-select", id = "statu", name = "arac.StatuID" })
                 </div>
                 <div class="col">
                     <label for="arac-fiyati" class="form-label">Araç Fiyatı</label>
-                    <input type="text" class="form-control" id="aracfiyati">
+                    <input type="text" class="form-control" id="aracfiyati" name="arac.KurumsalSirketAdi">
                 </div>
             </div>
         </form>
@@ -35,47 +35,47 @@
             <div class="row mb-3">
                 <div class="col">
                     <label for="arac-markasi" class="form-label">Araç Markası</label>
-                    @Html.DropDownList("AracMarkaList", null, "Seçiniz...", new { @class = "form-select", id = "aracmarkasi" })
+                    @Html.DropDownList("AracMarkaList", null, "Seçiniz...", new { @class = "form-select", id = "aracmarkasi", name = "aracOzellik.AracMarkaID" })
                 </div>
                 <div class="col">
                     <label for="arac-modeli" class="form-label">Araç Modeli</label>
-                    @Html.DropDownList("AracModelList", null, "Seçiniz...", new { @class = "form-select", id = "aracmodeli" })
+                    @Html.DropDownList("AracModelList", null, "Seçiniz...", new { @class = "form-select", id = "aracmodeli", name = "aracOzellik.AracModelID" })
                 </div>
                 <div class="col">
                     <label for="govde-tipi" class="form-label">Gövde Tipi</label>
-                    @Html.DropDownList("GovdeTipiList", null, "Seçiniz...", new { @class = "form-select", id = "govdetipi" })
+                    @Html.DropDownList("GovdeTipiList", null, "Seçiniz...", new { @class = "form-select", id = "govdetipi", name = "aracOzellik.GovdeTipiID" })
                 </div>
                 <div class="col">
                     <label for="yil" class="form-label">Yıl</label>
-                    @Html.DropDownList("YilList", null, "Seçiniz...", new { @class = "form-select", id = "yil" })
+                    @Html.DropDownList("YilList", null, "Seçiniz...", new { @class = "form-select", id = "yil", name = "aracOzellik.YilID" })
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
                     <label for="yakit-tipi" class="form-label">Yakıt Tipi</label>
-                    @Html.DropDownList("YakitTipiList", null, "Seçiniz...", new { @class = "form-select", id = "yakittipi" })
+                    @Html.DropDownList("YakitTipiList", null, "Seçiniz...", new { @class = "form-select", id = "yakittipi", name = "aracOzellik.YakitTipiID" })
                 </div>
                 <div class="col">
                     <label for="vites-tipi" class="form-label">Vites Tipi</label>
-                    @Html.DropDownList("VitesTipiList", null, "Seçiniz...", new { @class = "form-select", id = "vitestipi" })
+                    @Html.DropDownList("VitesTipiList", null, "Seçiniz...", new { @class = "form-select", id = "vitestipi", name = "aracOzellik.VitesTipiID" })
                 </div>
                 <div class="col">
                     <label for="versiyon" class="form-label">Versiyon</label>
-                    <input type="text" class="form-control" id="versiyon">
+                    <input type="text" class="form-control" id="versiyon" name="aracOzellik.Versiyon">
                 </div>
                 <div class="col">
                     <label for="km-bilgisi" class="form-label">KM Bilgisi</label>
-                    <input type="text" class="form-control" id="kmbilgisi">
+                    <input type="text" class="form-control" id="kmbilgisi" name="arac.KMBilgisi">
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
                     <label for="renk" class="form-label">Renk</label>
-                    @Html.DropDownList("RenkList", null, "Seçiniz...", new { @class = "form-select", id = "renk" })
+                    @Html.DropDownList("RenkList", null, "Seçiniz...", new { @class = "form-select", id = "renk", name = "aracOzellik.RenkID" })
                 </div>
                 <div class="col">
                     <label for="donanim" class="form-label">Donanım</label>
-                    <input type="text" class="form-control" id="donanim">
+                    <input type="text" class="form-control" id="donanim" name="arac.Donanim">
                 </div>
             </div>
         </form>
@@ -85,7 +85,7 @@
             <div class="row mb-3">
                 <div class="col">
                     <label for="gorseller" class="form-label">Görseller</label>
-                    <input type="file" class="form-control" id="gorseller" multiple>
+                    <input type="file" class="form-control" id="gorseller" name="Gorsel1" multiple>
                 </div>
             </div>
 
@@ -97,10 +97,10 @@
         <br />
         <div class="d-flex justify-content-center">
             <button type="button" class="btn btn-outline-primary me-2">Hemen Al Satış</button>
-            <a href="@Url.Action("_KomisyonVeNoterUcretleri")" type="button" class="btn btn-outline-warning me-2">
+            <a href="@Url.Action("_KomisyonVeNoterUcretleri", "KomisyonVeNoter")" type="button" class="btn btn-outline-warning me-2">
                 Komisyon
             </a>
-            <a href="@Url.Action("_KullaniciTanimlama")" type="button" class="btn btn-outline-info me-2">
+            <a href="@Url.Action("_KullaniciTanimlama", "KullaniciTanimlama")" type="button" class="btn btn-outline-info me-2">
                 Alıcı Bilgileri
             </a>
             <button type="button" class="btn btn-outline-warning me-2">Araç Tarihçe</button>
@@ -110,7 +110,8 @@
             <a href="@Url.Action("_İlanBilgileri")" type="button" class="btn btn-outline-info me-2">
                 İlan Bilgileri
             </a>
-            <button type="button" class="btn btn-outline-primary">Kaydet</button>
+            <button type="submit" class="btn btn-outline-primary">Kaydet</button>
         </div>
-    
-</div>
+
+    </div>
+}
