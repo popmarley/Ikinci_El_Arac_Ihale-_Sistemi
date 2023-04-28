@@ -197,6 +197,7 @@
     <Compile Include="Models\AracTarihce.cs" />
     <Compile Include="Models\BireyselAracTeklif.cs" />
     <Compile Include="Models\BireyselKurumsal.cs" />
+    <Compile Include="Models\DAL\AracListeleme.cs" />
     <Compile Include="Models\DAL\UserDAL.cs" />
     <Compile Include="Models\GovdeTipi.cs" />
     <Compile Include="Models\IhaleArac.cs" />

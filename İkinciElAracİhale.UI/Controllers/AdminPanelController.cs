@@ -1,4 +1,5 @@
 ﻿using İkinciElAracİhale.UI.Models;
+using İkinciElAracİhale.UI.Models.DAL;
 using İkinciElAracİhale.UI.Models.VM;
 using System;
 using System.Collections.Generic;
@@ -15,40 +16,23 @@ namespace İkinciElAracİhale.UI.Controllers
     {
         // GET: AdminPanel
         AracIhale db = new AracIhale();
-        
+        private AracListeleme aracRepo;
+
+        public AdminPanelController()
+        {
+            aracRepo = new AracListeleme();
+        }
+
         public ActionResult _AracListeleme()
         {
-            var araclar = db.Araclars.Include(a => a.AracOzellik)
-                             .Include(a => a.BireyselKurumsal)
-                             .Include(a => a.Statu)
-                             .ToList();
+            var araclar = aracRepo.GetAraclar();
             return View(araclar);
         }
+
         public ActionResult _AracDetayBilgisi()
         {
-            var vm=new AracDetayViewModel();
-            var bireyselkurumsal = db.BireyselKurumsals.ToList();
-            var status = db.Status.ToList();
-            var aracmarkasi = db.AracMarkas.ToList();
-            var aracmodeli = db.AracModels.ToList();
-            var govdetipi = db.GovdeTipis.ToList();
-            var yil = db.Yils.ToList();
-            var yakittipi = db.YakitTipis.ToList();
-            var vitestipi = db.VitesTipis.ToList();
-            var renk = db.Renks.ToList();
-
-
-            ViewBag.BireyselKurumsalList = new SelectList(bireyselkurumsal, "BireselKurumsalID", "Durum");
-            ViewBag.StatuList = new SelectList(status, "StatuID", "StatuAdi");
-            ViewBag.AracMarkaList = new SelectList(aracmarkasi, "MarkaID", "MarkaAdi");
-            ViewBag.AracModelList = new SelectList(aracmodeli, "AracModelID", "ModelAdi");
-            ViewBag.GovdeTipiList = new SelectList(govdetipi, "GovdeTipiID", "GovdeTipiAdi");
-            ViewBag.YilList = new SelectList(yil, "YilID", "Yil1");
-            ViewBag.YakitTipiList = new SelectList(yakittipi, "YakitTipiID", "YakitTipiAdi");
-            ViewBag.VitesTipiList = new SelectList(vitestipi, "VitesTipiID", "VitesTipiAdi");
-            ViewBag.RenkList = new SelectList(renk, "RenkID", "RenkAdi");
-
-            return View();
+            var vm = aracRepo.GetAracDetayViewModel();
+            return View(vm);
         }
 
         public ActionResult _İlanBilgileri()
@@ -60,17 +44,18 @@ namespace İkinciElAracİhale.UI.Controllers
         {
             return View();
         }
-
         public ActionResult _BireyselArac()
         {
             return View();
         }
+
         public ActionResult _BireyselAracGuncelle()
         {
             return View();
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AracDetayKaydet(Araclar arac, AracOzellik aracOzellik)
         {
             if (!ModelState.IsValid)
@@ -80,11 +65,9 @@ namespace İkinciElAracİhale.UI.Controllers
             }
             // Araç ve AracOzellik nesnelerini veritabanına kaydedin
             arac.AracOzellik = aracOzellik; // AracOzellik nesnesini Araclar nesnesine bağlayın
-            db.Araclars.Add(arac);
-            db.SaveChanges();
+            aracRepo.SaveAracDetay(arac);
             return RedirectToAction("_AracDetayBilgisi");
         }
+
     }
-
-
 }
