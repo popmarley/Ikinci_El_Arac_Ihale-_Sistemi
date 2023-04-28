@@ -56,6 +56,8 @@ namespace İkinciElAracİhale.UI.Models
         [MaxLength(50)]
         public byte[] Gorsel5 { get; set; }
 
+        public DateTime? Tarih { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AracAliciBilgi> AracAliciBilgis { get; set; }
 

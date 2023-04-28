@@ -38,6 +38,7 @@ namespace İkinciElAracİhale.UI.Models
         public virtual DbSet<Rol> Rols { get; set; }
         public virtual DbSet<RolMenu> RolMenus { get; set; }
         public virtual DbSet<Statu> Status { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TramerTutari> TramerTutaris { get; set; }
         public virtual DbSet<VitesTipi> VitesTipis { get; set; }
         public virtual DbSet<YakitTipi> YakitTipis { get; set; }

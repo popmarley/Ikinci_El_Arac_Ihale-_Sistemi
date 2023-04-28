@@ -213,6 +213,7 @@
     <Compile Include="Models\Rol.cs" />
     <Compile Include="Models\RolMenu.cs" />
     <Compile Include="Models\Statu.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\TramerTutari.cs" />
     <Compile Include="Models\VitesTipi.cs" />
     <Compile Include="Models\VM\AracDetay.cs" />

@@ -18,7 +18,11 @@ namespace İkinciElAracİhale.UI.Controllers
         
         public ActionResult _AracListeleme()
         {
-            return View();
+            var araclar = db.Araclars.Include(a => a.AracOzellik)
+                             .Include(a => a.BireyselKurumsal)
+                             .Include(a => a.Statu)
+                             .ToList();
+            return View(araclar);
         }
         public ActionResult _AracDetayBilgisi()
         {

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<İkinciElAracİhale.UI.Models.Araclar>
+
+@{
     ViewBag.Title = "Admin Panel";
     Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
 }
@@ -49,7 +51,19 @@
         </tr>
     </thead>
     <tbody>
-        <!-- buraya araç listesi dinamik olarak gelecek -->
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.AracID</td>
+                <td>@item.AracOzellik.AracMarka.MarkaAdi</td>
+                <td>@item.AracOzellik.AracModel.ModelAdi</td>
+                <td>@item.BireyselKurumsal.Durum</td>
+                <td>@item.Statu.StatuAdi</td>
+                <td>@Session["Ad"]</td>
+                <td>@item.Tarih</td>
+                <td></td>
+            </tr>
+        }
     </tbody>
 </table>
 <br />
