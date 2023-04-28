@@ -30,7 +30,7 @@
                     <td>@kullanici.Telefon</td>
                     <td>@kullanici.Mail</td>
                     <td>@(kullanici.AktifPasifID == 1 ? "Aktif" : "Pasif")</td>
-                    <td>@(kullanici.RolID == 1 ? "Admin" : (kullanici.RolID == 2 ? "Kullanıcı" : "Plus Admin"))</td>
+                    <td>@(kullanici.RolID == 1 ? "Admin" : (kullanici.RolID == 2 ? "Kullanıcı" : "PlusAdmin"))</td>
                     <td>
                         @using (Html.BeginForm("DeleteKullanici", "KullaniciTanimlama", FormMethod.Post))
                         {
@@ -51,7 +51,7 @@
     </div>
 </div>
 
-@using (Html.BeginForm("KullaniciEkle", "KullaniciTanimlama", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("KullaniciEkle", "KullaniciTanimlama", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div class="modal fade" id="kullaniciEkleModal" tabindex="-1" aria-labelledby="kullaniciEkleModalLabel" aria-hidden="true">

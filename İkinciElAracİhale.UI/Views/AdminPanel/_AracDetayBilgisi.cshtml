@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
 }
 
-@using (Html.BeginForm("AracDetayKaydet", "AdminPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("AracDetayKaydet", "AdminPanel", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div class="container">
@@ -13,7 +13,7 @@
             <div class="row mb-3">
                 <div class="col">
                     <label for="bireysel-kurumsal" class="form-label">Bireysel/Kurumsal</label>
-                    @Html.DropDownList("BireyselKurumsalList", null, "Seçiniz...", new { @class = "form-select", id = "bireysel-kurumsal", name = "arac.BireyselKurumsalID" })
+                    @Html.DropDownList("BireyselKurumsalList", null, "Seçiniz...", new { @class = "form-select", id = "bireysel-kurumsal", name = "arac.BireselKurumsalID" })
                 </div>
                 <div class="col">
                     <label for="sirket-adi" class="form-label">Kurumsal Şirket Adı</label>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="col">
                     <label for="arac-fiyati" class="form-label">Araç Fiyatı</label>
-                    <input type="text" class="form-control" id="aracfiyati" name="arac.KurumsalSirketAdi">
+                    <input type="text" class="form-control" id="aracfiyati" name="arac.AracFiyati">
                 </div>
             </div>
         </form>

@@ -43,7 +43,7 @@
 
         <div class="form-group">
             <label for="Rol">Rol</label>
-            @Html.DropDownListFor(model => model.RolID, new SelectList(new[] { "Admin", "Kullanici"}), new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.RolID, new SelectList(new[] { "Admin", "Kullanici", "PlusAdmin"}), new { @class = "form-control" })
         </div>
 
         <div class="d-grid gap-2 mt-4 d-flex justify-content-end">

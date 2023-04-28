@@ -1,4 +1,5 @@
 ﻿using İkinciElAracİhale.UI.Models;
+using İkinciElAracİhale.UI.Models.VM;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,21 +14,23 @@ namespace İkinciElAracİhale.UI.Controllers
     public class AdminPanelController : Controller
     {
         // GET: AdminPanel
-        AracIhale db= new AracIhale();
+        AracIhale db = new AracIhale();
+        
         public ActionResult _AracListeleme()
         {
             return View();
         }
         public ActionResult _AracDetayBilgisi()
         {
+            var vm=new AracDetayViewModel();
             var bireyselkurumsal = db.BireyselKurumsals.ToList();
             var status = db.Status.ToList();
-            var aracmarkasi=db.AracMarkas.ToList();
-            var aracmodeli=db.AracModels.ToList();
-            var govdetipi=db.GovdeTipis.ToList();
-            var yil=db.Yils.ToList();
-            var yakittipi=db.YakitTipis.ToList();
-            var vitestipi=db.VitesTipis.ToList();
+            var aracmarkasi = db.AracMarkas.ToList();
+            var aracmodeli = db.AracModels.ToList();
+            var govdetipi = db.GovdeTipis.ToList();
+            var yil = db.Yils.ToList();
+            var yakittipi = db.YakitTipis.ToList();
+            var vitestipi = db.VitesTipis.ToList();
             var renk = db.Renks.ToList();
 
 
@@ -66,12 +69,18 @@ namespace İkinciElAracİhale.UI.Controllers
         [HttpPost]
         public ActionResult AracDetayKaydet(Araclar arac, AracOzellik aracOzellik)
         {
+            if (!ModelState.IsValid)
+            {
+                // Hata mesajı göster veya hatalı alanları düzeltmek için kullanıcıyı yönlendir
+                return View("_AracDetayBilgisi");
+            }
             // Araç ve AracOzellik nesnelerini veritabanına kaydedin
+            arac.AracOzellik = aracOzellik; // AracOzellik nesnesini Araclar nesnesine bağlayın
             db.Araclars.Add(arac);
-            db.AracOzelliks.Add(aracOzellik);
             db.SaveChanges();
             return RedirectToAction("_AracDetayBilgisi");
         }
-
     }
+
+
 }
