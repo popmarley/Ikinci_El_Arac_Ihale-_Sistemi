@@ -10,7 +10,10 @@ namespace İkinciElAracİhale.UI.Controllers
     public class IhaleyeCikanAracController : Controller
     {
         // GET: IhaleyeCikanArac
+
         AracIhale db = new AracIhale();
+
+        [Authorize]
         public ActionResult _IhaleyeCikanAraclar()
         {
             return View();

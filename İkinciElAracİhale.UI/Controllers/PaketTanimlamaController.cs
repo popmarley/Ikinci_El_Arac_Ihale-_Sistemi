@@ -11,6 +11,8 @@ namespace İkinciElAracİhale.UI.Controllers
     {
         // GET: PaketTanimlama
         AracIhale db = new AracIhale();
+
+        [Authorize]
         public ActionResult _PaketTanimlama()
         {
             return View();

@@ -11,11 +11,14 @@ namespace İkinciElAracİhale.UI.Controllers
     {
         // GET: StokYonetimi
         AracIhale db = new AracIhale();
+
+        [Authorize]
         public ActionResult _StokYonetimi()
         {
             return View();
         }
 
+        [Authorize]
         public ActionResult _StokYonetimiDetay()
         {
             return View();

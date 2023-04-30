@@ -11,10 +11,13 @@ namespace İkinciElAracİhale.UI.Controllers
     {
         // GET: KurumsalUyeOnay
         AracIhale db = new AracIhale();
+
+        [Authorize]
         public ActionResult _KurumsalUyeOnay()
         {
             return View();
         }
+        [Authorize]
         public ActionResult _KurumsalUyeOnayDetay()
         {
             return View();

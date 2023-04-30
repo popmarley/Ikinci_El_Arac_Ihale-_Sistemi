@@ -23,6 +23,7 @@ namespace İkinciElAracİhale.UI.Controllers
             aracRepo = new AracListeleme();
         }
 
+        [Authorize]
         public ActionResult _AracListeleme()
         {
             var araclar = aracRepo.GetAraclar();
@@ -37,26 +38,32 @@ namespace İkinciElAracİhale.UI.Controllers
             return View(viewModel);
         }
 
+        [Authorize]
         public ActionResult _AracDetayBilgisi()
         {
             var vm = aracRepo.GetAracDetayViewModel();
             return View(vm);
         }
 
+        [Authorize]
         public ActionResult _İlanBilgileri()
         {
             return View();
         }
 
+        [Authorize]
         public ActionResult _TramerBilgileri()
         {
             return View();
         }
+
+        [Authorize]
         public ActionResult _BireyselArac()
         {
             return View();
         }
 
+        [Authorize]
         public ActionResult _BireyselAracGuncelle()
         {
             return View();

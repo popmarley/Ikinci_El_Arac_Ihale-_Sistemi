@@ -11,6 +11,8 @@ namespace İkinciElAracİhale.UI.Controllers
     {
         // GET: KomisyonVeNoter
         AracIhale db = new AracIhale();
+
+        [Authorize]
         public ActionResult _KomisyonVeNoterUcretleri()
         {
             return View();

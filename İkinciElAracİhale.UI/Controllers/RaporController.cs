@@ -11,16 +11,20 @@ namespace İkinciElAracİhale.UI.Controllers
     {
         // GET: Rapor
         AracIhale db = new AracIhale();
+
+        [Authorize]
         public ActionResult _BasitRapor()
         {
             return View();
         }
 
+        [Authorize]
         public ActionResult _OrtaZorlukRapor()
         {
             return View();
         }
 
+        [Authorize]
         public ActionResult _KompleksRapor()
         {
             return View();

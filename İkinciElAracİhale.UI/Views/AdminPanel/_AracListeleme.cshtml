@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
 }
 
-@using (Html.BeginForm("FiltreliAracListele", "AdminPanel", FormMethod.Post, new { @class = "bg-white rounded p-3" }))
+@using (Html.BeginForm("FiltreliAracListele", "AdminPanel", FormMethod.Post, new { @class = "bg-white rounded p-3", id = "filtreForm" }))
 {
 
     <div class="row">
@@ -29,6 +29,7 @@
     </div>
     <div class="text-end">
         <button type="submit" class="btn btn-primary">Listele</button>
+        <button type="reset" onclick="resetFormAndSubmit()" class="btn btn-warning">Sıfırla</button>
     </div>
 
 }
@@ -47,7 +48,7 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="araclarListesi">
         @foreach (var item in Model.AraclarList)
         {
             <tr>
@@ -71,3 +72,27 @@
         <button class="btn btn-danger">Sil</button>
     </div>
 </div>
+
+<script>
+    function resetFormAndSubmit() {
+        // Formu sıfırla
+        var form = document.getElementById('filtreForm');
+        form.reset();
+
+        // DropDownListFor varsayılan değerleri seçmek için
+        var selects = form.getElementsByTagName('select');
+        for (var i = 0; i < selects.length; i++) {
+            selects[i].selectedIndex = 0;
+        }
+
+        // Tablodaki filtrelenmiş araç listesini temizle
+        var tbody = document.getElementById('araclarListesi');
+        var rows = tbody.getElementsByTagName('tr');
+        while (rows.length > 0) {
+            tbody.removeChild(rows[0]);
+        }
+
+        // Form submit işlemini gerçekleştir
+        form.submit();
+    }
+</script>

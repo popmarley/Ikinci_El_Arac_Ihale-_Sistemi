@@ -26,7 +26,7 @@ namespace İkinciElAracİhale.UI.Controllers
             {
                 if (user.RolID == 1 || user.RolID == 3) // Kullanıcının rolü 1 veya 3 ise giriş yapabilir
                 {
-                    FormsAuthentication.SetAuthCookie(username, false);
+                    FormsAuthentication.SetAuthCookie(username, true);
 
                     var menuName = userDal.RoleGoreMenuGetir(user.RolID);
                     Session["RolID"] = user.RolID; // Kullanıcının RolID'sini Session'a atama

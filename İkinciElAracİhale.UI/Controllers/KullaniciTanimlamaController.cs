@@ -13,6 +13,8 @@ namespace İkinciElAracİhale.UI.Controllers
     {
         // GET: KullaniciTanimlama
         AracIhale db = new AracIhale();
+
+        [Authorize]
         public ActionResult _KullaniciTanimlama()
         {
             List<Kullanici> kullaniciList = db.Kullanicis.ToList();
