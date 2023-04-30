@@ -218,6 +218,7 @@
     <Compile Include="Models\TramerTutari.cs" />
     <Compile Include="Models\VitesTipi.cs" />
     <Compile Include="Models\VM\AracDetay.cs" />
+    <Compile Include="Models\VM\AracListelemeViewModel.cs" />
     <Compile Include="Models\YakitTipi.cs" />
     <Compile Include="Models\Yetki.cs" />
     <Compile Include="Models\Yil.cs" />

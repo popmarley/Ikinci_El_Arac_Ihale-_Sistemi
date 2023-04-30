@@ -26,7 +26,15 @@ namespace İkinciElAracİhale.UI.Controllers
         public ActionResult _AracListeleme()
         {
             var araclar = aracRepo.GetAraclar();
-            return View(araclar);
+            var viewModel = new AracListelemeViewModel
+            {
+                AraclarList = araclar,
+                StatuList = aracRepo.GetSelectList(db.Status.ToList(), "StatuID", "StatuAdi"),
+                AracMarkaList = aracRepo.GetSelectList(db.AracMarkas.ToList(), "MarkaID", "MarkaAdi"),
+                AracModelList = aracRepo.GetSelectList(db.AracModels.ToList(), "AracModelID", "ModelAdi"),
+                BireyselKurumsalList = aracRepo.GetSelectList(db.BireyselKurumsals.ToList(), "BireselKurumsalID", "Durum")
+            };
+            return View(viewModel);
         }
 
         public ActionResult _AracDetayBilgisi()
@@ -69,5 +77,19 @@ namespace İkinciElAracİhale.UI.Controllers
             return RedirectToAction("_AracDetayBilgisi");
         }
 
+        [HttpPost]
+        public ActionResult FiltreliAracListele(AracListelemeViewModel model)
+        {
+            var filtreliAraclar = aracRepo.GetFiltreliAraclar(model);
+            model.AraclarList = filtreliAraclar;
+
+            // SelectList özelliklerini tekrar doldurun
+            model.AracMarkaList = aracRepo.GetSelectList(db.AracMarkas.ToList(), "MarkaID", "MarkaAdi");
+            model.AracModelList = aracRepo.GetSelectList(db.AracModels.ToList(), "AracModelID", "ModelAdi");
+            model.BireyselKurumsalList = aracRepo.GetSelectList(db.BireyselKurumsals.ToList(), "BireselKurumsalID", "Durum");
+            model.StatuList = aracRepo.GetSelectList(db.Status.ToList(), "StatuID", "StatuAdi");
+
+            return View("_AracListeleme", model);
+        }
     }
 }

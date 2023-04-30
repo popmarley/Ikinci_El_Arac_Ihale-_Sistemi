@@ -51,5 +51,37 @@ namespace İkinciElAracİhale.UI.Models.DAL
             db.Araclars.Add(arac);
             db.SaveChanges();
         }
+
+        public List<Araclar> GetFiltreliAraclar(AracListelemeViewModel model)
+        {
+            var araclar = db.Araclars.AsQueryable();
+
+            if (!string.IsNullOrEmpty(model.AracMarka))
+            {
+                int aracMarkaId = Convert.ToInt32(model.AracMarka);
+                araclar = araclar.Where(a => a.AracOzellik.AracMarkaID == aracMarkaId);
+            }
+
+            if (!string.IsNullOrEmpty(model.AracModel))
+            {
+                int aracModelId = Convert.ToInt32(model.AracModel);
+                araclar = araclar.Where(a => a.AracOzellik.AracModelID == aracModelId);
+            }
+
+            if (!string.IsNullOrEmpty(model.BireyselKurumsal))
+            {
+                int bireyselKurumsalId = Convert.ToInt32(model.BireyselKurumsal);
+                araclar = araclar.Where(a => a.BireyselKurumsalID == bireyselKurumsalId);
+            }
+
+            if (!string.IsNullOrEmpty(model.Statu))
+            {
+                int statuId = Convert.ToInt32(model.Statu);
+                araclar = araclar.Where(a => a.StatuID == statuId);
+            }
+
+            return araclar.ToList();
+        }
+
     }
 }
