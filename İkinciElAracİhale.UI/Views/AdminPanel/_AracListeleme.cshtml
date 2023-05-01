@@ -9,7 +9,7 @@
 {
 
     <div class="row">
-        <h4 style="color:black;">Kriterler</h4>
+        <h4 style="color:black;">Bul</h4>
         <div class="col-md-3 mb-3">
             <label for="aracMarka" class="form-label">Araç Markası</label>
             @Html.DropDownListFor(model => model.AracMarka, Model.AracMarkaList, "Seçiniz", new { @class = "form-control", id = "aracMarka" })
@@ -45,6 +45,7 @@
             <th>Statüsü</th>
             <th>Kaydeden Kullanıcı</th>
             <th>Kaydetme Zamanı</th>
+            <th>Aksiyon</th>
             <th></th>
         </tr>
     </thead>
@@ -59,6 +60,10 @@
                 <td>@item.Statu.StatuAdi</td>
                 <td>@Session["Ad"]</td>
                 <td>@item.Tarih</td>
+                <td>
+                    <button class="btn btn-success me-2">Güncelle</button>
+                    <button class="btn btn-danger">Sil</button>
+                </td>
                 <td></td>
             </tr>
         }
@@ -67,9 +72,8 @@
 <br />
 <div class="row mt-12">
     <div class="col-md-12 d-flex justify-content-end">
-        <a href="@Url.Action("_AracDetayBilgisi")" class="btn btn-success me-2">Yeni</a>
-        <button class="btn btn-primary me-2">Güncelle</button>
-        <button class="btn btn-danger">Sil</button>
+        <a href="@Url.Action("_AracDetayBilgisi")" class="btn btn-success me-2">Yeni Ekle</a>
+        
     </div>
 </div>
 

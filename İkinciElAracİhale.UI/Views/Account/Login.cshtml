@@ -1,6 +1,17 @@
 ﻿
 @{
     Layout = null;
+    HttpCookie cookie = Request.Cookies["Login"];
+    string username = "";
+    string password = "";
+    bool remember = false;
+
+    if (cookie != null)
+    {
+        username = cookie.Values["username"];
+        password = cookie.Values["password"];
+        remember = true;
+    }
 }
 
 <!DOCTYPE html>
@@ -35,12 +46,17 @@
                     Yönetim Paneli Giriş Ekranı
                 </span>
                 <div class="wrap-input100 validate-input m-b-20" data-validate="Kullanıcı Adınızı Giriniz">
-                    <input class="input100" type="text" name="username" placeholder="Kullanıcı Adı">
+                    <input class="input100" type="text" name="username" placeholder="Kullanıcı Adı" value="@ViewBag.Username">
                     <span class="focus-input100"></span>
                 </div>
                 <div class="wrap-input100 validate-input m-b-25" data-validate="Şifrenizi Giriniz">
-                    <input class="input100" type="password" name="pass" placeholder="Şifre">
+                    <input class="input100" type="password" name="pass" placeholder="Şifre" value="@ViewBag.Password">
                     <span class="focus-input100"></span>
+                </div>
+                <div class="checkbox m-b-20">
+                    <label>
+                        <input type="checkbox" name="remember" value="true" @(ViewBag.Remember == true ? "checked" : "")> Beni Hatırla
+                    </label>
                 </div>
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">

@@ -17,7 +17,7 @@ namespace İkinciElAracİhale.UI.Controllers
             return View();
         }
 
-        public ActionResult Login(string username, string pass, Kullanici kullanici)
+        public ActionResult Login(string username, string pass, Kullanici kullanici, bool remember = false)
         {
             UserDAL userDal = new UserDAL();
             var user = userDal.KullaniciGetir(username, pass);
@@ -26,6 +26,16 @@ namespace İkinciElAracİhale.UI.Controllers
             {
                 if (user.RolID == 1 || user.RolID == 3) // Kullanıcının rolü 1 veya 3 ise giriş yapabilir
                 {
+                    if (remember)
+                    {
+                        HttpCookie cookie = new HttpCookie("Login");
+                        cookie.Values.Add("username", username);
+                        cookie.Values.Add("password", pass);
+                        cookie.Expires = DateTime.Now.AddDays(30); // Çerez 30 gün boyunca saklanacak
+                        Response.Cookies.Add(cookie);
+                    }
+
+
                     FormsAuthentication.SetAuthCookie(username, true);
 
                     var menuName = userDal.RoleGoreMenuGetir(user.RolID);
@@ -64,5 +74,19 @@ namespace İkinciElAracİhale.UI.Controllers
             // Login sayfasına yönlendirme
             return RedirectToAction("Login");
         }
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            base.OnActionExecuting(filterContext);
+
+            HttpCookie cookie = Request.Cookies["Login"];
+            if (cookie != null && cookie.Values["username"] != null && cookie.Values["password"] != null)
+            {
+                ViewBag.Remember = true;
+                ViewBag.Username = cookie.Values["username"];
+                ViewBag.Password = cookie.Values["password"];
+            }
+        }
+
     }
 }
