@@ -219,6 +219,7 @@
     <Compile Include="Models\VitesTipi.cs" />
     <Compile Include="Models\VM\AracDetay.cs" />
     <Compile Include="Models\VM\AracEkleViewModel.cs" />
+    <Compile Include="Models\VM\AracGuncellemeViewModel.cs" />
     <Compile Include="Models\VM\AracListelemeViewModel.cs" />
     <Compile Include="Models\YakitTipi.cs" />
     <Compile Include="Models\Yetki.cs" />
@@ -349,6 +350,7 @@
     <Content Include="Views\Rapor\_KompleksRapor.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\AdminPanel\_AracGuncelleme.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

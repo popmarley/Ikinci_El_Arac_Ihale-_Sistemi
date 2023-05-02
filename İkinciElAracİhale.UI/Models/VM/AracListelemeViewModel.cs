@@ -22,6 +22,6 @@ namespace İkinciElAracİhale.UI.Models.VM
         public SelectList StatuList { get; set; }
         public SelectList KullaniciList { get; set; }
 
-
+        public int AracID { get; set; }
     }
 }

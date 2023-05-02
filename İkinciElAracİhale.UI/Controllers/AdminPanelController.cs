@@ -46,6 +46,15 @@ namespace İkinciElAracİhale.UI.Controllers
         }
 
         [Authorize]
+        public ActionResult _AracGuncelleme()
+        {
+            var vm = aracRepo.GetAracDetayViewModel();
+            return View(vm);
+        }
+
+
+
+        [Authorize]
         public ActionResult _İlanBilgileri()
         {
             return View();
@@ -121,6 +130,55 @@ namespace İkinciElAracİhale.UI.Controllers
             return RedirectToAction("_AracListeleme");
         }
 
+        /////
+        ///
+        [HttpGet]
+        public ActionResult AracGuncelle(int id)
+        {
+            var dal = new AracListeleme();
+            var arac = dal.GetAraclar().FirstOrDefault(a => a.AracID == id);
 
+            if (arac == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new AracDetayViewModel
+            {
+                Araclar = arac,
+                BireyselKurumsalList = dal.GetSelectList(db.BireyselKurumsals.ToList(), "BireselKurumsalID", "Durum"),
+                StatuList = dal.GetSelectList(db.Status.ToList(), "StatuID", "StatuAdi"),
+                AracMarkaList = dal.GetSelectList(db.AracMarkas.ToList(), "MarkaID", "MarkaAdi"),
+                AracModelList = dal.GetSelectList(db.AracModels.ToList(), "AracModelID", "ModelAdi"),
+            };
+
+            return View("_AracGuncelleme", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult AracGuncelle(AracDetayViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var dbContext = new AracIhale())
+                {
+                    var aracToUpdate = dbContext.Araclars.Find(model.Araclar.AracID);
+
+                    // Mevcut araç nesnesini güncellenmiş değerlerle doldurun
+                    aracToUpdate.AracOzellik.AracMarkaID = model.Araclar.AracOzellik.AracMarkaID;
+                    aracToUpdate.AracOzellik.AracModelID = model.Araclar.AracOzellik.AracModelID;
+                    aracToUpdate.BireyselKurumsalID = model.Araclar.BireyselKurumsalID;
+                    aracToUpdate.StatuID = model.Araclar.StatuID;
+                    // Diğer alanları da benzer şekilde güncelleyin
+
+                    dbContext.Entry(aracToUpdate).State = EntityState.Modified;
+                    dbContext.SaveChanges();
+                }
+
+                return RedirectToAction("_AracListeleme");
+            }
+
+            return View("_AracGuncelleme", model);
+        }
     }
 }

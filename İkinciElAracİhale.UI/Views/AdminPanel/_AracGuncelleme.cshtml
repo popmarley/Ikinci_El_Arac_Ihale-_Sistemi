@@ -1,0 +1,34 @@
+﻿@model İkinciElAracİhale.UI.Models.VM.AracDetayViewModel
+@{
+    ViewBag.Title = "_AracGuncelleme";
+    Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+}
+
+@using (Html.BeginForm("AracGuncelle", "AdminPanel", FormMethod.Post, new { @class = "bg-white rounded p-3", id = "guncelleForm" }))
+{
+    @Html.HiddenFor(model => model.Araclar.AracID)
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="aracMarka" class="form-label">Araç Markası</label>
+            @Html.DropDownListFor(model => model.Araclar.AracOzellik.AracMarkaID, Model.AracMarkaList, "Seçiniz", new { @class = "form-control", id = "aracMarka" })
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="aracModel" class="form-label">Modeli</label>
+            @Html.DropDownListFor(model => model.Araclar.AracOzellik.AracModelID, Model.AracModelList, "Seçiniz", new { @class = "form-control", id = "aracModel" })
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="aracTuru" class="form-label">Bireysel/Kurumsal</label>
+            @Html.DropDownListFor(model => model.Araclar.BireyselKurumsalID, Model.BireyselKurumsalList, "Seçiniz", new { @class = "form-control", id = "aracTuru" })
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="aracDurumu" class="form-label">Statüsü</label>
+            @Html.DropDownListFor(model => model.Araclar.StatuID, Model.StatuList, "Seçiniz", new { @class = "form-control", id = "aracStatu" })
+        </div>
+    </div>
+
+    <div class="text-end">
+        <button type="submit" class="btn btn-primary">Güncelle</button>
+    </div>
+}
+
