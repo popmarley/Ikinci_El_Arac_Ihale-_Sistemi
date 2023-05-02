@@ -62,7 +62,7 @@
                 <td>@item.Tarih</td>
                 <td>
                     <button class="btn btn-success me-2">Güncelle</button>
-                    <button class="btn btn-danger">Sil</button>
+                    @Html.ActionLink("Sil", "AracSil", new { id = item.AracID }, new { @class = "btn btn-danger" })
                 </td>
                 <td></td>
             </tr>

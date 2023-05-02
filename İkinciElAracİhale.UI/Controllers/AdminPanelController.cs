@@ -75,11 +75,11 @@ namespace İkinciElAracİhale.UI.Controllers
         {
             if (!ModelState.IsValid)
             {
-                // Hata mesajı göster veya hatalı alanları düzeltmek için kullanıcıyı yönlendir
+                // Hata mesajı göster veya hatalı alanları düzeltmek için kullanıcıyı yönlendirdik
                 return View("_AracDetayBilgisi");
             }
             // Araç ve AracOzellik nesnelerini veritabanına kaydedin
-            model.Araclar.AracOzellik = model.AracOzellik; // AracOzellik nesnesini Araclar nesnesine bağlayın
+            model.Araclar.AracOzellik = model.AracOzellik; // AracOzellik nesnesini Araclar nesnesine bağladık
             aracRepo.SaveAracDetay(model.Araclar);
             return RedirectToAction("_AracDetayBilgisi");
         }
@@ -90,13 +90,34 @@ namespace İkinciElAracİhale.UI.Controllers
             var filtreliAraclar = aracRepo.GetFiltreliAraclar(model);
             model.AraclarList = filtreliAraclar;
 
-            // SelectList özelliklerini tekrar doldurun
+            // SelectList özelliklerini tekrar doldurduk
             model.AracMarkaList = aracRepo.GetSelectList(db.AracMarkas.ToList(), "MarkaID", "MarkaAdi");
             model.AracModelList = aracRepo.GetSelectList(db.AracModels.ToList(), "AracModelID", "ModelAdi");
             model.BireyselKurumsalList = aracRepo.GetSelectList(db.BireyselKurumsals.ToList(), "BireselKurumsalID", "Durum");
             model.StatuList = aracRepo.GetSelectList(db.Status.ToList(), "StatuID", "StatuAdi");
 
             return View("_AracListeleme", model);
+        }
+
+        [Authorize]
+        public ActionResult AracSil(int id)
+        {
+            var arac = db.Araclars.FirstOrDefault(a => a.AracID == id);
+
+            if (arac != null)
+            {
+                var aracOzellik = db.AracOzelliks.FirstOrDefault(o => o.AracOzellikID == arac.AracOzellikID);// İlk olarak bağlantılı AracOzellik nesnesini siliyoruz
+                if (aracOzellik != null)
+                {
+                    db.AracOzelliks.Remove(aracOzellik);
+                    db.SaveChanges();
+                }
+
+                db.Araclars.Remove(arac);  // Ardından aracı siliyoruz
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("_AracListeleme");
         }
     }
 }

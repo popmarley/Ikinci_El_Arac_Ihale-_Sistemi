@@ -50,12 +50,12 @@ namespace İkinciElAracİhale.UI.Models.DAL
         {
             using (var dbContext = new AracIhale())
             {
-                // AracOzellik öğesini veritabanına ekleyin
-                dbContext.AracOzelliks.Add(arac.AracOzellik);
+                
+                dbContext.AracOzelliks.Add(arac.AracOzellik);// AracOzellik öğesini veritabanına ekledik
                 dbContext.SaveChanges();
 
-                // Araclar nesnesine AracOzellik ID'sini atayın
-                arac.AracOzellikID = arac.AracOzellik.AracOzellikID;
+            
+                arac.AracOzellikID = arac.AracOzellik.AracOzellikID;    // Araclar nesnesine AracOzellik ID'sini atadık
 
                 // Araclar öğesini veritabanına ekleyin
                 dbContext.Araclars.Add(arac);
