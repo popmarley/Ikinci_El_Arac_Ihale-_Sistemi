@@ -42,7 +42,8 @@ namespace İkinciElAracİhale.UI.Models.DAL
                 YilList = GetSelectList(db.Yils.ToList(), "YilID", "Yil1"),
                 YakitTipiList = GetSelectList(db.YakitTipis.ToList(), "YakitTipiID", "YakitTipiAdi"),
                 VitesTipiList = GetSelectList(db.VitesTipis.ToList(), "VitesTipiID", "VitesTipiAdi"),
-                RenkList = GetSelectList(db.Renks.ToList(), "RenkID", "RenkAdi")
+                RenkList = GetSelectList(db.Renks.ToList(), "RenkID", "RenkAdi"),
+                KullaniciList = GetSelectList(db.Kullanicis.ToList(), "KullaniciID", "KullaniciAdi")
             };
         }
 

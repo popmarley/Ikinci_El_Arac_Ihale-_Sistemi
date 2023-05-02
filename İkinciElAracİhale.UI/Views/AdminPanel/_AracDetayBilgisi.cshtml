@@ -12,6 +12,10 @@
         <h4>Araç Detay Bilgileri</h4>
         <div class="row mb-3">
             <div class="col">
+                <label for="kullaniciadi" class="form-label">Kullanıcı</label>
+                @Html.DropDownListFor(model => model.Araclar.KullaniciID, Model.KullaniciList, "Seçiniz...", new { @class = "form-select", id = "kullaniciadi" })
+            </div>
+            <div class="col">
                 <label for="bireysel-kurumsal" class="form-label">Bireysel/Kurumsal</label>
                 @Html.DropDownListFor(model => model.Araclar.BireyselKurumsalID, Model.BireyselKurumsalList, "Seçiniz...", new { @class = "form-select", id = "bireysel-kurumsal" })
             </div>

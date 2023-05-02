@@ -13,6 +13,7 @@ namespace İkinciElAracİhale.UI.Models
         public Kullanici()
         {
             AracAliciBilgis = new HashSet<AracAliciBilgi>();
+            Araclars = new HashSet<Araclar>();
             BireyselAracTeklifs = new HashSet<BireyselAracTeklif>();
             KurumsalUyeOnays = new HashSet<KurumsalUyeOnay>();
             OdemeBilgisis = new HashSet<OdemeBilgisi>();
@@ -43,6 +44,9 @@ namespace İkinciElAracİhale.UI.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AracAliciBilgi> AracAliciBilgis { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Araclar> Araclars { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BireyselAracTeklif> BireyselAracTeklifs { get; set; }

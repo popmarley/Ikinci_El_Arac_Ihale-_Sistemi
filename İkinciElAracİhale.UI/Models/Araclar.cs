@@ -58,12 +58,16 @@ namespace İkinciElAracİhale.UI.Models
 
         public DateTime? Tarih { get; set; }
 
+        public int? KullaniciID { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AracAliciBilgi> AracAliciBilgis { get; set; }
 
         public virtual AracOzellik AracOzellik { get; set; }
 
         public virtual BireyselKurumsal BireyselKurumsal { get; set; }
+
+        public virtual Kullanici Kullanici { get; set; }
 
         public virtual Statu Statu { get; set; }
 

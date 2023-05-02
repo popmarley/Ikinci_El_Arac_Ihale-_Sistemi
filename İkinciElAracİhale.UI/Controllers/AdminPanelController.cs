@@ -80,6 +80,7 @@ namespace İkinciElAracİhale.UI.Controllers
             }
             // Araç ve AracOzellik nesnelerini veritabanına kaydedin
             model.Araclar.AracOzellik = model.AracOzellik; // AracOzellik nesnesini Araclar nesnesine bağladık
+            //model.Araclar.KullaniciID = (int)Session["KullaniciID"];
             aracRepo.SaveAracDetay(model.Araclar);
             return RedirectToAction("_AracDetayBilgisi");
         }

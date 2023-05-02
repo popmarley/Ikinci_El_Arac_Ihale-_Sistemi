@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Admin Panel";
     Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+    int index = 1;
 }
 
 @using (Html.BeginForm("FiltreliAracListele", "AdminPanel", FormMethod.Post, new { @class = "bg-white rounded p-3", id = "filtreForm" }))
@@ -38,7 +39,7 @@
     <h4 style="color:dimgrey;">Araç Listesi</h4>
     <thead>
         <tr>
-            <th>Araç ID</th>
+            <th>#</th>
             <th>Araç Markası</th>
             <th>Modeli</th>
             <th>Bireysel/Kurumsal</th>
@@ -53,12 +54,12 @@
         @foreach (var item in Model.AraclarList)
         {
             <tr>
-                <td>@item.AracID</td>
+                <td>@index</td>
                 <td>@item.AracOzellik.AracMarka.MarkaAdi</td>
                 <td>@item.AracOzellik.AracModel.ModelAdi</td>
                 <td>@item.BireyselKurumsal.Durum</td>
                 <td>@item.Statu.StatuAdi</td>
-                <td>@Session["Ad"]</td>
+                <td>@item.Kullanici.KullaniciAdi</td>
                 <td>@item.Tarih</td>
                 <td>
                     <button class="btn btn-success me-2">Güncelle</button>
@@ -66,6 +67,7 @@
                 </td>
                 <td></td>
             </tr>
+            index++;
         }
     </tbody>
 </table>
