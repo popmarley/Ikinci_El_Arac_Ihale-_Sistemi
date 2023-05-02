@@ -71,7 +71,7 @@ namespace İkinciElAracİhale.UI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AracDetayKaydet(Araclar arac, AracOzellik aracOzellik)
+        public ActionResult AracDetayKaydet(AracDetayViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -79,8 +79,8 @@ namespace İkinciElAracİhale.UI.Controllers
                 return View("_AracDetayBilgisi");
             }
             // Araç ve AracOzellik nesnelerini veritabanına kaydedin
-            arac.AracOzellik = aracOzellik; // AracOzellik nesnesini Araclar nesnesine bağlayın
-            aracRepo.SaveAracDetay(arac);
+            model.Araclar.AracOzellik = model.AracOzellik; // AracOzellik nesnesini Araclar nesnesine bağlayın
+            aracRepo.SaveAracDetay(model.Araclar);
             return RedirectToAction("_AracDetayBilgisi");
         }
 

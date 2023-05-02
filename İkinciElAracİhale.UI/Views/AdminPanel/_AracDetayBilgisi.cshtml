@@ -1,4 +1,4 @@
-﻿
+﻿@model İkinciElAracİhale.UI.Models.VM.AracDetayViewModel
 @{
     ViewBag.Title = "Admin Panel";
     Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
@@ -8,92 +8,88 @@
 {
     @Html.AntiForgeryToken()
     <div class="container">
-        <form>
-            <h4>Araç Detay Bilgileri</h4>
-            <div class="row mb-3">
-                <div class="col">
-                    <label for="bireysel-kurumsal" class="form-label">Bireysel/Kurumsal</label>
-                    @Html.DropDownList("BireyselKurumsalList", null, "Seçiniz...", new { @class = "form-select", id = "bireysel-kurumsal", name = "arac.BireselKurumsalID" })
-                </div>
-                <div class="col">
-                    <label for="sirket-adi" class="form-label">Kurumsal Şirket Adı</label>
-                    <input type="text" class="form-control" id="kurumsalsirke" name="arac.KurumsalSirketAdi">
-                </div>
-                <div class="col">
-                    <label for="status" class="form-label">Statü</label>
-                    @Html.DropDownList("StatuList", null, "Seçiniz...", new { @class = "form-select", id = "statu", name = "arac.StatuID" })
-                </div>
-                <div class="col">
-                    <label for="arac-fiyati" class="form-label">Araç Fiyatı</label>
-                    <input type="text" class="form-control" id="aracfiyati" name="arac.AracFiyati">
-                </div>
+
+        <h4>Araç Detay Bilgileri</h4>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="bireysel-kurumsal" class="form-label">Bireysel/Kurumsal</label>
+                @Html.DropDownListFor(model => model.Araclar.BireyselKurumsalID, Model.BireyselKurumsalList, "Seçiniz...", new { @class = "form-select", id = "bireysel-kurumsal" })
             </div>
-        </form>
+            <div class="col">
+                <label for="sirket-adi" class="form-label">Kurumsal Şirket Adı</label>
+                @Html.TextBoxFor(model => model.Araclar.KurumsalSirketAdi, new { @class = "form-control", id = "kurumsalsirke" })
+            </div>
+            <div class="col">
+                <label for="status" class="form-label">Statü</label>
+                @Html.DropDownListFor(model => model.Araclar.StatuID, Model.StatuList, "Seçiniz...", new { @class = "form-select", id = "statu" })
+            </div>
+            <div class="col">
+                <label for="arac-fiyati" class="form-label">Araç Fiyatı</label>
+                @Html.TextBoxFor(model => model.Araclar.AracFiyati, new { @class = "form-control", id = "aracfiyati" })
+            </div>
+        </div>
+
         <br />
-        <form>
-            <h4>Araç Detay Bilgileri</h4>
-            <div class="row mb-3">
-                <div class="col">
-                    <label for="arac-markasi" class="form-label">Araç Markası</label>
-                    @Html.DropDownList("AracMarkaList", null, "Seçiniz...", new { @class = "form-select", id = "aracmarkasi", name = "aracOzellik.AracMarkaID" })
-                </div>
-                <div class="col">
-                    <label for="arac-modeli" class="form-label">Araç Modeli</label>
-                    @Html.DropDownList("AracModelList", null, "Seçiniz...", new { @class = "form-select", id = "aracmodeli", name = "aracOzellik.AracModelID" })
-                </div>
-                <div class="col">
-                    <label for="govde-tipi" class="form-label">Gövde Tipi</label>
-                    @Html.DropDownList("GovdeTipiList", null, "Seçiniz...", new { @class = "form-select", id = "govdetipi", name = "aracOzellik.GovdeTipiID" })
-                </div>
-                <div class="col">
-                    <label for="yil" class="form-label">Yıl</label>
-                    @Html.DropDownList("YilList", null, "Seçiniz...", new { @class = "form-select", id = "yil", name = "aracOzellik.YilID" })
-                </div>
+
+        <h4>Araç Detay Bilgileri</h4>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="arac-markasi" class="form-label">Araç Markası</label>
+                @Html.DropDownListFor(model => model.AracOzellik.AracMarkaID, Model.AracMarkaList, "Seçiniz...", new { @class = "form-select", id = "aracmarkasi" })
             </div>
-            <div class="row mb-3">
-                <div class="col">
-                    <label for="yakit-tipi" class="form-label">Yakıt Tipi</label>
-                    @Html.DropDownList("YakitTipiList", null, "Seçiniz...", new { @class = "form-select", id = "yakittipi", name = "aracOzellik.YakitTipiID" })
-                </div>
-                <div class="col">
-                    <label for="vites-tipi" class="form-label">Vites Tipi</label>
-                    @Html.DropDownList("VitesTipiList", null, "Seçiniz...", new { @class = "form-select", id = "vitestipi", name = "aracOzellik.VitesTipiID" })
-                </div>
-                <div class="col">
-                    <label for="versiyon" class="form-label">Versiyon</label>
-                    <input type="text" class="form-control" id="versiyon" name="aracOzellik.Versiyon">
-                </div>
-                <div class="col">
-                    <label for="km-bilgisi" class="form-label">KM Bilgisi</label>
-                    <input type="text" class="form-control" id="kmbilgisi" name="arac.KMBilgisi">
-                </div>
+            <div class="col">
+                <label for="arac-modeli" class="form-label">Araç Modeli</label>
+                @Html.DropDownListFor(model => model.AracOzellik.AracModelID, Model.AracModelList, "Seçiniz...", new { @class = "form-select", id = "aracmodeli" })
             </div>
-            <div class="row mb-3">
-                <div class="col">
-                    <label for="renk" class="form-label">Renk</label>
-                    @Html.DropDownList("RenkList", null, "Seçiniz...", new { @class = "form-select", id = "renk", name = "aracOzellik.RenkID" })
-                </div>
-                <div class="col">
-                    <label for="donanim" class="form-label">Donanım</label>
-                    <input type="text" class="form-control" id="donanim" name="arac.Donanim">
-                </div>
+            <div class="col">
+                <label for="govde-tipi" class="form-label">Gövde Tipi</label>
+                @Html.DropDownListFor(model => model.AracOzellik.GovdeTipiID, Model.GovdeTipiList, "Seçiniz...", new { @class = "form-select", id = "govdetipi" })
             </div>
-        </form>
+            <div class="col">
+                <label for="yil" class="form-label">Yıl</label>
+                @Html.DropDownListFor(model => model.AracOzellik.YilID, Model.YilList, "Seçiniz...", new { @class = "form-select", id = "yil" })
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="yakit-tipi" class="form-label">Yakıt Tipi</label>
+                @Html.DropDownListFor(model => model.AracOzellik.YakitTipiID, Model.YakitTipiList, "Seçiniz...", new { @class = "form-select", id = "yakit-tipi" })
+            </div>
+            <div class="col">
+                <label for="vites-tipi" class="form-label">Vites Tipi</label>
+                @Html.DropDownListFor(model => model.AracOzellik.VitesTipiID, Model.VitesTipiList, "Seçiniz...", new { @class = "form-select", id = "vites-tipi" })
+            </div>
+            <div class="col">
+                <label for="versiyon" class="form-label">Versiyon</label>
+                @Html.TextBoxFor(model => model.AracOzellik.Versiyon, new { @class = "form-control", id = "versiyon" })
+            </div>
+            <div class="col">
+                <label for="km-bilgisi" class="form-label">KM Bilgisi</label>
+                @Html.TextBoxFor(model => model.Araclar.KMBilgisi, new { @class = "form-control", id = "kmbilgisi" })
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="renk" class="form-label">Renk</label>
+                @Html.DropDownListFor(model => model.AracOzellik.RenkID, Model.RenkList, "Seçiniz...", new { @class = "form-select", id = "renk" })
+            </div>
+            <div class="col">
+                <label for="donanim" class="form-label">Donanım</label>
+                @Html.TextBoxFor(model => model.Araclar.Donanim, new { @class = "form-control", id = "donanim" })
+            </div>
+        </div>
         <br />
-        <form>
-            <h4>Foto Ekle</h4>
+        @*<h4>Foto Ekle</h4>
             <div class="row mb-3">
                 <div class="col">
                     <label for="gorseller" class="form-label">Görseller</label>
                     <input type="file" class="form-control" id="gorseller" name="Gorsel1" multiple>
                 </div>
             </div>
-
-        </form>
-        <div class="mb-3">
-            <label for="aciklama" class="form-label">Açıklama</label>
-            <textarea class="form-control" id="aciklama" rows="3"></textarea>
-        </div>
+            <div class="mb-3">
+                <label for="aciklama" class="form-label">Açıklama</label>
+                <textarea class="form-control" id="aciklama" rows="3"></textarea>
+            </div>*@
         <br />
         <div class="d-flex justify-content-center">
             <button type="button" class="btn btn-outline-primary me-2">Hemen Al Satış</button>
@@ -114,4 +110,5 @@
         </div>
 
     </div>
+
 }

@@ -48,8 +48,19 @@ namespace İkinciElAracİhale.UI.Models.DAL
 
         public void SaveAracDetay(Araclar arac)
         {
-            db.Araclars.Add(arac);
-            db.SaveChanges();
+            using (var dbContext = new AracIhale())
+            {
+                // AracOzellik öğesini veritabanına ekleyin
+                dbContext.AracOzelliks.Add(arac.AracOzellik);
+                dbContext.SaveChanges();
+
+                // Araclar nesnesine AracOzellik ID'sini atayın
+                arac.AracOzellikID = arac.AracOzellik.AracOzellikID;
+
+                // Araclar öğesini veritabanına ekleyin
+                dbContext.Araclars.Add(arac);
+                dbContext.SaveChanges();
+            }
         }
 
         public List<Araclar> GetFiltreliAraclar(AracListelemeViewModel model)
