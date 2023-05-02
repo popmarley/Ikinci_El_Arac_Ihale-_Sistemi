@@ -60,6 +60,9 @@ namespace İkinciElAracİhale.UI.Models
 
         public int? KullaniciID { get; set; }
 
+        [StringLength(250)]
+        public string Aciklama { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AracAliciBilgi> AracAliciBilgis { get; set; }
 

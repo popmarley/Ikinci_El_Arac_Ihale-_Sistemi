@@ -27,10 +27,7 @@
                 <label for="status" class="form-label">Statü</label>
                 @Html.DropDownListFor(model => model.Araclar.StatuID, Model.StatuList, "Seçiniz...", new { @class = "form-select", id = "statu" })
             </div>
-            <div class="col">
-                <label for="arac-fiyati" class="form-label">Araç Fiyatı</label>
-                @Html.TextBoxFor(model => model.Araclar.AracFiyati, new { @class = "form-control", id = "aracfiyati" })
-            </div>
+            
         </div>
 
         <br />
@@ -64,8 +61,8 @@
                 @Html.DropDownListFor(model => model.AracOzellik.VitesTipiID, Model.VitesTipiList, "Seçiniz...", new { @class = "form-select", id = "vites-tipi" })
             </div>
             <div class="col">
-                <label for="versiyon" class="form-label">Versiyon</label>
-                @Html.TextBoxFor(model => model.AracOzellik.Versiyon, new { @class = "form-control", id = "versiyon" })
+                <label for="arac-fiyati" class="form-label">Araç Fiyatı</label>
+                @Html.TextBoxFor(model => model.Araclar.AracFiyati, new { @class = "form-control", id = "aracfiyati" })
             </div>
             <div class="col">
                 <label for="km-bilgisi" class="form-label">KM Bilgisi</label>
@@ -73,9 +70,13 @@
             </div>
         </div>
         <div class="row mb-3">
-            <div class="col">
+            <div class="col-md-3">
                 <label for="renk" class="form-label">Renk</label>
                 @Html.DropDownListFor(model => model.AracOzellik.RenkID, Model.RenkList, "Seçiniz...", new { @class = "form-select", id = "renk" })
+            </div>
+            <div class="col-md-3">
+                <label for="versiyon" class="form-label">Versiyon</label>
+                @Html.TextBoxFor(model => model.AracOzellik.Versiyon, new { @class = "form-control", id = "versiyon" })
             </div>
             <div class="col">
                 <label for="donanim" class="form-label">Donanım</label>
@@ -83,7 +84,7 @@
             </div>
         </div>
         <br />
-        @*<h4>Foto Ekle</h4>
+        <h4>Foto Ekle</h4>
             <div class="row mb-3">
                 <div class="col">
                     <label for="gorseller" class="form-label">Görseller</label>
@@ -91,9 +92,9 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label for="aciklama" class="form-label">Açıklama</label>
-                <textarea class="form-control" id="aciklama" rows="3"></textarea>
-            </div>*@
+                <label for="aciklama" class="form-label">Açıklama <span id="charCount"></span></label>
+                @Html.TextAreaFor(model => model.Araclar.Aciklama, new { @class = "form-control", id = "aciklama", rows = "3", maxlength = "250" })
+            </div>
         <br />
         <div class="d-flex justify-content-center">
             <button type="button" class="btn btn-outline-primary me-2">Hemen Al Satış</button>
@@ -116,3 +117,12 @@
     </div>
 
 }
+
+<script>
+    var textarea = document.getElementById("aciklama");
+    var charCount = document.getElementById("charCount");
+
+    textarea.addEventListener("input", function () {
+        charCount.innerHTML = "(" + textarea.value.length + "/250)";
+    });
+</script>

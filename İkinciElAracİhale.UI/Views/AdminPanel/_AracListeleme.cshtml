@@ -60,7 +60,7 @@
                 <td>@item.BireyselKurumsal.Durum</td>
                 <td>@item.Statu.StatuAdi</td>
                 <td>@item.Kullanici.KullaniciAdi</td>
-                <td>@item.Tarih</td>
+                <td>@(item.Tarih != null ? item.Tarih.Value.ToString("dd/MM/yyyy (HH:mm)") : "")</td>
                 <td>
                     <a href="@Url.Action("AracGuncelle", "AdminPanel", new { id = item.AracID })" class="btn btn-success me-2">Güncelle</a>
                     <button type="button" class="btn btn-danger" onclick="confirmDelete('@item.AracID')">Sil</button>
