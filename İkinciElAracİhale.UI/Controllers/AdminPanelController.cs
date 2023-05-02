@@ -163,13 +163,11 @@ namespace İkinciElAracİhale.UI.Controllers
                 using (var dbContext = new AracIhale())
                 {
                     var aracToUpdate = dbContext.Araclars.Find(model.Araclar.AracID);
-
-                    // Mevcut araç nesnesini güncellenmiş değerlerle doldurun
+     
                     aracToUpdate.AracOzellik.AracMarkaID = model.Araclar.AracOzellik.AracMarkaID;
                     aracToUpdate.AracOzellik.AracModelID = model.Araclar.AracOzellik.AracModelID;
                     aracToUpdate.BireyselKurumsalID = model.Araclar.BireyselKurumsalID;
                     aracToUpdate.StatuID = model.Araclar.StatuID;
-                    // Diğer alanları da benzer şekilde güncelleyin
 
                     dbContext.Entry(aracToUpdate).State = EntityState.Modified;
                     dbContext.SaveChanges();

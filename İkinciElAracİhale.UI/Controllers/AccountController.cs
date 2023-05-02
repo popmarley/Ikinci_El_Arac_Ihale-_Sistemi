@@ -30,7 +30,7 @@ namespace İkinciElAracİhale.UI.Controllers
                     {
                         HttpCookie cookie = new HttpCookie("Login");
                         cookie.Values.Add("username", username);
-                        cookie.Values.Add("password", pass);
+                       // cookie.Values.Add("password", pass);  // eger şifreyide kaydetmek istersek
                         cookie.Expires = DateTime.Now.AddDays(30); // Çerez 30 gün boyunca saklanacak
                         Response.Cookies.Add(cookie);
                     }
@@ -80,11 +80,11 @@ namespace İkinciElAracİhale.UI.Controllers
             base.OnActionExecuting(filterContext);
 
             HttpCookie cookie = Request.Cookies["Login"];
-            if (cookie != null && cookie.Values["username"] != null && cookie.Values["password"] != null)
+            if (cookie != null && cookie.Values["username"] /*!= null && cookie.Values["password"]*/ != null)
             {
                 ViewBag.Remember = true;
                 ViewBag.Username = cookie.Values["username"];
-                ViewBag.Password = cookie.Values["password"];
+                //ViewBag.Password = cookie.Values["password"];
             }
         }
 
