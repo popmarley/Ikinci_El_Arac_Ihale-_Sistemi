@@ -56,6 +56,7 @@ namespace İkinciElAracİhale.UI.Models.DAL
 
             
                 arac.AracOzellikID = arac.AracOzellik.AracOzellikID;    // Araclar nesnesine AracOzellik ID'sini atadık
+                arac.Tarih = DateTime.Now;
 
                 // Araclar öğesini veritabanına ekleyin
                 dbContext.Araclars.Add(arac);

@@ -119,5 +119,7 @@ namespace İkinciElAracİhale.UI.Controllers
 
             return RedirectToAction("_AracListeleme");
         }
+
+
     }
 }
