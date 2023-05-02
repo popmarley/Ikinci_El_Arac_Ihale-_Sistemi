@@ -63,14 +63,39 @@
                 <td>@item.Tarih</td>
                 <td>
                     <button class="btn btn-success me-2">Güncelle</button>
-                    @Html.ActionLink("Sil", "AracSil", new { id = item.AracID }, new { @class = "btn btn-danger" })
+                    <button type="button" class="btn btn-danger" onclick="confirmDelete('@item.AracID')">Sil</button>
                 </td>
                 <td></td>
             </tr>
             index++;
         }
     </tbody>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Uyarı</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bu aracı silmek istediğinizden emin misiniz?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hayır</button>
+                    <form id="deleteModalForm">
+                        <button type="submit" class="btn btn-primary">Evet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </table>
+
+
+
 <br />
 <div class="row mt-12">
     <div class="col-md-12 d-flex justify-content-end">
@@ -101,4 +126,13 @@
         // Form submit işlemini gerçekleştir
         form.submit();
     }
+function confirmDelete(id) {
+    var modal = new bootstrap.Modal(document.getElementById('deleteModal'), {});
+    modal.show();
+    document.getElementById('deleteModalForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        modal.hide();
+        window.location.href = '@Url.Action("AracSil", "AdminPanel")?id=' + id;
+    });
+}
 </script>

@@ -37,7 +37,7 @@
                             @Html.AntiForgeryToken()
                             @Html.Hidden("KullaniciID", kullanici.KullaniciID)
                             <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("KullaniciDuzenle", "KullaniciTanimlama", new { KullaniciID = kullanici.KullaniciID })'">Düzenle</button>
-                            <button type="submit" class="btn btn-danger">Sil</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal_@(@kullanici.KullaniciID)">Sil</button>
                         }
                     </td>
                 </tr>
@@ -110,3 +110,55 @@
         </div>
     </div>
 }
+
+@foreach (var kullanici in Model)
+{
+    <div class="modal fade" id="confirmDeleteModal_@(@kullanici.KullaniciID)" tabindex="-1" aria-labelledby="confirmDeleteModalLabel_@(@kullanici.KullaniciID)" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel_@(@kullanici.KullaniciID)">Kullanıcıyı Sil</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <p>@kullanici.Ad adlı kullanıcıyı silmek istediğinize emin misiniz?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                    <form action="@Url.Action("DeleteKullanici", "KullaniciTanimlama")" method="post" style="display:inline;">
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("KullaniciID", kullanici.KullaniciID)
+                        <button type="submit" class="btn btn-danger">Kullanıcıyı Sil</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    function confirmDelete(kullaniciID) {
+        if (confirm("Kullanıcıyı silmek istediğinize emin misiniz?")) {
+            var form = document.createElement("form");
+            form.setAttribute("method", "post");
+            form.setAttribute("action", "@Url.Action("DeleteKullanici", "KullaniciTanimlama")");
+
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", "KullaniciID");
+            hiddenField.setAttribute("value", kullaniciID);
+            form.appendChild(hiddenField);
+
+            var token = '@Html.AntiForgeryToken()';
+            var tokenField = document.createElement("input");
+            tokenField.setAttribute("type", "hidden");
+            tokenField.setAttribute("name", "__RequestVerificationToken");
+            tokenField.setAttribute("value", token);
+            form.appendChild(tokenField);
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    }
+</script>
