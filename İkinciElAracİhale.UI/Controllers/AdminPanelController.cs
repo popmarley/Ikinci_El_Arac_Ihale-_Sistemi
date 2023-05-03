@@ -194,29 +194,29 @@ namespace İkinciElAracİhale.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                // İlan bilgilerini kaydetmek için işlemleri burada gerçekleştirin.
+                // İlan bilgilerini kaydetmek için işlemleri burada gerçekleştirdik
                 if (TempData["AracDetayViewModel"] is AracDetayViewModel aracDetay)
                 {
-                    // TempData'dan alınan bilgileri Araclar ve AracOzellik nesnelerine aktarın.
+                    // TempData'dan alınan bilgileri Araclar ve AracOzellik nesnelerine aktardık
                     model.Araclar = aracDetay.Araclar;
                     model.AracOzellik = aracDetay.AracOzellik;
 
-                    // Araclar ve AracOzellik nesnelerini veritabanına kaydedin.
+                    // Araclar ve AracOzellik nesnelerini veritabanına kaydettik
                     db.Araclars.Add(model.Araclar);
                     db.AracOzelliks.Add(model.AracOzellik);
 
-                    // İlanBilgi nesnesi oluşturun ve veritabanına ekleyin.
+                    // İlanBilgi nesnesi oluşturun ve veritabanına ekledik
                     IlanBilgi ilanBilgi = new IlanBilgi
                     {
                         IlanBasligi = model.IlanBasligi,
                         IlanAciklamasi = model.IlanAciklamasi,
-                        AracID = model.Araclar.AracID, // AracID özelliği burada kullanılıyor
-                                                       // Gerekirse diğer alanları da buraya ekleyin.
+                        AracID = model.Araclar.AracID, // AracID özelliğini burada kullanıyoruz
+                                                       
                     };
                     db.IlanBilgis.Add(ilanBilgi);
                     model.Araclar.AracOzellikID = model.AracOzellik.AracOzellikID;
                     model.Araclar.Tarih = DateTime.Now;
-                    // Değişiklikleri veritabanına kaydedin.
+                    // Değişiklikleri veritabanına kaydettik
                     db.SaveChanges();
                 }
 

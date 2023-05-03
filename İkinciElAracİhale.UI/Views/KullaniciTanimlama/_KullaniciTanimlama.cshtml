@@ -47,9 +47,43 @@
     </table>
     <br />
     <div class="d-grid gap-2 mt-4">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kullaniciEkleModal">Yeni Kullanıcı Ekle</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kullaniciTurModal">Yeni Kullanıcı Ekle</button>
+
+        <div class="modal fade" id="kullaniciTurModal" tabindex="-1" aria-labelledby="kullaniciTurModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-dark" id="kullaniciTurModalLabel">Kullanıcı Türünü Seçiniz</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="kullaniciTur" id="bireysel" value="bireysel" checked>
+                            <label class="form-check-label" for="bireysel">
+                                Bireysel
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="kullaniciTur" id="kurumsal" value="kurumsal">
+                            <label class="form-check-label" for="kurumsal">
+                                Kurumsal
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                        <button type="button" class="btn btn-primary" onclick="openKullaniciEkleModal()">Devam Et</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
+
+
+
 
 @using (Html.BeginForm("KullaniciEkle", "KullaniciTanimlama", FormMethod.Post))
 {
@@ -161,4 +195,16 @@
             form.submit();
         }
     }
+
+    function openKullaniciEkleModal() {
+        let kullaniciTur = document.querySelector('input[name="kullaniciTur"]:checked').value;
+
+        if (kullaniciTur === 'bireysel') {
+            $('#kullaniciTurModal').modal('hide');
+            $('#kullaniciEkleModal').modal('show');
+        } else {
+            alert('Kurumsal kullanıcılar için henüz bir form bulunmamaktadır.');
+        }
+    }
+
 </script>
