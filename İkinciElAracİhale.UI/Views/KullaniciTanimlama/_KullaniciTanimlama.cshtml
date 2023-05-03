@@ -88,11 +88,11 @@
 @using (Html.BeginForm("KullaniciEkle", "KullaniciTanimlama", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    <div class="modal fade" id="kullaniciEkleModal" tabindex="-1" aria-labelledby="kullaniciEkleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="kullaniciEkleModal" tabindex="-1" aria-labelledby="kullaniciEkleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" style="color:black;" id="kullaniciEkleModalLabel">Kullanıcı Tanımlama</h5>
+                    <h5 class="modal-title" style="color:black;" id="kullaniciEkleModalLabel">Bireysel Kullanıcı Tanımlama</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
                 </div>
                 <div class="modal-body">
@@ -144,6 +144,96 @@
         </div>
     </div>
 }
+
+@using (Html.BeginForm("KurumsalKullaniciEkle", "KullaniciTanimlama", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal fade" id="kurumsalKullaniciEkleModal" tabindex="-1" aria-labelledby="kurumsalKullaniciEkleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="color:black;" id="kurumsalKullaniciEkleModalLabel">Kurumsal Kullanıcı Tanımlama</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="kullaniciAdi" class="form-label">Kullanıcı Adı</label>
+                            <input type="text" class="form-control" id="kullaniciAdi" name="KullaniciAdi" placeholder="Kullanıcı Adı">
+                        </div>
+                        <div class="mb-3">
+                            <label for="adSoyad" class="form-label">Ad Soyad</label>
+                            <input type="text" class="form-control" id="adSoyad" name="Ad" placeholder="Ad Soyad">
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefon" class="form-label">Telefon Bilgisi</label>
+                            <input type="text" class="form-control" id="telefon" name="Telefon" placeholder="Telefon Numarası" pattern="^\+?\d{10,15}$" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mail" class="form-label">Mail Bilgisi</label>
+                            <input type="email" class="form-control" id="mail" name="Mail" placeholder="E-posta Adresi">
+                        </div>
+                        <div class="mb-3">
+                            <label for="aktifpasif" class="form-label">Aktiflik Durumu</label>
+                            <select class="form-select" name="AktifPasifID" id="aktifpasif">
+                                <option value="" disabled selected>Aktiflik Durumu</option>
+                                <option value="1">Aktif</option>
+                                <option value="2">Pasif</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sifre" class="form-label">Şifre</label>
+                            <input type="password" class="form-control" id="sifre" name="Sifre" placeholder="Şifre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="rol" class="form-label">Rolü</label>
+                            <select class="form-select" name="RolID" id="rol">
+                                <option value="" disabled selected>Rol Seçiniz</option>
+                                <option value="1">Admin</option>
+                                <option value="2">Kullanıcı</option>
+                                <option value="3">PlusAdmin</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="il" class="form-label">İl</label>
+                            <input type="text" class="form-control" id="il" name="Il" placeholder="İl">
+                        </div>
+                        <div class="mb-3">
+                            <label for="ilce" class="form-label">İlçe</label>
+                            <input type="text" class="form-control" id="ilce" name="Ilce" placeholder="İlçe">
+                        </div>
+                        <div class="mb-3">
+                            <label for="adres" class="form-label">Adres</label>
+                            <textarea class="form-control" id="adres" name="Adres" rows="3" placeholder="Adres"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="firmaAdi" class="form-label">Firma Adı</label>
+                            <input type="text" class="form-control" id="firmaAdi" name="FirmaAdi" placeholder="Firma Adı">
+                        </div>
+                        <div class="mb-3">
+                            <label for="firmaBilgisi" class="form-label">Firma Bilgisi</label>
+                            <select class="form-select" name="FirmaBilgisi" id="firmaBilgisi">
+                                <option value="" disabled selected>Firma Bilgisi</option>
+                                <option value="Sahis">Şahıs</option>
+                                <option value="Anonim">Anonim</option>
+                                <option value="Limited">Limited</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                    <button type="submit" class="btn btn-primary">Kullanıcıyı Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
 
 @foreach (var kullanici in Model)
 {
@@ -197,14 +287,27 @@
     }
 
     function openKullaniciEkleModal() {
-        let kullaniciTur = document.querySelector('input[name="kullaniciTur"]:checked').value;
+        let kullaniciTuruRadioButtons = document.getElementsByName('kullaniciTur');
+        let bireyselForm = document.getElementById('kullaniciEkleModal');
+        let kurumsalForm = document.getElementById('kurumsalKullaniciEkleModal');
+        let kullaniciTurModal = new bootstrap.Modal(document.getElementById('kullaniciTurModal'));
 
-        if (kullaniciTur === 'bireysel') {
-            $('#kullaniciTurModal').modal('hide');
-            $('#kullaniciEkleModal').modal('show');
-        } else {
-            alert('Kurumsal kullanıcılar için henüz bir form bulunmamaktadır.');
+        for (let radioButton of kullaniciTuruRadioButtons) {
+            if (radioButton.checked) {
+                kullaniciTurModal.hide();
+                kullaniciTurModal._element.addEventListener('hidden.bs.modal', function () {
+                    if (radioButton.value === 'bireysel') {
+                        let bireyselModal = new bootstrap.Modal(bireyselForm);
+                        bireyselModal.show();
+                    } else if (radioButton.value === 'kurumsal') {
+                        let kurumsalModal = new bootstrap.Modal(kurumsalForm);
+                        kurumsalModal.show();
+                    }
+                }, { once: true });
+                break;
+            }
         }
     }
 
+    
 </script>

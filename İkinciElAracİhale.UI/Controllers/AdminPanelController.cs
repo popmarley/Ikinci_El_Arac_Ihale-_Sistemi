@@ -176,6 +176,7 @@ namespace İkinciElAracİhale.UI.Controllers
                     aracToUpdate.AracOzellik.AracModelID = model.Araclar.AracOzellik.AracModelID;
                     aracToUpdate.BireyselKurumsalID = model.Araclar.BireyselKurumsalID;
                     aracToUpdate.StatuID = model.Araclar.StatuID;
+                    aracToUpdate.Plaka = model.Araclar.Plaka;
                     aracToUpdate.Tarih= DateTime.Now;
                     dbContext.Entry(aracToUpdate).State = EntityState.Modified;
                     

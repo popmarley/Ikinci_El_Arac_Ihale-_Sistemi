@@ -18,6 +18,10 @@
             @Html.DropDownListFor(model => model.Araclar.AracOzellik.AracModelID, Model.AracModelList, "Seçiniz", new { @class = "form-control", id = "aracModel" })
         </div>
         <div class="col-md-6 mb-3">
+            <label for="plaka" class="form-label">Plakası</label>
+            @Html.TextBoxFor(model => model.Araclar.Plaka, new { @class = "form-control", id = "plaka" })
+        </div>
+        <div class="col-md-6 mb-3">
             <label for="aracTuru" class="form-label">Bireysel/Kurumsal</label>
             @Html.DropDownListFor(model => model.Araclar.BireyselKurumsalID, Model.BireyselKurumsalList, "Seçiniz", new { @class = "form-control", id = "aracTuru" })
         </div>
