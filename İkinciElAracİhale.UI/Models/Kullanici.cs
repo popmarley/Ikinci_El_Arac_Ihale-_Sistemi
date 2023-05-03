@@ -42,6 +42,20 @@ namespace İkinciElAracİhale.UI.Models
 
         public string Fotograf { get; set; }
 
+        [StringLength(50)]
+        public string KurumsalIl { get; set; }
+
+        [StringLength(50)]
+        public string KurumsalIlce { get; set; }
+
+        [StringLength(250)]
+        public string KurumsalAdres { get; set; }
+
+        [StringLength(50)]
+        public string FirmaAdi { get; set; }
+
+        public int? FirmaBilgisiID { get; set; }
+
         public virtual AktifPasif AktifPasif { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -52,6 +66,8 @@ namespace İkinciElAracİhale.UI.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BireyselAracTeklif> BireyselAracTeklifs { get; set; }
+
+        public virtual FirmaBilgisi FirmaBilgisi { get; set; }
 
         public virtual Rol Rol { get; set; }
 

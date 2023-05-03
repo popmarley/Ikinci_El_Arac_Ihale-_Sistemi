@@ -145,7 +145,7 @@
     </div>
 }
 
-@using (Html.BeginForm("KurumsalKullaniciEkle", "KullaniciTanimlama", FormMethod.Post))
+@using (Html.BeginForm("KullaniciEkle", "KullaniciTanimlama", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div class="modal fade" id="kurumsalKullaniciEkleModal" tabindex="-1" aria-labelledby="kurumsalKullaniciEkleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
@@ -196,15 +196,15 @@
                         </div>
                         <div class="mb-3">
                             <label for="il" class="form-label">İl</label>
-                            <input type="text" class="form-control" id="il" name="Il" placeholder="İl">
+                            <input type="text" class="form-control" id="il" name="KurumsalIl" placeholder="İl">
                         </div>
                         <div class="mb-3">
                             <label for="ilce" class="form-label">İlçe</label>
-                            <input type="text" class="form-control" id="ilce" name="Ilce" placeholder="İlçe">
+                            <input type="text" class="form-control" id="ilce" name="KurumsalIlce" placeholder="İlçe">
                         </div>
                         <div class="mb-3">
                             <label for="adres" class="form-label">Adres</label>
-                            <textarea class="form-control" id="adres" name="Adres" rows="3" placeholder="Adres"></textarea>
+                            <textarea class="form-control" id="adres" name="KurumsalAdres" rows="3" placeholder="Adres"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="firmaAdi" class="form-label">Firma Adı</label>
@@ -212,11 +212,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="firmaBilgisi" class="form-label">Firma Bilgisi</label>
-                            <select class="form-select" name="FirmaBilgisi" id="firmaBilgisi">
+                            <select class="form-select" name="FirmaBilgisiID" id="firmaBilgisi">
                                 <option value="" disabled selected>Firma Bilgisi</option>
-                                <option value="Sahis">Şahıs</option>
-                                <option value="Anonim">Anonim</option>
-                                <option value="Limited">Limited</option>
+                                <option value="1">Şahıs</option>
+                                <option value="2">Anonim</option>
+                                <option value="3">Limited</option>
                             </select>
                         </div>
                     </form>
