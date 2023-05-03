@@ -126,6 +126,13 @@ namespace İkinciElAracİhale.UI.Controllers
                     db.SaveChanges();
                 }
 
+                var ilanBilgileri = db.IlanBilgis.Where(i => i.AracID == arac.AracID).ToList(); //Daha sonra bağlantılı IlanBilgisi nesnesini siliyoruz
+                foreach (var ilanBilgi in ilanBilgileri)
+                {
+                    db.IlanBilgis.Remove(ilanBilgi);
+                }
+                db.SaveChanges();
+
                 db.Araclars.Remove(arac);  // Ardından aracı siliyoruz
                 db.SaveChanges();
             }
@@ -133,8 +140,6 @@ namespace İkinciElAracİhale.UI.Controllers
             return RedirectToAction("_AracListeleme");
         }
 
-        /////
-        ///
         [HttpGet]
         public ActionResult AracGuncelle(int id)
         {
