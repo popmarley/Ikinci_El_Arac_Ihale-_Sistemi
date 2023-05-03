@@ -21,5 +21,9 @@ namespace İkinciElAracİhale.UI.Models.VM
         public IEnumerable<SelectListItem> VitesTipiList { get; set; }
         public IEnumerable<SelectListItem> RenkList { get; set; }
         public IEnumerable<SelectListItem> KullaniciList { get; set; }
+
+
+        public string IlanBasligi { get; set; }
+        public string IlanAciklamasi { get; set; }
     }
 }

@@ -27,7 +27,7 @@
                 <label for="status" class="form-label">Statü</label>
                 @Html.DropDownListFor(model => model.Araclar.StatuID, Model.StatuList, "Seçiniz...", new { @class = "form-select", id = "statu" })
             </div>
-            
+
         </div>
 
         <br />
@@ -85,16 +85,16 @@
         </div>
         <br />
         <h4>Foto Ekle</h4>
-            <div class="row mb-3">
-                <div class="col">
-                    <label for="gorseller" class="form-label">Görseller</label>
-                    <input type="file" class="form-control" id="gorseller" name="Gorsel1" multiple>
-                </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="gorseller" class="form-label">Görseller</label>
+                <input type="file" class="form-control" id="gorseller" name="Gorsel1" multiple>
             </div>
-            <div class="mb-3">
-                <label for="aciklama" class="form-label">Açıklama <span id="charCount"></span></label>
-                @Html.TextAreaFor(model => model.Araclar.Aciklama, new { @class = "form-control", id = "aciklama", rows = "3", maxlength = "250" })
-            </div>
+        </div>
+        <div class="mb-3">
+            <label for="aciklama" class="form-label">Açıklama <span id="charCount"></span></label>
+            @Html.TextAreaFor(model => model.Araclar.Aciklama, new { @class = "form-control", id = "aciklama", rows = "3", maxlength = "250" })
+        </div>
         <br />
         <div class="d-flex justify-content-center">
             <button type="button" class="btn btn-outline-primary me-2">Hemen Al Satış</button>
@@ -111,7 +111,7 @@
             <a href="@Url.Action("_İlanBilgileri")" type="button" class="btn btn-outline-info me-2">
                 İlan Bilgileri
             </a>
-            <button type="submit" class="btn btn-outline-primary">Kaydet</button>
+            <button type="submit" class="btn btn-outline-primary">Diğer Sayfa</button>
         </div>
 
     </div>

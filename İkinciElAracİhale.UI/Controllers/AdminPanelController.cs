@@ -57,6 +57,12 @@ namespace İkinciElAracİhale.UI.Controllers
         [Authorize]
         public ActionResult _İlanBilgileri()
         {
+            if (TempData["AracDetay"] != null)
+            {
+                AracDetayViewModel model = TempData["AracDetay"] as AracDetayViewModel;
+                return RedirectToAction("IlanBilgileriKaydet", model);
+            }
+
             return View();
         }
 
@@ -82,16 +88,13 @@ namespace İkinciElAracİhale.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AracDetayKaydet(AracDetayViewModel model)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                // Hata mesajı göster veya hatalı alanları düzeltmek için kullanıcıyı yönlendirdik
-                return View("_AracDetayBilgisi");
+                TempData["AracDetayViewModel"] = model;
+                return RedirectToAction("_İlanBilgileri");
             }
-            // Araç ve AracOzellik nesnelerini veritabanına kaydedin
-            model.Araclar.AracOzellik = model.AracOzellik; // AracOzellik nesnesini Araclar nesnesine bağladık
-            //model.Araclar.KullaniciID = (int)Session["KullaniciID"];
-            aracRepo.SaveAracDetay(model.Araclar);
-            return RedirectToAction("_AracDetayBilgisi");
+
+            return View(model);
         }
 
         [HttpPost]
@@ -179,5 +182,47 @@ namespace İkinciElAracİhale.UI.Controllers
 
             return View("_AracGuncelleme", model);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult IlanBilgileriKaydet(AracDetayViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // İlan bilgilerini kaydetmek için işlemleri burada gerçekleştirin.
+                if (TempData["AracDetayViewModel"] is AracDetayViewModel aracDetay)
+                {
+                    // TempData'dan alınan bilgileri Araclar ve AracOzellik nesnelerine aktarın.
+                    model.Araclar = aracDetay.Araclar;
+                    model.AracOzellik = aracDetay.AracOzellik;
+
+                    // Araclar ve AracOzellik nesnelerini veritabanına kaydedin.
+                    db.Araclars.Add(model.Araclar);
+                    db.AracOzelliks.Add(model.AracOzellik);
+
+                    // İlanBilgi nesnesi oluşturun ve veritabanına ekleyin.
+                    IlanBilgi ilanBilgi = new IlanBilgi
+                    {
+                        IlanBasligi = model.IlanBasligi,
+                        IlanAciklamasi = model.IlanAciklamasi,
+                        AracID = model.Araclar.AracID, // AracID özelliği burada kullanılıyor
+                                                       // Gerekirse diğer alanları da buraya ekleyin.
+                    };
+                    db.IlanBilgis.Add(ilanBilgi);
+                    model.Araclar.AracOzellikID = model.AracOzellik.AracOzellikID;
+                    model.Araclar.Tarih = DateTime.Now;
+                    // Değişiklikleri veritabanına kaydedin.
+                    db.SaveChanges();
+                }
+
+                // Önceki sayfaya geri dönmek için:
+                return RedirectToAction("_AracDetayBilgisi");
+            }
+
+            // Model doğrulama başarısızsa, kullanıcıyı aynı sayfada tutun ve hataları gösterin.
+            return View("_İlanBilgileri", model);
+        }
     }
+
+
 }

@@ -1,24 +1,26 @@
-﻿
+﻿@model İkinciElAracİhale.UI.Models.VM.AracDetayViewModel
 @{
     ViewBag.Title = "_İlanBilgileri";
     Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
 }
 
-<div class="container mt-4">
-    <form>
+@using (Html.BeginForm("IlanBilgileriKaydet", "AdminPanel", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="container mt-4">
         <h2>İlan Bilgileri</h2>
         <div class="mb-3">
             <label for="ilan-basligi" class="form-label">İlan Başlığı</label>
-            <input type="text" class="form-control" id="ilan-basligi" placeholder="İlan Başlığı">
+            @Html.TextBoxFor(model => model.IlanBasligi, new { @class = "form-control", id = "ilan-basligi", placeholder = "İlan Başlığı" })
         </div>
         <div class="mb-3">
             <label for="ilan-aciklamasi" class="form-label">İlan Açıklaması</label>
-            <textarea class="form-control" id="ilan-aciklamasi" rows="3" placeholder="İlan Açıklaması"></textarea>
+            @Html.TextAreaFor(model => model.IlanAciklamasi, new { @class = "form-control", id = "ilan-aciklamasi", rows = "3", placeholder = "İlan Açıklaması" })
         </div>
         <div class="d-flex justify-content-end">
-            <a href="@Url.Action("_AracDetayBilgisi")" class="btn btn-primary">Kaydet</a>
-</div>
-    </form>
-</div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </div>
+    </div>
+}
 
 
