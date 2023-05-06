@@ -2,6 +2,30 @@
 @{
     ViewBag.Title = "KurumsalKullaniciDuzenle";
     Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+    var bireyselKurumsalList = new SelectList(new[]
+    {
+        new { Value = 2, Text = "Kurumsal" }
+    }, "Value", "Text", Model.BireyselKurumsalID);
+
+    var aktifPasifList = new SelectList(new[]
+    {
+        new { Value = 1, Text = "Aktif" },
+        new { Value = 2, Text = "Pasif" }
+    }, "Value", "Text", Model.AktifPasifID);
+
+    var rolList = new SelectList(new[]
+    {
+        new { Value = 1, Text = "Admin" },
+        new { Value = 2, Text = "Kullanici" },
+        new { Value = 3, Text = "PlusAdmin" }
+    }, "Value", "Text", Model.RolID);
+
+    var firmaBilgisiList = new SelectList(new[]
+    {
+        new { Value = 1, Text = "Şahıs" },
+        new { Value = 2, Text = "Anonim" },
+        new { Value = 3, Text = "Limited" }
+    }, "Value", "Text", Model.FirmaBilgisiID);
 }
 
 <div class="container mt-5">
@@ -13,11 +37,11 @@
         <div class="row">
             <div class="col-md-4 form-group">
                 <label for="KurumsalBireysel">Kullanıcı Türü</label>
-                @Html.DropDownListFor(model => model.BireyselKurumsalID, new SelectList(new[] { "Kurumsal" }), new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.BireyselKurumsalID, bireyselKurumsalList, new { @class = "form-control" })
             </div>
             <div class="col-md-4 form-group">
                 <label for="Rol">Rol</label>
-                @Html.DropDownListFor(model => model.RolID, new SelectList(new[] { "Admin", "Kullanici", "PlusAdmin" }), new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.RolID, rolList, new { @class = "form-control" })
             </div>
             <div class="col-md-4 form-group">
                 <label for="il">İl</label>
@@ -65,10 +89,10 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="Durum">Durum</label>
-                @Html.DropDownListFor(model => model.AktifPasifID, new SelectList(new[] { "Aktif", "Pasif" }), new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.AktifPasifID, aktifPasifList, new { @class = "form-control" })
             </div>
 
-            
+
         </div>
 
         <div class="row">
@@ -79,19 +103,19 @@
             <div class="row">
                 <div class="col-md-4 form-group">
                     <label for="firmaBilgisi">Firma Bilgisi</label>
-                    @Html.DropDownListFor(model => model.FirmaBilgisiID, new SelectList(new[] { "Şahıs", "Ananoim","Limited" }), new { @class = "form-control" })
+                    @Html.DropDownListFor(model => model.FirmaBilgisiID, firmaBilgisiList, new { @class = "form-control" })
                 </div>
             </div>
-            </div>
-
-
-
-
-
-            <div class="d-grid gap-2 mt-4 d-flex justify-content-end">
-                <input type="submit" name="name" class="btn btn-success" value="Kullanıcıyı Güncelle" />
-                <a href="@Url.Action("_KullaniciTanimlama")" class="btn btn-primary">Vazgeç</a>
-            </div>
-            }
         </div>
+
+
+
+
+
+        <div class="d-grid gap-2 mt-4 d-flex justify-content-end">
+            <input type="submit" name="name" class="btn btn-success" value="Kullanıcıyı Güncelle" />
+            <a href="@Url.Action("_KullaniciTanimlama")" class="btn btn-primary">Vazgeç</a>
+        </div>
+    }
+</div>
 

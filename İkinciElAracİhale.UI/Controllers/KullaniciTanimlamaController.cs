@@ -82,7 +82,7 @@ namespace İkinciElAracİhale.UI.Controllers
         [HttpPost]
         public ActionResult KullaniciGuncelle(Kullanici kullanici)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 db.Kullanicis.Attach(kullanici);
                 db.Entry(kullanici).State = EntityState.Modified;
