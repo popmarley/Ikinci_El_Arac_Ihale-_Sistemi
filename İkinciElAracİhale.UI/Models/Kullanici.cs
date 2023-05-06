@@ -56,6 +56,8 @@ namespace İkinciElAracİhale.UI.Models
 
         public int? FirmaBilgisiID { get; set; }
 
+        public int? BireyselKurumsalID { get; set; }
+
         public virtual AktifPasif AktifPasif { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -66,6 +68,8 @@ namespace İkinciElAracİhale.UI.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BireyselAracTeklif> BireyselAracTeklifs { get; set; }
+
+        public virtual BireyselKurumsal BireyselKurumsal { get; set; }
 
         public virtual FirmaBilgisi FirmaBilgisi { get; set; }
 

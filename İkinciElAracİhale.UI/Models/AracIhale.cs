@@ -67,6 +67,11 @@ namespace İkinciElAracİhale.UI.Models
                 .HasMany(e => e.IhaleListesis)
                 .WithOptional(e => e.BireyselKurumsal)
                 .HasForeignKey(e => e.BireyselKurumsalID);
+
+            modelBuilder.Entity<BireyselKurumsal>()
+                .HasMany(e => e.Kullanicis)
+                .WithOptional(e => e.BireyselKurumsal)
+                .HasForeignKey(e => e.BireyselKurumsalID);
         }
     }
 }

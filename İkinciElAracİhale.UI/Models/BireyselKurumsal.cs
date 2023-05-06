@@ -14,6 +14,7 @@ namespace İkinciElAracİhale.UI.Models
         {
             Araclars = new HashSet<Araclar>();
             IhaleListesis = new HashSet<IhaleListesi>();
+            Kullanicis = new HashSet<Kullanici>();
         }
 
         [Key]
@@ -27,5 +28,8 @@ namespace İkinciElAracİhale.UI.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IhaleListesi> IhaleListesis { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Kullanici> Kullanicis { get; set; }
     }
 }

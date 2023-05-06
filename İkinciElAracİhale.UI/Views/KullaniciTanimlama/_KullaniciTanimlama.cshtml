@@ -16,6 +16,7 @@
                 <th scope="col">Telefon</th>
                 <th scope="col">E-posta</th>
                 <th scope="col">Durum</th>
+                <th scope="col">Kullanıcı Türü</th>
                 <th scope="col">Rol</th>
                 <th scope="col">Aksiyon</th>
             </tr>
@@ -30,6 +31,7 @@
                     <td>@kullanici.Telefon</td>
                     <td>@kullanici.Mail</td>
                     <td>@(kullanici.AktifPasifID == 1 ? "Aktif" : "Pasif")</td>
+                    <td>@(kullanici.BireyselKurumsalID == 1 ? "Bireysel" : "Kurumsal")</td>
                     <td>@(kullanici.RolID == 1 ? "Admin" : (kullanici.RolID == 2 ? "Kullanıcı" : "PlusAdmin"))</td>
                     <td>
                         @using (Html.BeginForm("DeleteKullanici", "KullaniciTanimlama", FormMethod.Post))
@@ -98,6 +100,12 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
+                            <label for="bireyselkurumsal" class="form-label">Kullanıcı Türü</label>
+                            <select class="form-select" name="BireyselKurumsalID" id="bireyselkurumsal">
+                                <option value="1">Bireysel</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <label for="kullaniciAdi" class="form-label">Kullanıcı Adı</label>
                             <input type="text" class="form-control" id="kullaniciAdi" name="KullaniciAdi" placeholder="Kullanıcı Adı">
                         </div>
@@ -157,6 +165,12 @@
                 </div>
                 <div class="modal-body">
                     <form>
+                        <div class="mb-3">
+                            <label for="bireyselkurumsal" class="form-label">Kullanıcı Türü</label>
+                            <select class="form-select" name="BireyselKurumsalID" id="bireyselkurumsal">
+                                <option value="2">Kurumsal</option>    
+                            </select>
+                        </div>
                         <div class="mb-3">
                             <label for="kullaniciAdi" class="form-label">Kullanıcı Adı</label>
                             <input type="text" class="form-control" id="kullaniciAdi" name="KullaniciAdi" placeholder="Kullanıcı Adı">
