@@ -38,7 +38,7 @@
                         {
                             @Html.AntiForgeryToken()
                             @Html.Hidden("KullaniciID", kullanici.KullaniciID)
-                            <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("KullaniciDuzenle", "KullaniciTanimlama", new { KullaniciID = kullanici.KullaniciID })'">Düzenle</button>
+                        <button type="button" class="btn btn-success" onclick="duzenle(@kullanici.KullaniciID, @kullanici.BireyselKurumsalID)">Düzenle</button>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal_@(@kullanici.KullaniciID)">Sil</button>
                         }
                     </td>
@@ -323,5 +323,14 @@
         }
     }
 
-    
+    function duzenle(kullaniciID, bireyselKurumsalID) {
+        if (bireyselKurumsalID === 1) {
+            location.href = '@Url.Action("KullaniciDuzenle", "KullaniciTanimlama", new { KullaniciID = "id_placeholder" })'.replace("id_placeholder", kullaniciID);
+        }
+        else if (bireyselKurumsalID === 2) 
+            location.href = '@Url.Action("KurumsalKullaniciDuzenle", "KullaniciTanimlama", new { KullaniciID = "id_placeholder" })'.replace("id_placeholder", kullaniciID);
+        
+    }
+
+
 </script>

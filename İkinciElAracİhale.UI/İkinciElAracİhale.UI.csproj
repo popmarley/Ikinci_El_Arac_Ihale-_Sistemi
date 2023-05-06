@@ -352,6 +352,7 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\AdminPanel\_AracGuncelleme.cshtml" />
+    <Content Include="Views\KullaniciTanimlama\KurumsalKullaniciDuzenle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

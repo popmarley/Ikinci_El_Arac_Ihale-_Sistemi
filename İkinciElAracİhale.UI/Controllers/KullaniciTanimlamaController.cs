@@ -62,6 +62,23 @@ namespace İkinciElAracİhale.UI.Controllers
             return View(kullanici);
         }
 
+        public ActionResult KurumsalKullaniciDuzenle(int? KullaniciID)
+        {
+            if (KullaniciID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Kullanici kullanici = db.Kullanicis.Find(KullaniciID);
+            if (kullanici == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(kullanici);
+        }
+
+
         [HttpPost]
         public ActionResult KullaniciGuncelle(Kullanici kullanici)
         {
