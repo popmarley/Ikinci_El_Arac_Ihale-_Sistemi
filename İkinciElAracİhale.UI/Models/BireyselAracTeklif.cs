@@ -22,8 +22,6 @@ namespace İkinciElAracİhale.UI.Models
         [StringLength(50)]
         public string TeklifTarihi { get; set; }
 
-        public virtual IhaleArac IhaleArac { get; set; }
-
         public virtual Kullanici Kullanici { get; set; }
     }
 }

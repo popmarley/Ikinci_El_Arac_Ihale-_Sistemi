@@ -197,11 +197,11 @@
     <Compile Include="Models\AracTarihce.cs" />
     <Compile Include="Models\BireyselAracTeklif.cs" />
     <Compile Include="Models\BireyselKurumsal.cs" />
+    <Compile Include="Models\DAL\AracIhaleDAL.cs" />
     <Compile Include="Models\DAL\AracListeleme.cs" />
     <Compile Include="Models\DAL\UserDAL.cs" />
     <Compile Include="Models\FirmaBilgisi.cs" />
     <Compile Include="Models\GovdeTipi.cs" />
-    <Compile Include="Models\IhaleArac.cs" />
     <Compile Include="Models\IhaleListesi.cs" />
     <Compile Include="Models\IhaleStatu.cs" />
     <Compile Include="Models\IlanBilgi.cs" />
@@ -222,6 +222,7 @@
     <Compile Include="Models\VM\AracEkleViewModel.cs" />
     <Compile Include="Models\VM\AracGuncellemeViewModel.cs" />
     <Compile Include="Models\VM\AracListelemeViewModel.cs" />
+    <Compile Include="Models\VM\IhaleViewModel.cs" />
     <Compile Include="Models\YakitTipi.cs" />
     <Compile Include="Models\Yetki.cs" />
     <Compile Include="Models\Yil.cs" />
@@ -341,7 +342,6 @@
     <Content Include="Views\KurumsalUyeOnay\_KurumsalUyeOnayDetay.cshtml" />
     <Content Include="Views\IhaleListeleme\_IhaleListeleme.cshtml" />
     <Content Include="Views\IhaleListeleme\_YeniİhaleOlustur.cshtml" />
-    <Content Include="Views\IhaleListeleme\_IhaleFiyat.cshtml" />
     <Content Include="Views\KomisyonVeNoter\_KomisyonVeNoterUcretleri.cshtml" />
     <Content Include="Views\StokYonetimi\_StokYonetimi.cshtml" />
     <Content Include="Views\StokYonetimi\_StokYonetimiDetay.cshtml" />

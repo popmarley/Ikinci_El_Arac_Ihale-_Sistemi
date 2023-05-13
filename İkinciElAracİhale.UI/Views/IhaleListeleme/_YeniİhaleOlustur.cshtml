@@ -4,72 +4,67 @@
     Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
 }
 
+@model İkinciElAracİhale.UI.Models.VM.IhaleViewModel
+
 <div class="container mt-5">
     <h4 class="mb-4">İhale Genel Bilgiler</h4>
-    <form>
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="ihaleAdi" class="form-label">İhale Adı</label>
-                <input type="text" class="form-control" id="ihaleAdi" placeholder="İhale Adı">
+    @using (Html.BeginForm("_YeniİhaleOlustur", "IhaleListeleme", FormMethod.Post))
+    {
+        <div class="row mb-3">
+            <div class="col">
+                <label for="plaka" class="form-label">Aracın Plakası</label>
+                @Html.DropDownListFor(model => model.AracID, new SelectList(Model.AraclarListesi, "AracID", "Plaka"), "Seçiniz...", new { @class = "form-select", id = "plaka" })
             </div>
-            <div class="col-md-6 mb-3">
-                <label class="form-label d-block">Bireysel/Kurumsal</label>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="bireyselKurumsal" id="bireysel" value="bireysel">
-                    <label class="form-check-label" for="bireysel">
-                        Bireysel
-                    </label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="bireyselKurumsal" id="kurumsal" value="kurumsal">
-                    <label class="form-check-label" for="kurumsal">
-                        Kurumsal
-                    </label>
-                </div>
+            <div class="col">
+                <label class="form-label">İhale Adı</label>
+                @Html.TextBoxFor(model => model.IhaleAdi, new { @class = "form-control", placeholder = "İhale Adı" })
+            </div>
+            <div class="col">
+                <label class="form-label">İhale Başlangıç Fiyatı</label>
+                @Html.TextBoxFor(model => model.IhaleBaslangicFiyati, new { @class = "form-control", placeholder = "İhale Başlangıç Fiyatı" })
+            </div>
+            <div class="col">
+                <label class="form-label">Minimum Alım Fiyatı</label>
+                @Html.TextBoxFor(model => model.MinimumAlimFiyati, new { @class = "form-control", placeholder = "Minimum Alım Fiyatı" })
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="sirket" class="form-label">Şirket</label>
-                <input type="text" class="form-control" id="sirket" placeholder="Şirket Adı">
+        <div class="row mb-3 ">
+            <div class="col-md-3">
+                <label for="bireyselkurumsal" class="form-label">Bireysel/Kurumsal</label>
+                @Html.DropDownListFor(model => model.BireyselKurumsalID, Model.BireyselKurumsalList, "Seçiniz...", new { @class = "form-select", id = "bireyselkurumsal" })
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-3">
+                <label class="form-label">Şirket Adı</label>
+                @Html.TextBoxFor(model => model.KurumsalSirketAdi, new { @class = "form-control", placeholder = "Şirket Adı" })
+            </div>
+            <div class="col-md-3">
                 <label for="ihaleStatusu" class="form-label">İhale Statüsü</label>
-                <select class="form-select" id="ihaleStatusu">
-                    <option value="" disabled selected>Statü Seçiniz</option>
-                    <option value="acik">Açık İhale</option>
-                    <option value="kapali">Kapalı İhale</option>
-                    <option value="iptal">İptal Edilmiş İhale</option>
-                    <option value="tamamlanan">Tamamlanan İhale</option>
-                </select>
+                @Html.DropDownListFor(model => model.IhaleStatuID, Model.IhaleStatuList, "Seçiniz...", new { @class = "form-select", id = "ihaleStatusu" })
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3 mb-3">
-                <label for="baslangicTarihi" class="form-label">İhale Başlangıç Tarihi</label>
-                <input type="date" class="form-control" id="baslangicTarihi">
+        <div class="row mb-3">
+            <div class="col">
+                <label for="IhaleBaslangicTarihi" class="form-label">İhale Başlangıç Tarihi</label>
+                @Html.TextBoxFor(model => model.IhaleBaslangicTarihi, new { @class = "form-control", type = "date" })
             </div>
-            <div class="col-md-3 mb-3">
-                <label for="baslangicSaati" class="form-label">İhale Başlangıç Saati</label>
-                <input type="time" class="form-control" id="baslangicSaati">
+            <div class="col">
+                <label class="form-label">İhale Bitiş Tarihi</label>
+                @Html.TextBoxFor(model => model.IhaleBitisTarihi, new { @class = "form-control", type = "date" })
             </div>
-            <div class="col-md-3 mb-3">
-                <label for="bitisTarihi" class="form-label">İhale Bitiş Tarihi</label>
-                <input type="date" class="form-control" id="bitisTarihi">
+            <div class="col">
+                <label class="form-label">İhale Başlangıç Saati</label>
+                @Html.TextBoxFor(model => model.IhaleBaslangicSaati, new { @class = "form-control", type = "time" })
             </div>
-            <div class="col-md-3 mb-3">
-                <label for="bitisSaati" class="form-label">
-                    İhale Bitiş Saati
-                </label>
-                <input type="time" class="form-control" id="bitisSaati">
+            <div class="col"> 
+                <label class="form-label">İhale Bitiş Saati</label>
+                @Html.TextBoxFor(model => model.IhaleBitisSaati, new { @class = "form-control", type = "time" })
             </div>
         </div>
         <br />
         <div class="text-end">
             <button type="submit" class="btn btn-primary mb-5">İhale Oluştur</button>
         </div>
-    </form>
-
+    }
 </div>
 <br />
 <table class="table">
@@ -94,7 +89,7 @@
 <br />
 <div class="row mt-12">
     <div class="col-md-12 d-flex justify-content-end">
-        <a href="@Url.Action("_IhaleFiyat")" class="btn btn-success me-2">Araç Ekle</a>
+        <button class="btn btn-success me-2">Araç Ekle</button>
         <button class="btn btn-primary me-2">Kaydet</button>
     </div>
 </div>

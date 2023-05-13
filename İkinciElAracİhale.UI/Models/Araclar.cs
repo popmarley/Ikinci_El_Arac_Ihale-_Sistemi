@@ -15,7 +15,7 @@ namespace İkinciElAracİhale.UI.Models
             AracAliciBilgis = new HashSet<AracAliciBilgi>();
             AracParcaBilgis = new HashSet<AracParcaBilgi>();
             AracTarihces = new HashSet<AracTarihce>();
-            IhaleAracs = new HashSet<IhaleArac>();
+            IhaleListesis = new HashSet<IhaleListesi>();
             IlanBilgis = new HashSet<IlanBilgi>();
             TramerTutaris = new HashSet<TramerTutari>();
         }
@@ -84,7 +84,7 @@ namespace İkinciElAracİhale.UI.Models
         public virtual ICollection<AracTarihce> AracTarihces { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IhaleArac> IhaleAracs { get; set; }
+        public virtual ICollection<IhaleListesi> IhaleListesis { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IlanBilgi> IlanBilgis { get; set; }

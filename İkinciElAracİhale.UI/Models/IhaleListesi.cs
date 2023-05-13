@@ -12,7 +12,6 @@ namespace İkinciElAracİhale.UI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public IhaleListesi()
         {
-            IhaleAracs = new HashSet<IhaleArac>();
             OdemeBilgisis = new HashSet<OdemeBilgisi>();
         }
 
@@ -41,10 +40,17 @@ namespace İkinciElAracİhale.UI.Models
         [StringLength(50)]
         public string IhaleBitisSaati { get; set; }
 
-        public virtual BireyselKurumsal BireyselKurumsal { get; set; }
+        public int? AracID { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IhaleArac> IhaleAracs { get; set; }
+        [StringLength(50)]
+        public string IhaleBaslangicFiyati { get; set; }
+
+        [StringLength(50)]
+        public string MinimumAlimFiyati { get; set; }
+
+        public virtual Araclar Araclar { get; set; }
+
+        public virtual BireyselKurumsal BireyselKurumsal { get; set; }
 
         public virtual IhaleStatu IhaleStatu { get; set; }
 

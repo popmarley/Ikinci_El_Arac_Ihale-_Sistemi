@@ -25,7 +25,6 @@ namespace İkinciElAracİhale.UI.Models
         public virtual DbSet<BireyselKurumsal> BireyselKurumsals { get; set; }
         public virtual DbSet<FirmaBilgisi> FirmaBilgisis { get; set; }
         public virtual DbSet<GovdeTipi> GovdeTipis { get; set; }
-        public virtual DbSet<IhaleArac> IhaleAracs { get; set; }
         public virtual DbSet<IhaleListesi> IhaleListesis { get; set; }
         public virtual DbSet<IhaleStatu> IhaleStatus { get; set; }
         public virtual DbSet<IlanBilgi> IlanBilgis { get; set; }
