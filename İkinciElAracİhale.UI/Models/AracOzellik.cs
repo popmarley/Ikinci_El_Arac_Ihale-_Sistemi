@@ -13,6 +13,7 @@ namespace İkinciElAracİhale.UI.Models
         public AracOzellik()
         {
             Araclars = new HashSet<Araclar>();
+            IhaleListesis = new HashSet<IhaleListesi>();
         }
 
         public int AracOzellikID { get; set; }
@@ -53,5 +54,8 @@ namespace İkinciElAracİhale.UI.Models
         public virtual YakitTipi YakitTipi { get; set; }
 
         public virtual Yil Yil { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<IhaleListesi> IhaleListesis { get; set; }
     }
 }

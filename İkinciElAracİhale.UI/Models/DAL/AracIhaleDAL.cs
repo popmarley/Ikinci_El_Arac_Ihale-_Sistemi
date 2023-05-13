@@ -1,6 +1,7 @@
 ﻿using İkinciElAracİhale.UI.Models.VM;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -25,7 +26,10 @@ namespace İkinciElAracİhale.UI.Models.DAL
         {
             return new IhaleViewModel
             {
-                IhaleListesis = db.IhaleListesis.ToList(),
+
+                Araclar = db.Araclars.ToList(),
+                AracOzellik = db.AracOzelliks.ToList(),
+                IhaleListesis = db.IhaleListesis.Include(i => i.Araclar).Include(i => i.AracOzellik).ToList(),
                 AraclarListesi = db.Araclars.ToList(),
                 AracOzellikListesi = db.AracOzelliks.ToList(),
                 PlakaList = GetSelectList(db.Araclars.ToList(), "AracID", "Plaka"),

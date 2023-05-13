@@ -9,8 +9,8 @@ namespace İkinciElAracİhale.UI.Models.VM
     public class IhaleViewModel
     {
 
-        public Araclar Araclar { get; set; }
-        public AracOzellik AracOzellik { get; set; }
+        public List<Araclar> Araclar { get; set; }
+        public List<AracOzellik> AracOzellik { get; set; }
         public IhaleListesi IhaleListesi { get; set; }
 
 

@@ -72,7 +72,7 @@
     <h4 style="color:dimgrey;">İhale Araç Listesi</h4>
     <thead>
         <tr>
-            <th>Araç ID</th>
+            <th>#</th>
             <th>Araç Markası</th>
             <th>Modeli</th>
             <th>Bireysel/Kurumsal</th>
@@ -86,8 +86,8 @@
         {
             <tr>
                 <th>@index</th>
-                @*<td>@item.Araclar</td>
-                <td>@Model.AracOzellik.AracModel</td>*@
+                <td>@item.AracOzellik.AracMarka.MarkaAdi</td>
+                <td>@item.AracOzellik.AracModel.ModelAdi</td>
                 <th>@item.BireyselKurumsal.Durum</th>
                 <th>@item.IhaleStatu.IhaleStatuAdi</th>
                 <th>@item.IhaleBaslangicFiyati</th>

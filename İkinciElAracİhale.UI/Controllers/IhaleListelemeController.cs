@@ -51,10 +51,21 @@ namespace İkinciElAracİhale.UI.Controllers
         {
             if (ModelState.IsValid)
             {
+                // AracID'ye göre Araç nesnesini bul
+                var arac = db.Araclars.FirstOrDefault(a => a.AracID == model.AracID);
+
+                // Araç nesnesini bulamazsak hata döndür
+                if (arac == null)
+                {
+                    ModelState.AddModelError("", "Geçersiz Araç ID");
+                    return View(model);
+                }
+
                 // İhaleViewModel'den IhaleListesi nesnesine veri aktarımı
                 IhaleListesi ihale = new IhaleListesi
                 {
                     AracID = model.AracID,
+                    AracOzellikID = arac.AracOzellikID, // Burada AracOzellikID'yi ata
                     IhaleAdi = model.IhaleAdi,
                     IhaleBaslangicFiyati = model.IhaleBaslangicFiyati,
                     MinimumAlimFiyati = model.MinimumAlimFiyati,
@@ -77,7 +88,7 @@ namespace İkinciElAracİhale.UI.Controllers
             return View(model);
         }
 
-        
+
     }
 
 

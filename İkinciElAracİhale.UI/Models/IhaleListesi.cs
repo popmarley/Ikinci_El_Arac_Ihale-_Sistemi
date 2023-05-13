@@ -48,7 +48,11 @@ namespace İkinciElAracİhale.UI.Models
         [StringLength(50)]
         public string MinimumAlimFiyati { get; set; }
 
+        public int? AracOzellikID { get; set; }
+
         public virtual Araclar Araclar { get; set; }
+
+        public virtual AracOzellik AracOzellik { get; set; }
 
         public virtual BireyselKurumsal BireyselKurumsal { get; set; }
 
