@@ -34,6 +34,8 @@ namespace İkinciElAracİhale.UI.Models.VM
 
 
         public List<Araclar> AraclarListesi { get; set; }
+        public List<IhaleListesi> IhaleListesis { get; set; }
+        public List<AracOzellik> AracOzellikListesi { get; set; }
         public IEnumerable<SelectListItem> PlakaList { get; set; }
         public IEnumerable<SelectListItem> BireyselKurumsalList { get; set; }
         public IEnumerable<SelectListItem> IhaleStatuList { get; set; }

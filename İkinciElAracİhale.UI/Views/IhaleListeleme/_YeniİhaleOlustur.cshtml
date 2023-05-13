@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Admin Panel";
     Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+    int index = 1;
 }
 
 @model İkinciElAracİhale.UI.Models.VM.IhaleViewModel
@@ -76,15 +77,25 @@
             <th>Modeli</th>
             <th>Bireysel/Kurumsal</th>
             <th>Statüsü</th>
-            <th>Kaydeden Kullanıcı</th>
-            <th>Kaydetme Zamanı</th>
             <th>Fiyatı</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        <!-- buraya araç listesi dinamik olarak gelecek -->
-    </tbody>
+        @foreach (var item in Model.IhaleListesis)
+        {
+            <tr>
+                <th>@index</th>
+                @*<td>@item.Araclar</td>
+                <td>@Model.AracOzellik.AracModel</td>*@
+                <th>@item.BireyselKurumsal.Durum</th>
+                <th>@item.IhaleStatu.IhaleStatuAdi</th>
+                <th>@item.IhaleBaslangicFiyati</th>
+                <th></th>
+            </tr>
+            index++;
+        }
+        </tbody>
 </table>
 <br />
 <div class="row mt-12">

@@ -27,8 +27,14 @@ namespace İkinciElAracİhale.UI.Controllers
         public ActionResult _IhaleListeleme()
         {
             // Tüm ihalenin listesi
-            var ihaletList = db.IhaleListesis.ToList();
-            return View(ihaletList);
+            var ihaletList = db.IhaleListesis.ToList() ?? new List<IhaleListesi>();
+            IhaleViewModel ihaleViewModel = new IhaleViewModel
+            {
+                IhaleListesis = ihaletList
+            };
+
+            // IhaleViewModel nesnesini görünüme geçir
+            return View(ihaleViewModel);
         }
 
         [Authorize]

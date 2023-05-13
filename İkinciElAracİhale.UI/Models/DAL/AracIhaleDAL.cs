@@ -25,7 +25,9 @@ namespace İkinciElAracİhale.UI.Models.DAL
         {
             return new IhaleViewModel
             {
+                IhaleListesis = db.IhaleListesis.ToList(),
                 AraclarListesi = db.Araclars.ToList(),
+                AracOzellikListesi = db.AracOzelliks.ToList(),
                 PlakaList = GetSelectList(db.Araclars.ToList(), "AracID", "Plaka"),
                 BireyselKurumsalList = GetSelectList(db.BireyselKurumsals.ToList(), "BireselKurumsalID", "Durum"),
                 IhaleStatuList = GetSelectList(db.IhaleStatus.ToList(), "IhaleStatuID", "IhaleStatuAdi"),
