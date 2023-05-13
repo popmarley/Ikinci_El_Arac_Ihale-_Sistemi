@@ -40,12 +40,13 @@
     <h4 style="color:dimgrey;">İhale Listesi</h4>
     <thead>
         <tr>
-            <th>İhale ID</th>
+            <th>İhale Numarası</th>
             <th>İhale Adı</th>
             <th>Bireysel/Kurumsal</th>
             <th>İhale Başlangıç</th>
             <th>İhale Bitiş</th>
             <th>Statü</th>
+            <th>Aksiyon</th>
             <th></th>
         </tr>
     </thead>
@@ -59,6 +60,10 @@
                 <th>@DateTime.Parse(item.IhaleBaslangicTarihi).ToString("dd/MM/yyyy")</th>
                 <th>@DateTime.Parse(item.IhaleBitisTarihi).ToString("dd/MM/yyyy")</th>
                 <th>@item.IhaleStatu.IhaleStatuAdi</th>
+                <th>
+                    <button class="btn btn-success me-2">Güncelle</button>
+                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#silmeModal" data-ihale-id="@item.IhaleID">Sil</a>
+                </th>
                 <th></th>
             </tr>
             index++;
@@ -68,9 +73,39 @@
 <br />
 <div class="row mt-12">
     <div class="col-md-12 d-flex justify-content-end">
-        <a href="@Url.Action("_YeniİhaleOlustur")" class="btn btn-success me-2">Yeni</a>
-        <button class="btn btn-primary me-2">Güncelle</button>
-        <button class="btn btn-danger">Sil</button>
+        <a href="@Url.Action("_YeniİhaleOlustur")" class="btn btn-success me-2">Yeni Oluştur</a>
     </div>
 </div>
 
+
+<div class="modal fade" id="silmeModal" tabindex="-1" aria-labelledby="silmeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="silmeModalLabel">Silme Onayı</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+            </div>
+            <div class="modal-body">
+                İhaleyi silmek istediğinize emin misiniz?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hayır</button>
+                @using (Html.BeginForm("Sil", "IhaleListeleme", FormMethod.Post))
+                {
+                    @Html.Hidden("id", "", new { id = "hiddenIhaleId" })
+                    <input type="submit" value="Evet" class="btn btn-primary" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('a[data-bs-toggle="modal"]').click(function () {
+            var ihaleId = $(this).data("ihale-id");
+            $("#hiddenIhaleId").val(ihaleId);
+        });
+    });
+</script>

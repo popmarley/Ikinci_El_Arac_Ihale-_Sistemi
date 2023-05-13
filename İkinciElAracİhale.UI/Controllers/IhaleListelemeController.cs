@@ -88,7 +88,13 @@ namespace İkinciElAracİhale.UI.Controllers
             return View(model);
         }
 
-
+        [Authorize]
+        [HttpPost]
+        public ActionResult Sil(int id)
+        {
+            ihaleDAL.DeleteAracIhale(id);
+            return RedirectToAction("_IhaleListeleme");
+        }
     }
 
 

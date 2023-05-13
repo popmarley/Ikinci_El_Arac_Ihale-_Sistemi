@@ -47,6 +47,19 @@ namespace İkinciElAracİhale.UI.Models.DAL
             }
         }
 
+        public void DeleteAracIhale(int ihaleId)
+        {
+            using (var dbContext = new AracIhale())
+            {
+                var ihale = dbContext.IhaleListesis.Find(ihaleId);
+                if (ihale != null)
+                {
+                    dbContext.IhaleListesis.Remove(ihale);
+                    dbContext.SaveChanges();
+                }
+            }
+        }
+
     }
 
 }
