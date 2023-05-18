@@ -42,6 +42,7 @@ namespace İkinciElAracİhale.UI.Controllers
         {
 
             var ihaleViewModel = ihaleDAL.GetIhaleViewModel();
+            ihaleViewModel.IhaleStatuList = ihaleDAL.GetSelectList(db.IhaleStatus.ToList(), "IhaleStatuID", "IhaleStatuAdi");
             return View(ihaleViewModel);
         }
 
@@ -94,6 +95,24 @@ namespace İkinciElAracİhale.UI.Controllers
         {
             ihaleDAL.DeleteAracIhale(id);
             return RedirectToAction("_IhaleListeleme");
+        }
+
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult _IhaleListeleme(IhaleViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var ihaletList = ihaleDAL.GetFiltreliIhaleListes(model);
+                model.IhaleListesis = ihaletList;
+                return View(model);
+            }
+            else
+            {
+                // Hata durumunda, hata mesajlarıyla birlikte modeli görünüme geri döndür.
+                return View(model);
+            }
         }
     }
 

@@ -8,33 +8,30 @@
 }
 @model İkinciElAracİhale.UI.Models.VM.IhaleViewModel
 
-<form class="bg-white rounded p-3">
+@using (Html.BeginForm("_IhaleListeleme", "IhaleListeleme", FormMethod.Post))
+{
     <div class="row">
         <h4 style="color:black;">Kriterler</h4>
         <div class="col-md-6 mb-6">
             <label for="ihaleAdi" class="form-label">İhale Adı</label>
-            <input type="text" class="form-control" id="ihaleAdi" placeholder="İhale Adı">
+            @Html.TextBoxFor(model => model.IhaleAdi, new { @class = "form-control", id = "ihaleAdi", placeholder = "İhale Adı" })
         </div>
 
         <div class="col-md-3 mb-3">
-            <label for="aracTuru" class="form-label">Bireysel/Kurumsal</label>
-            <select class="form-control" id="aracTuru">
-                <option>Bireysel</option>
-                <option>Kurumsal</option>
-            </select>
+            @*<label for="aracTuru" class="form-label">Bireysel/Kurumsal</label>*@
+            @*@Html.DropDownListFor(model => model.BireyselKurumsalID, Model.BireyselKurumsalList, "-- Seçiniz --", new { @class = "form-control", id = "aracTuru" })*@
         </div>
+
         <div class="col-md-3 mb-3">
-            <label for="aracDurumu" class="form-label">Statüsü</label>
-            <select class="form-control" id="aracDurumu">
-                <option>Yeni</option>
-                <option>Kullanılmış</option>
-            </select>
+            @*<label for="aracDurumu" class="form-label">Statüsü</label>*@
+            @*@Html.DropDownListFor(model => model.IhaleStatuID, Model.IhaleStatuList, "Please select a status", new { @class = "form-control" })*@
         </div>
     </div>
     <div class="text-end">
-        <button type="submit" class="btn btn-primary">Listele</button>
+        <a href="@Url.Action("_IhaleListeleme", "IhaleListeleme")" class="btn btn-warning" ml-2">Sıfırla</a>
+        <input type="submit" value="Listele" class="btn btn-primary" />
     </div>
-</form>
+}
 <br />
 <table class="table">
     <h4 style="color:dimgrey;">İhale Listesi</h4>
@@ -61,7 +58,7 @@
                 <th>@DateTime.Parse(item.IhaleBitisTarihi).ToString("dd/MM/yyyy")</th>
                 <th>@item.IhaleStatu.IhaleStatuAdi</th>
                 <th>
-                    <button class="btn btn-success me-2">Güncelle</button>
+                    @*<button class="btn btn-success me-2">Güncelle</button>*@
                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#silmeModal" data-ihale-id="@item.IhaleID">Sil</a>
                 </th>
                 <th></th>

@@ -54,10 +54,40 @@ namespace İkinciElAracİhale.UI.Models.DAL
                 var ihale = dbContext.IhaleListesis.Find(ihaleId);
                 if (ihale != null)
                 {
-                    dbContext.IhaleListesis.Remove(ihale);
-                    dbContext.SaveChanges();
+                    // İlgili BireyselAracTeklif kayıtlarını sil
+            var bireyselTeklifler = dbContext.BireyselAracTeklifs.Where(t => t.IhaleID == ihaleId);
+            dbContext.BireyselAracTeklifs.RemoveRange(bireyselTeklifler);
+            
+            // IhaleListesi'ndeki kaydı sil
+            dbContext.IhaleListesis.Remove(ihale);
+            dbContext.SaveChanges();
                 }
             }
+        }
+
+        public List<IhaleListesi> GetFiltreliIhaleListes(IhaleViewModel model)
+        {
+            var ihaleler = db.IhaleListesis.AsQueryable();
+
+            // Filtrelemeleri burada yapabiliriz.
+            if (!string.IsNullOrEmpty(model.IhaleAdi))
+            {
+                ihaleler = ihaleler.Where(i => i.IhaleAdi.Contains(model.IhaleAdi));
+            }
+
+            if (model.BireyselKurumsalID.HasValue)
+            {
+                ihaleler = ihaleler.Where(i => i.BireyselKurumsalID == model.BireyselKurumsalID.Value);
+            }
+
+            if (model.IhaleStatuID.HasValue)
+            {
+                ihaleler = ihaleler.Where(i => i.IhaleStatuID == model.IhaleStatuID.Value);
+            }
+
+            // Daha fazla filtreleme eklenebilir.
+
+            return ihaleler.ToList();
         }
 
     }

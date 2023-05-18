@@ -209,6 +209,7 @@
     <Compile Include="Models\KurumsalUyeOnay.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\OdemeBilgisi.cs" />
+    <Compile Include="Models\OnaylananTeklif.cs" />
     <Compile Include="Models\PaketParametre.cs" />
     <Compile Include="Models\PaketTanimlama.cs" />
     <Compile Include="Models\Renk.cs" />

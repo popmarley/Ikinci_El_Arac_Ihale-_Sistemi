@@ -17,6 +17,7 @@ namespace İkinciElAracİhale.UI.Models
             BireyselAracTeklifs = new HashSet<BireyselAracTeklif>();
             KurumsalUyeOnays = new HashSet<KurumsalUyeOnay>();
             OdemeBilgisis = new HashSet<OdemeBilgisi>();
+            OnaylananTeklifs = new HashSet<OnaylananTeklif>();
         }
 
         public int KullaniciID { get; set; }
@@ -80,5 +81,8 @@ namespace İkinciElAracİhale.UI.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OdemeBilgisi> OdemeBilgisis { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OnaylananTeklif> OnaylananTeklifs { get; set; }
     }
 }

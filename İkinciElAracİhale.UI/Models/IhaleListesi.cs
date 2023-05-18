@@ -12,7 +12,9 @@ namespace İkinciElAracİhale.UI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public IhaleListesi()
         {
+            BireyselAracTeklifs = new HashSet<BireyselAracTeklif>();
             OdemeBilgisis = new HashSet<OdemeBilgisi>();
+            OnaylananTeklifs = new HashSet<OnaylananTeklif>();
         }
 
         [Key]
@@ -54,11 +56,17 @@ namespace İkinciElAracİhale.UI.Models
 
         public virtual AracOzellik AracOzellik { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BireyselAracTeklif> BireyselAracTeklifs { get; set; }
+
         public virtual BireyselKurumsal BireyselKurumsal { get; set; }
 
         public virtual IhaleStatu IhaleStatu { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OdemeBilgisi> OdemeBilgisis { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OnaylananTeklif> OnaylananTeklifs { get; set; }
     }
 }
