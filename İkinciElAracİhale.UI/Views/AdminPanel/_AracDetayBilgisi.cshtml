@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
 }
 
-@using (Html.BeginForm("AracDetayKaydet", "AdminPanel", FormMethod.Post))
+@using (Html.BeginForm("AracDetayKaydet", "AdminPanel", FormMethod.Post,new {enctype="multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     <div class="container">
@@ -115,7 +115,7 @@
             <a href="@Url.Action("_İlanBilgileri")" type="button" class="btn btn-outline-info me-2">
                 İlan Bilgileri
             </a>
-            <button type="submit" class="btn btn-outline-primary">Diğer Sayfa</button>
+            <button type="submit" class="btn btn-outline-primary">Kaydet</button>
         </div>
 
     </div>

@@ -41,20 +41,15 @@ namespace İkinciElAracİhale.UI.Models
         [StringLength(50)]
         public string Donanim { get; set; }
 
-        [MaxLength(50)]
-        public byte[] Gorsel1 { get; set; }
+        public string Gorsel1 { get; set; }
 
-        [MaxLength(50)]
-        public byte[] Gorsel2 { get; set; }
+        public string Gorsel2 { get; set; }
 
-        [MaxLength(50)]
-        public byte[] Gorsel3 { get; set; }
+        public string Gorsel3 { get; set; }
 
-        [MaxLength(50)]
-        public byte[] Gorsel4 { get; set; }
+        public string Gorsel4 { get; set; }
 
-        [MaxLength(50)]
-        public byte[] Gorsel5 { get; set; }
+        public string Gorsel5 { get; set; }
 
         public DateTime? Tarih { get; set; }
 

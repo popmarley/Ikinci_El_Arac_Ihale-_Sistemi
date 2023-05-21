@@ -90,6 +90,30 @@ namespace İkinciElAracİhale.UI.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                if(Request.Files.Count>0)
+                {
+
+					for (int i = 0; i < Math.Min(Request.Files.Count, 5); i++)
+					{
+						string dosyaAdi = Path.GetFileName(Request.Files[i].FileName);
+						string uzanti = Path.GetExtension(Request.Files[i].FileName);
+						string yol = "~/Content/Images/" + dosyaAdi + uzanti;
+						Request.Files[i].SaveAs(Server.MapPath(yol));
+						if (i == 0)
+							model.Araclar.Gorsel1 = "/Content/Images/" + dosyaAdi + uzanti;
+						else if (i == 1)
+							model.Araclar.Gorsel2 = "/Content/Images/" + dosyaAdi + uzanti;
+						else if (i == 2)
+							model.Araclar.Gorsel3 = "/Content/Images/" + dosyaAdi + uzanti;
+						else if (i == 3)
+							model.Araclar.Gorsel4 = "/Content/Images/" + dosyaAdi + uzanti;
+						else if (i == 4)
+							model.Araclar.Gorsel5 = "/Content/Images/" + dosyaAdi + uzanti;
+					}
+
+				}
+
                 TempData["AracDetayViewModel"] = model;
                 return RedirectToAction("_İlanBilgileri");
             }
