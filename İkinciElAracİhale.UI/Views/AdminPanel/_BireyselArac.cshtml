@@ -1,56 +1,142 @@
-﻿
+﻿@model İkinciElAracİhale.UI.Models.VM.AracListelemeViewModel
+
 @{
-    ViewBag.Title = "_BireyselArac";
+    ViewBag.Title = "Admin Panel";
     Layout = "~/Views/Shared/_LayoutPageForAdmins.cshtml";
+    int index = 1;
+
 }
 
-<form class="bg-white rounded p-3">
+@using (Html.BeginForm("FiltreliAracListele", "AdminPanel", FormMethod.Post, new { @class = "bg-white rounded p-3", id = "filtreForm" }))
+{
+
     <div class="row">
-        <h4 style="color:black;">Kriterler</h4>
+        <h4 style="color:black;">Bul</h4>
         <div class="col-md-3 mb-3">
             <label for="aracMarka" class="form-label">Araç Markası</label>
-            <input type="text" class="form-control" id="aracMarka" placeholder="Marka">
+            @Html.DropDownListFor(model => model.AracMarka, Model.AracMarkaList, "Seçiniz", new { @class = "form-control", id = "aracMarka" })
         </div>
         <div class="col-md-3 mb-3">
             <label for="aracModel" class="form-label">Modeli</label>
-            <input type="text" class="form-control" id="aracModel" placeholder="Model">
+            @Html.DropDownListFor(model => model.AracModel, Model.AracModelList, "Seçiniz", new { @class = "form-control", id = "aracModel" })
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="aracTuru" class="form-label">Bireysel/Kurumsal</label>
+            @Html.DropDownListFor(model => model.BireyselKurumsal, Model.BireyselKurumsalList, "Seçiniz", new { @class = "form-control", id = "aracTuru" })
         </div>
         <div class="col-md-3 mb-3">
             <label for="aracDurumu" class="form-label">Statüsü</label>
-            <select class="form-control" id="aracDurumu">
-                <option>Yeni</option>
-                <option>Kullanılmış</option>
-            </select>
+            @Html.DropDownListFor(model => model.Statu, Model.StatuList, "Seçiniz", new { @class = "form-control", id = "aracStatu" })
         </div>
     </div>
     <div class="text-end">
         <button type="submit" class="btn btn-primary">Listele</button>
+        <button type="reset" onclick="resetFormAndSubmit()" class="btn btn-warning">Sıfırla</button>
     </div>
-</form>
+
+}
 <br />
 <table class="table">
     <h4 style="color:dimgrey;">Araç Listesi</h4>
     <thead>
         <tr>
-            <th>Araç ID</th>
+            <th>#</th>
             <th>Araç Markası</th>
             <th>Modeli</th>
+            <th>Plakası</th>
+            <th>Bireysel</th>
             <th>Statüsü</th>
             <th>Kaydeden Kullanıcı</th>
             <th>Kaydetme Zamanı</th>
+            <th>Aksiyon</th>
             <th></th>
         </tr>
     </thead>
-    <tbody>
-        <!-- buraya araç listesi dinamik olarak gelecek -->
+    <tbody id="araclarListesi">
+        @foreach (var item in Model.AraclarList.Where(x => x.BireyselKurumsalID == 1))
+        {
+            <tr>
+                <td>@index</td>
+                <td>@item.AracOzellik.AracMarka.MarkaAdi</td>
+                <td>@item.AracOzellik.AracModel.ModelAdi</td>
+                <td>@item.Plaka</td>
+                <td>@item.BireyselKurumsal.Durum</td>
+                <td>@item.Statu.StatuAdi</td>
+                <td>@item.Kullanici.KullaniciAdi</td>
+                <td>@(item.Tarih != null ? item.Tarih.Value.ToString("dd/MM/yyyy (HH:mm)") : "")</td>
+                <td>
+                    <a href="@Url.Action("AracGuncelle", "AdminPanel", new { id = item.AracID })" class="btn btn-success me-2">Güncelle</a>
+                    <button type="button" class="btn btn-danger" onclick="confirmDelete('@item.AracID')">Sil</button>
+                </td>
+                <td></td>
+            </tr>
+            index++;
+        }
     </tbody>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Uyarı</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bu aracı silmek istediğinizden emin misiniz?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hayır</button>
+                    <form id="deleteModalForm">
+                        <button type="submit" class="btn btn-primary">Evet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </table>
+
+
+
 <br />
 <div class="row mt-12">
     <div class="col-md-12 d-flex justify-content-end">
-        <a href="@Url.Action("_BireyselAracGuncelle")" class="btn btn-success me-2">
-            Güncelle</a>
-            <button class="btn btn-danger">Sil</button>
+        <a href="@Url.Action("_AracDetayBilgisi")" class="btn btn-success me-2">Yeni Ekle</a>
+
+    </div>
 </div>
-</div>
+
+<script>
+    function resetFormAndSubmit() {
+        // Formu sıfırla
+        var form = document.getElementById('filtreForm');
+        form.reset();
+
+        // DropDownListFor varsayılan değerleri seçmek için
+        var selects = form.getElementsByTagName('select');
+        for (var i = 0; i < selects.length; i++) {
+            selects[i].selectedIndex = 0;
+        }
+
+        // Tablodaki filtrelenmiş araç listesini temizle
+        var tbody = document.getElementById('araclarListesi');
+        var rows = tbody.getElementsByTagName('tr');
+        while (rows.length > 0) {
+            tbody.removeChild(rows[0]);
+        }
+
+        // Form submit işlemini gerçekleştir
+        form.submit();
+    }
+function confirmDelete(id) {
+    var modal = new bootstrap.Modal(document.getElementById('deleteModal'), {});
+    modal.show();
+    document.getElementById('deleteModalForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        modal.hide();
+        window.location.href = '@Url.Action("AracSil", "AdminPanel")?id=' + id;
+    });
+}
+</script>
 

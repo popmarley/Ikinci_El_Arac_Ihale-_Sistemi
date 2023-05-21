@@ -75,7 +75,16 @@ namespace İkinciElAracİhale.UI.Controllers
         [Authorize]
         public ActionResult _BireyselArac()
         {
-            return View();
+            var araclar = aracRepo.GetAraclar();
+            var viewModel = new AracListelemeViewModel
+            {
+                AraclarList = araclar,
+                StatuList = aracRepo.GetSelectList(db.Status.ToList(), "StatuID", "StatuAdi"),
+                AracMarkaList = aracRepo.GetSelectList(db.AracMarkas.ToList(), "MarkaID", "MarkaAdi"),
+                AracModelList = aracRepo.GetSelectList(db.AracModels.ToList(), "AracModelID", "ModelAdi"),
+                BireyselKurumsalList = aracRepo.GetSelectList(db.BireyselKurumsals.ToList(), "BireselKurumsalID", "Durum")
+            };
+            return View(viewModel);
         }
 
         [Authorize]
